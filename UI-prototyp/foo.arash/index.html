@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title></title>
+  <link type="text/css" href="styles/tikineat.css" rel="stylesheet">
+</head>
+<body class="tiki_blogs">
+<div id="overDiv"
+ style="position: absolute; visibility: hidden; z-index: 1000;"></div>
+<script type="text/javascript" language="JavaScript"
+ src="styles/overlib.js"></script>
+<div id="tiki-main">
+<div id="tiki-top">This is
+DAS - UI Prototyp 0.1</div>
+<div id="tiki-mid">
+<table id="tiki-midtbl" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td id="leftcolumn" valign="top">
+      <div class="box mnu_application_menu">
+      <div class="box-title">
+      <table class="box-title">
+        <tbody>
+          <tr>
+            <td
+ ondblclick="javascript:icntoggle('mod-mnu_application_menu','mo.png');"><span
+ class="box-titletext">Menu</span>
+            </td>
+            <td width="11">
+            <a title="Hide module contents" class="flipmodtitle"
+ href="javascript:icntoggle('mod-mnu_application_menu','mo.png');"><img
+ name="mod-mnu_application_menuicn" class="flipmodimage"
+ src="styles/omo.png" alt="[hide]" border="0"></a></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div id="mod-mnu_application_menu" style="display: block;"
+ class="box-data">
+      <div id="mnu_application_menu" style="display: block;">
+      <div class="option">&nbsp;<a href="#tiki-index.php"
+ class="linkmenu">Home</a></div>
+      <div class="option">&nbsp;<a href="#tiki-chat.php"
+ class="linkmenu">Chat</a></div>
+      <div class="option">&nbsp;<a href="#tiki-contact.php"
+ class="linkmenu">Contact us</a></div>
+      <div class="option">&nbsp;<a href="#tiki-stats.php"
+ class="linkmenu">Stats</a></div>
+      <div class="option">&nbsp;<a href="#tiki-browse_categories.php"
+ class="linkmenu">Categories</a></div>
+      <div class="separator">
+      <a class="separator" href="javascript:icntoggle('menu42__50');"
+ title="Toggle options"><img src="styles/fo.gif" name="menu42__50icn"
+ alt="" border="0"></a>&nbsp;
+      <a href="#tiki-my_tiki.php" class="separator">MyTiki</a>
+      </div>
+      <div style="display: none;" id="menu42__50">
+      <div class="option">&nbsp;<a href="#tiki-my_tiki.php"
+ class="linkmenu">MyTiki home</a></div>
+      <div class="option">&nbsp;<a href="#tiki-user_preferences.php"
+ class="linkmenu">Preferences</a></div>
+      <div class="option">&nbsp;<a href="#messu-mailbox.php"
+ class="linkmenu">Messages</a></div>
+      <div class="option">&nbsp;<a href="#tiki-user_tasks.php"
+ class="linkmenu">Tasks</a></div>
+      <div class="option">&nbsp;<a href="#tiki-user_bookmarks.php"
+ class="linkmenu">Bookmarks</a></div>
+      <div class="option">&nbsp;<a
+ href="#tiki-user_assigned_modules.php" class="linkmenu">Modules</a></div>
+      <div class="option">&nbsp;<a href="#tiki-notepad_list.php"
+ class="linkmenu">Notepad</a></div>
+      <div class="option">&nbsp;<a href="#tiki-userfiles.php"
+ class="linkmenu">My files</a></div>
+      <div class="option">&nbsp;<a href="#tiki-usermenu.php"
+ class="linkmenu">User menu</a></div>
+      <div class="option">&nbsp;<a href="#tiki-minical.php"
+ class="linkmenu">Mini calendar</a></div>
+      <div class="option">&nbsp;<a href="#tiki-user_watches.php"
+ class="linkmenu">My watches</a></div>
+      </div>
+      <div class="separator"><a class="separator"
+ href="javascript:icntoggle('menu42__200');" title="Toggle options"><img
+ src="styles/fo.gif" name="menu42__200icn" alt="" border="0"></a>&nbsp;
+      <a href="#tiki-index.php" class="separator">Wiki</a>
+      </div>
+      <div style="display: none;" id="menu42__200">
+      <div class="option">&nbsp;<a href="#tiki-index.php"
+ class="linkmenu">Wiki Home</a></div>
+      <div class="option">&nbsp;<a href="#tiki-lastchanges.php"
+ class="linkmenu">Last Changes</a></div>
+      <div class="option">&nbsp;<a href="#tiki-wiki_rankings.php"
+ class="linkmenu">Rankings</a></div>
+      <div class="option">&nbsp;<a href="#tiki-listpages.php"
+ class="linkmenu">List pages</a></div>
+      <div class="option">&nbsp;<a href="#tiki-orphan_pages.php"
+ class="linkmenu">Orphan pages</a></div>
+      <div class="option">&nbsp;<a
+ href="#tiki-editpage.php?page=sandbox" class="linkmenu">Sandbox</a></div>
+      <div class="option">&nbsp;<a href="#tiki-print_pages.php"
+ class="linkmenu">Print</a></div>
+      <div class="option">&nbsp;<a href="#tiki-send_objects.php"
+ class="linkmenu">Send pages</a></div>
+      <div class="option">&nbsp;<a href="#tiki-received_pages.php"
+ class="linkmenu">Received pages</a></div>
+      <div class="option">&nbsp;<a href="#tiki-admin_structures.php"
+ class="linkmenu">Structures</a></div>
+      </div>
+      <div class="separator"><a class="separator"
+ href="javascript:icntoggle('menu42__300');" title="Toggle options"><img
+ src="styles/fo.gif" name="menu42__300icn" alt="" border="0"></a>&nbsp;
+      <a href="#tiki-galleries.php" class="separator">Image Galleries</a>
+      </div>
+      <div style="display: none;" id="menu42__300">
+      <div class="option">&nbsp;<a href="#tiki-galleries.php"
+ class="linkmenu">Galleries</a></div>
+      <div class="option">&nbsp;<a href="#tiki-galleries_rankings.php"
+ class="linkmenu">Rankings</a></div>
+      <div class="option">&nbsp;<a href="#tiki-upload_image.php"
+ class="linkmenu">Upload image</a></div>
+      <div class="option">&nbsp;<a
+ href="#tiki-list_gallery.php?galleryId=0" class="linkmenu">System
+gallery</a></div>
+      <div class="option">&nbsp;<a href="#tiki-cms_rankings.php"
+ class="linkmenu">Rankings</a></div>
+      </div>
+      <div class="separator"><a class="separator"
+ href="javascript:icntoggle('menu42__450');" title="Toggle options"><img
+ src="styles/fo.gif" name="menu42__450icn" alt="" border="0"></a>&nbsp;
+      <a href="#tiki-list_blogs.php" class="separator">Blogs</a>
+      </div>
+      <div style="display: none;" id="menu42__450">
+      <div class="option">&nbsp;<a href="#tiki-list_blogs.php"
+ class="linkmenu">List blogs</a></div>
+      <div class="option">&nbsp;<a href="#tiki-blog_rankings.php"
+ class="linkmenu">Rankings</a></div>
+      <div class="option">&nbsp;<a href="#tiki-edit_blog.php"
+ class="linkmenu">Create/Edit blog</a></div>
+      <div class="option">&nbsp;<a href="#tiki-blog_post.php"
+ class="linkmenu">Post</a></div>
+      </div>
+      <div class="separator"><a class="separator"
+ href="javascript:icntoggle('menu42__500');" title="Toggle options"><img
+ src="styles/fo.gif" name="menu42__500icn" alt="" border="0"></a>&nbsp;
+      <a href="#tiki-forums.php" class="separator">Forums</a>
+      </div>
+      <div style="display: none;" id="menu42__500">
+      <div class="option">&nbsp;<a href="#tiki-forums.php"
+ class="linkmenu">List forums</a></div>
+      <div class="option">&nbsp;<a href="#tiki-forum_rankings.php"
+ class="linkmenu">Rankings</a></div>
+      <div class="option">&nbsp;<a href="#tiki-admin_forums.php"
+ class="linkmenu">Admin forums</a></div>
+      </div>
+      <div class="separator"><a class="separator"
+ href="javascript:icntoggle('menu42__550');" title="Toggle options"><img
+ src="styles/fo.gif" name="menu42__550icn" alt="" border="0"></a>&nbsp;
+      <a href="#tiki-directory_browse.php" class="separator">Directory</a>
+      </div>
+      <div style="display: none;" id="menu42__550">
+      <div class="option">&nbsp;<a href="#tiki-directory_add_site.php"
+ class="linkmenu">Submit a new link</a></div>
+      <div class="option">&nbsp;<a href="#tiki-directory_browse.php"
+ class="linkmenu">Browse directory</a></div>
+      <div class="option">&nbsp;<a href="#tiki-directory_admin.php"
+ class="linkmenu">Admin directory</a></div>
+      </div>
+      <div class="separator"><a class="separator"
+ href="javascript:icntoggle('menu42__600');" title="Toggle options"><img
+ src="styles/fo.gif" name="menu42__600icn" alt="" border="0"></a>&nbsp;
+      <a href="#tiki-file_galleries.php" class="separator">File
+Galleries</a>
+      </div>
+      <div style="display: none;" id="menu42__600">
+      <div class="option">&nbsp;<a href="#tiki-file_galleries.php"
+ class="linkmenu">List galleries</a></div>
+      <div class="option">&nbsp;<a
+ href="#tiki-file_galleries_rankings.php" class="linkmenu">Rankings</a></div>
+      <div class="option">&nbsp;<a href="#tiki-upload_file.php"
+ class="linkmenu">Upload file</a></div>
+      </div>
+      <div class="separator"><a class="separator"
+ href="javascript:icntoggle('menu42__650');" title="Toggle options"><img
+ src="styles/fo.gif" name="menu42__650icn" alt="" border="0"></a>&nbsp;
+      <a href="#tiki-list_faqs.php" class="separator">FAQs</a>
+      </div>
+      <div style="display: none;" id="menu42__650">
+      <div class="option">&nbsp;<a href="#tiki-list_faqs.php"
+ class="linkmenu">Admin FAQs</a></div>
+      <div class="option">&nbsp;<a href="#tiki-list_faqs.php"
+ class="linkmenu">List FAQs</a></div>
+      </div>
+      <div class="separator"><a class="separator"
+ href="javascript:icntoggle('menu42__800');" title="Toggle options"><img
+ src="styles/fo.gif" name="menu42__800icn" alt="" border="0"></a>&nbsp;
+      <a href="#tiki-list_trackers.php" class="separator">Trackers</a>
+      </div>
+      <div style="display: none;" id="menu42__800">
+      <div class="option">&nbsp;<a href="#tiki-list_trackers.php"
+ class="linkmenu">List trackers</a></div>
+      <div class="option">&nbsp;<a href="#tiki-admin_trackers.php"
+ class="linkmenu">Admin trackers</a></div>
+      </div>
+      <div class="separator"><a class="separator"
+ href="javascript:icntoggle('menu42__850');" title="Toggle options"><img
+ src="styles/fo.gif" name="menu42__850icn" alt="" border="0"></a>&nbsp;
+      <a href="#tiki-list_surveys.php" class="separator">Surveys</a>
+      </div>
+      <div style="display: none;" id="menu42__850">
+      <div class="option">&nbsp;<a href="#tiki-list_surveys.php"
+ class="linkmenu">List surveys</a></div>
+      <div class="option">&nbsp;<a href="#tiki-survey_stats.php"
+ class="linkmenu">Stats</a></div>
+      <div class="option">&nbsp;<a href="#tiki-admin_surveys.php"
+ class="linkmenu">Admin surveys</a></div>
+      </div>
+      <div class="separator"><a class="separator"
+ href="javascript:icntoggle('menu42__1050');" title="Toggle options"><img
+ src="styles/fo.gif" name="menu42__1050icn" alt="" border="0"></a>&nbsp;
+      <a href="#tiki-admin.php" class="separator">Admin</a>
+      </div>
+      <div style="display: none;" id="menu42__1050">
+      <div class="option">&nbsp;<a href="#tiki-admin_categories.php"
+ class="linkmenu">Categories</a></div>
+      <div class="option">&nbsp;<a
+ href="#tiki-admin_content_templates.php" class="linkmenu">Content
+templates</a></div>
+      <div class="option">&nbsp;<a href="#tiki-referer_stats.php"
+ class="linkmenu">Referer stats</a></div>
+      </div>
+      <script language="Javascript" type="text/javascript">
+setfolderstate('menu42__50', 'd');
+setfolderstate('menu42__200', 'd');
+setfolderstate('menu42__300', 'd');
+setfolderstate('menu42__450', 'd');
+setfolderstate('menu42__500', 'd');
+setfolderstate('menu42__550', 'd');
+setfolderstate('menu42__600', 'd');
+setfolderstate('menu42__650', 'd');
+setfolderstate('menu42__800', 'd');
+setfolderstate('menu42__850', 'd');
+setfolderstate('menu42__1050', 'd');
+      </script>
+      </div>
+      <script language="Javascript" type="text/javascript">
+setsectionstate('mod-mnu_application_menu','mo.png');
+      </script>
+      </div>
+      </div>
+      <br>
+      </td>
+      <td id="centercolumn" valign="top">
+      <div id="tiki-center"></div>
+      </td>
+      <td> </td>
+      <td id="rightcolumn" valign="top">
+      <div class="box login_box">
+      <div class="box-title">Login</div>
+      <div id="mod-login_box" style="display: block;" class="box-data">
+logged as: $Username<br>
+      <a class="linkmodule" href="#">Logout</a><br>
+      </div>
+      </div>
+      <div class="box directory_last_sites">
+      <div class="box-title">
+      <table class="box-title">
+        <tbody>
+          <tr>
+            <td
+ ondblclick="javascript:icntoggle('mod-directory_last_sites','mo.png');"><span
+ class="box-titletext">Modul A</span>
+            </td>
+            <td width="11">
+            <a title="Hide module contents" class="flipmodtitle"
+ href="javascript:icntoggle('mod-directory_last_sites','mo.png');"><img
+ name="mod-directory_last_sitesicn" class="flipmodimage"
+ src="styles/omo.png" alt="[hide]" border="0"></a></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div id="mod-directory_last_sites" style="display: block;"
+ class="box-data">
+      <script language="Javascript" type="text/javascript">setsectionstate('mod-directory_last_sites','mo.png');
+      </script></div>
+      </div>
+      <div class="box last_visitors">
+      <div class="box-title">
+      <table class="box-title">
+        <tbody>
+          <tr>
+            <td
+ ondblclick="javascript:icntoggle('mod-last_visitors','mo.png');"><span
+ class="box-titletext">Modul B</span>
+            </td>
+            <td width="11">
+            <a title="Hide module contents" class="flipmodtitle"
+ href="javascript:icntoggle('mod-last_visitors','mo.png');"><img
+ name="mod-last_visitorsicn" class="flipmodimage" src="styles/omo.png"
+ alt="[hide]" border="0"></a></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div id="mod-last_visitors" style="display: block;"
+ class="box-data">
+      <script language="Javascript" type="text/javascript">setsectionstate('mod-last_visitors','mo.png');
+      </script></div>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div id="tiki-bot">
+<div align="center">POWERED
+BY <a href="http://das.berlios.de"><small>DAS
+- DI&Auml;T ASSISTENT</small></a>
+</div>
+</div>
+</div>
+</body>
+</html>
