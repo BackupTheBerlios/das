@@ -148,7 +148,7 @@ DIV#das-center {
 }
 DIV#das-mid > table {
 	width : 100%;
-	border-spacing : 0;
+/*	border-spacing : 0; */
 	margin : 0;
 	padding : 0;
 }
@@ -186,7 +186,7 @@ div.box-title table {
 	width : 100%;
 	padding: 0px;
 	margin: 0px;
-	border-spacing: 0;
+/*	border-spacing: 0; */
 }
 div.box-title table td {
   text-align: center;
@@ -209,6 +209,130 @@ div.separator, div.separatorline {
 	font-weight : normal;
 }
 
+/* When modules display a list of items each item is enclosed in a cell with the following style */
+TD.module {
+	font-size : 10px;
+	color : black;
+	text-align : left;
+}
+.linkmodule, .linkmodule:visited {
+	font-size : 10px;
+	text-decoration : none;
+}
+
+/* Now the boxes for the rest of DAS (non-modules */
+div.cbox {
+	background-color : white;
+	margin : 3px;
+        margin-bottom : 6px;
+	border : 1px solid #8CACBB;
+	overflow : hidden;
+}
+div.cbox-title {
+	color : black;
+	border-bottom : 1px solid #8CACBB;
+	overflow : hidden;
+	text-align : center;
+	padding : 0px;
+	margin : 0px;
+}
+.cboxtlink {
+	color : black;
+	font-size : 10px;
+	text-decoration : none;
+}
+div.cbox-data {
+	overflow : hidden;
+	padding : 0 5px;
+	font-size : 10px;
+	color : black;
+	width : 100%;
+}
+
+/* A simple box is just a div with a border around and some margin */
+div.simplebox {
+	padding : 8px;
+	color : black;
+	border : 1px solid #8CACBB;
+	background-color : white;
+}
+
+/* General tables */
+/* These styles apply to tables used to display common listings such as listings in admin screens, etc. */
+
+/* The table */
+table.normal {
+	padding : 0px;
+	margin : 0px;
+	border-collapse : collapse;
+	width : 100%;
+	voice-family : "\"}\"";
+	voice-family : inherit;
+	width : 97%;
+}
+html>body table.normal {
+	width : 100%;
+}
+
+TABLE.admin {
+	width : 100%;
+}
+TABLE.normalnoborder {
+}
+
+/* Cells in forms without background color (inside a div for example) */
+.form td {
+	background-color : transparent;
+}
+/* Cells in forms using a background color */
+.formcolor td {
+	border : 1px solid #8CACBB;
+	background-color : #DEE7EC;
+}
+
+/* Table headings */
+DIV.heading, TD.heading {
+	color : black;
+	background-color : #DEE7EC;
+	border : 1px solid #8CACBB;
+	padding : 0 2px;
+}
+
+DIV.heading {
+	margin: 3px 2px;
+}
+
+TD.button {
+	background-color : #DEE7EC;
+	border : 1px solid #8CACBB;
+	padding : 0 2px;
+	text-align : center;
+	vertical-align : middle;
+}
+
+table.findtable {
+	margin-bottom : 1px;
+	padding-bottom : 10px;
+}
+.findtable td { }
+
+/* Odd rows in several listings */
+tr.odd {
+	border : 1px solid #8CACBB;
+	color : black;
+	background-color : #F7F9FA;
+}
+tr.odd:hover {
+	background-color: #FFF7E6;
+}
+tr.even {
+	border : 1px solid #8CACBB;
+	background-color : #E7E9EA;
+	color : black;
+}
+tr.even:hover {
+	background-color: #FFF7E6;
+}
 /*************************** other misc styles ***************/
 div#loadstats {
 	color : #666666;
@@ -217,3 +341,41 @@ div#loadstats {
 div#das-power {
 	text-align: center;
 }
+/***************** DAS tabs ***************/
+.tabs {
+	padding : 1px 5px;
+}
+.tabmark {
+	display : inline;
+	font-size : 10px;
+	background-color : #DDDDDD;
+	border : 1px solid #666666;
+	margin : 0px;
+	margin-right : 5px;
+	padding: 2px 0;
+	-moz-border-radius : 5px 5px 0 0;
+}
+.tabmark a {
+	-moz-border-radius : 5px 5px 0 0;
+	border-bottom : 0;
+	color : #666666;
+	font-weight : bold;
+	padding : 1px 5px;
+}
+.tabmark a:active {
+	background-color : white;
+	color : red;
+}
+.tabmark a:hover {
+	color : black;
+	background-color : #CCCCCC;
+}
+.tabcontent {
+	z-index : 200;
+	position : relative;
+	border : 1px solid #999999;
+	padding: 6px 2px 2px 2px;
+	margin: 5px;
+	margin-top : 0;
+	background-color : #EEEEEE;
+	-moz-border-radius : 0px 4px 4px 4px;
