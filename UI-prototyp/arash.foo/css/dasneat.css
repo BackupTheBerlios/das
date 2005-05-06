@@ -378,4 +378,35 @@ div#das-power {
 	margin: 5px;
 	margin-top : 0;
 	background-color : #EEEEEE;
-	-moz-border-radius : 0px 4px 4px 4px;
+	-moz-border-radius : 0px 4px 4px 4px; 
+}
+
+/* Kirills CSS zeug */
+
+.boxed {
+border-top: 1px solid #99bec6;
+border-left: 1px solid #99bec6;
+border-right: 1px solid #99bec6;
+color: #225566;
+margin-left:2px;
+padding-left:2px;
+padding-right: 2px;
+background-color: #C7D0D9;
+}
+
+div#content {
+	position: absolute;
+	left: 220px;
+	top: 20px;
+	padding: 15px;
+	margin-right: 100px;
+}
+div#sidebar {
+	position: absolute;
+	top: 20px;
+	left: 0px;
+	width: 220px;
+	font-size : 80%;
+	margin-left: 10px;
+}
+/* -- Kirills CSS zeug -- */
