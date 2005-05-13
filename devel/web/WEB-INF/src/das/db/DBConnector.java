@@ -14,15 +14,14 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- * @author admbaby
+ * @author Arash
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * DB Connection Pool
  */
 public class DBConnector {
 	static Connection conn;
 	static DataSource ds;
-	public void init() throws Exception {
+	public static void init() throws Exception {
 		Context ctx = new InitialContext();
 		if (ctx == null) {
 			throw new Exception("Error in das.db.DBConnector - NO Context found");
@@ -30,12 +29,20 @@ public class DBConnector {
 		try {
 			ds = (DataSource)ctx.lookup("java:comp/env/jdbc/das");
 		} catch (NamingException e) {
-			// TODO: handle exception
+			throw new Exception("Error in das.db.DBConnector - lookup failed");
 		}
 	}
-	public static Connection getConnection() {
-		
-		return null;
+	public static Connection getConnection() throws Exception {
+		if (ds==null) 
+			init();
+		try {
+			conn=ds.getConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			// TODO: handle exception
+		}
+		return conn;
 		
 	}
 }
