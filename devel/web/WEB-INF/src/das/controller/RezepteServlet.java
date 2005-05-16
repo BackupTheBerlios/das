@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class Rezepte extends HttpServlet {
+public class RezepteServlet extends HttpServlet {
 
 /**
  * steuerzentrale .. hier wird anhand der requests entschieden
