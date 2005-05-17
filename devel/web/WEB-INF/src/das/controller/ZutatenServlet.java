@@ -39,9 +39,17 @@ public class ZutatenServlet extends HttpServlet {
 	/**
 	 * zutaten erstellen
 	 * TODO parameter festlegen
-	 *
 	 */
 	private void addZutaten() {
+		
+	}
+	/**
+	 * sucht nach zutaten und gibt deren nährwerte zurück. 
+	 * werden mehrere treffer erzielt, werden diese "portionsweise" an das UI zurückgegeben 
+	 * (z.b. à 20 stück)
+	 * TODO parameter festlegen
+	 */
+	protected void searchZutaten() {
 		
 	}
 	/**
