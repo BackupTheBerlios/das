@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>DAS</title>
-<link type="text/css" href="file:///C|/Projects/das/css/dasneat.css" rel="stylesheet">
+<link type="text/css" href="css/dasneat.css" rel="stylesheet">
 </head>
 <body>
 <div id="das-main">
@@ -22,12 +22,12 @@
                 </div>
               </div></td>
             <td id="centercolumn" valign="top"><div id="das-center">
-              <img src="file:///C|/Projects/das/img/logo_gr.jpg" hspace="100">
+              <img src="img/logo_gr.jpg" hspace="100">
             </div></td>
             <td id="rightcolumn" valign="top"><div class="box login_box">
                 <div class="box-title">Login</div>
                 <div id="mod-login_box" style="display: block" class="box-data">
-                  <form name="loginbox" action="file:///C|/Projects/das/das-login.jsp" method="post" >
+                  <form name="loginbox" action="das-login.jsp" method="post" >
                     <table border="0">
                       <tr>
                         <td><table>
@@ -44,7 +44,7 @@
                               <td><input type="password" name="pass" id="login-pass" size="20" /></td>
                             </tr>
                             <tr>
-                              <td><a href="file:///C|/Projects/das/Main.htm"><input type="submit" name="login" value="login" /></a></td>
+                              <td><a href="Main.htm"><input type="submit" name="login" value="login" /></a></td>
                             </tr>
                             <tr>
                               <td  class="module" valign="bottom">[ <a class="linkmodule" href="file:///C|/Projects/das/das-register.jsp" title="Click here to register">Registrieren</a> | <a class="linkmodule" href="file:///C|/Projects/das/das-remind_password.jsp" title="Click here if you've forgotten your password">Passwort vergessen?</a> ]</td>

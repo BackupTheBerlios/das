@@ -18,7 +18,7 @@ import javax.sql.DataSource;
  *
  * DB Connection Pool
  */
-public class DBConnector {
+public static class DBConnector {
 	static Connection conn;
 	static DataSource ds;
 	public static void init() throws Exception {

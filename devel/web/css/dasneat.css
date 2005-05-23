@@ -1,0 +1,412 @@
+body {
+	background-color : #E9ECEF;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	margin : 0;
+	padding : 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin : 0;
+	margin-bottom : 3px;
+}
+H1 {
+	font-size : 24px;
+	color : #436976;
+}
+H2 {
+	font-size : 18px;
+	color : #234956;
+}
+H3 {
+	font-size : 14px;
+	color : #032936;
+}
+H4 {
+	font-size : 12px;
+	color : #032936;
+}
+H5 {
+	font-size : 11px;
+	color : #032936;
+}
+H6 {
+	font-size : 10px;
+	color : #032936;
+}
+ul {
+	margin-top : 2px;
+	margin-bottom : 6px;
+}
+a {
+	color : #225566;
+	font-weight : bold;
+}
+a:hover {
+	color : #000000;
+	background-color : #E9ECEF;
+}
+small {
+	font-size : .8em;
+}
+hr {
+	width : 100%;
+	height : 1px;
+	background-color : #8CACBB;
+	border-width : 0px;
+	padding : 0px;
+	color : #8CACBB;
+}
+td {
+	color : #000000;
+	font-size : 11px;
+	vertical-align : top;
+	text-align : left;
+}
+th {
+	color : black;
+	background-color : #DEE7EC;
+	border : 1px solid #8CACBB;
+	padding : 0 2px;
+}
+caption {
+	font-weight : bold;
+}
+/* General form elements */
+FORM {
+	margin : 0px;
+	padding : 0px;
+}
+input, textarea, select {
+	font-size : 12px;
+	color : #112233;
+}
+input {
+	text-indent : 2px;
+}
+input[type=checkbox], input[type=radio] {
+	border : 0;
+}
+input[type=submit] {
+	border : 1px solid #46596f;
+	background-color: #C7D0D9;
+	font-weight : bold;
+}
+input[type=submit]:hover {
+	background-color : #FFFFFF;
+	cursor : pointer;
+}
+textarea {
+	width : 100%;
+}
+label {
+	cursor : pointer;
+}
+
+/*********************** GENERAL LAYOUT ************************************/
+
+DIV#das-main {
+	margin : 0px;
+}
+
+DIV#das-top {
+	font-size : 10px;
+	background-color : #C7D0D9;
+	padding-bottom : 1px;
+	border-bottom : 1px solid #8CACBB;
+}
+DIV#das-top a {
+	text-decoration : none;
+}
+DIV#das-mid {
+	margin : 0;
+	padding : 0;
+}
+DIV#das-bot {
+	padding-top : 10px;
+	padding-bottom : 5px;
+	background-color : #C7D0D9;
+	margin : 0;
+	border-top : 1px solid #8CACBB;
+	border-bottom : 1px solid #8CACBB;
+}
+#leftcolumn {
+	width : 180px;
+	padding : 0px;
+	border-right : 1px solid #8CACBB;
+}
+#centercolumn {
+	background-color: #F3F6F9;
+	margin : 0;
+	width : 100%;
+}
+#rightcolumn {
+	width : 180px;
+	padding : 0px;
+	border-left : 1px solid #8CACBB;
+}
+DIV#das-center {
+	padding : 10px 0;
+}
+DIV#das-mid > table {
+	width : 100%;
+/*	border-spacing : 0; */
+	margin : 0;
+	padding : 0;
+}
+/* GENERAL LAYOUT EXPLANATION
+	*
+	* The DAS application is enclosed as a whole in das-main
+	* das-main contains three divs: das-top, das-mid and das-bot
+	* that will be used for the header, application and footer.
+	*
+	* das-mid contains a 3-column table, the columns are called (ids)
+	* leftcolumn, centercolumn and rightcolumn
+	* centercolumn contains das-center where the main area is displayed.
+	*
+	*/
+
+/********************************************* GENERAL STYLE PROPERTIES **********************************************/
+/* Boxes used for modules (modules are those boxes in the left/right columns) */
+div.box {
+	background-color : white;
+	overflow : hidden;
+	margin : 3px;
+	border : 1px solid #ACCCDD;
+	width : 174px;
+	font-size : 10px;
+}
+div.box-title {
+	background-color: #F3F6F9;
+	border-bottom : 1px solid #ACCCDD;
+	overflow : hidden;
+	font-size : 10px;
+	text-align : center;
+	margin : 0;
+}
+div.box-title table {
+	width : 100%;
+	padding: 0px;
+	margin: 0px;
+/*	border-spacing: 0; */
+}
+div.box-title table td {
+  text-align: center;
+}
+div.box-data {
+	overflow : hidden;
+	color : black;
+	padding : 5px;
+	font-size : 10px;
+}
+div.separator, div.separatorline {
+	background-color: #FFFFFF;
+	color : black;
+	padding : 2px;
+	border-top : 1px dashed #8CACBB;
+}
+.linkmenu, .rsslink {
+	font-size : 10px;
+	text-decoration : none;
+	font-weight : normal;
+}
+
+/* When modules display a list of items each item is enclosed in a cell with the following style */
+TD.module {
+	font-size : 10px;
+	color : black;
+	text-align : left;
+}
+.linkmodule, .linkmodule:visited {
+	font-size : 10px;
+	text-decoration : none;
+}
+
+/* Now the boxes for the rest of DAS (non-modules */
+div.cbox {
+	background-color : white;
+	margin : 3px;
+        margin-bottom : 6px;
+	border : 1px solid #8CACBB;
+	overflow : hidden;
+}
+div.cbox-title {
+	color : black;
+	border-bottom : 1px solid #8CACBB;
+	overflow : hidden;
+	text-align : center;
+	padding : 0px;
+	margin : 0px;
+}
+.cboxtlink {
+	color : black;
+	font-size : 10px;
+	text-decoration : none;
+}
+div.cbox-data {
+	overflow : hidden;
+	padding : 0 5px;
+	font-size : 10px;
+	color : black;
+	width : 100%;
+}
+
+/* A simple box is just a div with a border around and some margin */
+div.simplebox {
+	padding : 8px;
+	color : black;
+	border : 1px solid #8CACBB;
+	background-color : white;
+}
+
+/* General tables */
+/* These styles apply to tables used to display common listings such as listings in admin screens, etc. */
+
+/* The table */
+table.normal {
+	padding : 0px;
+	margin : 0px;
+	border-collapse : collapse;
+	width : 100%;
+	voice-family : "\"}\"";
+	voice-family : inherit;
+	width : 97%;
+}
+html>body table.normal {
+	width : 100%;
+}
+
+TABLE.admin {
+	width : 100%;
+}
+TABLE.normalnoborder {
+}
+
+/* Cells in forms without background color (inside a div for example) */
+.form td {
+	background-color : transparent;
+}
+/* Cells in forms using a background color */
+.formcolor td {
+	border : 1px solid #8CACBB;
+	background-color : #DEE7EC;
+}
+
+/* Table headings */
+DIV.heading, TD.heading {
+	color : black;
+	background-color : #DEE7EC;
+	border : 1px solid #8CACBB;
+	padding : 0 2px;
+}
+
+DIV.heading {
+	margin: 3px 2px;
+}
+
+TD.button {
+	background-color : #DEE7EC;
+	border : 1px solid #8CACBB;
+	padding : 0 2px;
+	text-align : center;
+	vertical-align : middle;
+}
+
+table.findtable {
+	margin-bottom : 1px;
+	padding-bottom : 10px;
+}
+.findtable td { }
+
+/* Odd rows in several listings */
+tr.odd {
+	border : 1px solid #8CACBB;
+	color : black;
+	background-color : #F7F9FA;
+}
+tr.odd:hover {
+	background-color: #FFF7E6;
+}
+tr.even {
+	border : 1px solid #8CACBB;
+	background-color : #E7E9EA;
+	color : black;
+}
+tr.even:hover {
+	background-color: #FFF7E6;
+}
+/*************************** other misc styles ***************/
+div#loadstats {
+	color : #666666;
+	padding : 5px;
+}
+div#das-power {
+	text-align: center;
+}
+/***************** DAS tabs ***************/
+.tabs {
+	padding : 1px 5px;
+}
+.tabmark {
+	display : inline;
+	font-size : 10px;
+	background-color : #DDDDDD;
+	border : 1px solid #666666;
+	margin : 0px;
+	margin-right : 5px;
+	padding: 2px 0;
+	-moz-border-radius : 5px 5px 0 0;
+}
+.tabmark a {
+	-moz-border-radius : 5px 5px 0 0;
+	border-bottom : 0;
+	color : #666666;
+	font-weight : bold;
+	padding : 1px 5px;
+}
+.tabmark a:active {
+	background-color : white;
+	color : red;
+}
+.tabmark a:hover {
+	color : black;
+	background-color : #CCCCCC;
+}
+.tabcontent {
+	z-index : 200;
+	position : relative;
+	border : 1px solid #999999;
+	padding: 6px 2px 2px 2px;
+	margin: 5px;
+	margin-top : 0;
+	background-color : #EEEEEE;
+	-moz-border-radius : 0px 4px 4px 4px; 
+}
+
+/* Kirills CSS zeug */
+
+.boxed {
+border-top: 1px solid #99bec6;
+border-left: 1px solid #99bec6;
+border-right: 1px solid #99bec6;
+color: #225566;
+margin-left:2px;
+padding-left:2px;
+padding-right: 2px;
+background-color: #C7D0D9;
+}
+
+div#content {
+	position: absolute;
+	left: 220px;
+	top: 20px;
+	padding: 15px;
+	margin-right: 100px;
+}
+div#sidebar {
+	position: absolute;
+	top: 20px;
+	left: 0px;
+	width: 220px;
+	font-size : 80%;
+	margin-left: 10px;
+}
+/* -- Kirills CSS zeug -- */
