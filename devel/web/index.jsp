@@ -27,7 +27,7 @@
             <td id="rightcolumn" valign="top"><div class="box login_box">
                 <div class="box-title">Login</div>
                 <div id="mod-login_box" style="display: block" class="box-data">
-                  <form name="loginbox" action="das-login.jsp" method="post" >
+                  <form name="loginbox" action="UserServlet" method="post" >
                     <table border="0">
                       <tr>
                         <td><table>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app>
+
+    <display-name>DAS DiaetAssistent</display-name>
+    <description>
+      DAS DiaetAssistent
+    </description>
+
+
+    <servlet>
+        <servlet-name>HelloWorldExample</servlet-name>
+        <servlet-class>HelloWorldExample</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloWorldExample</servlet-name>
+        <url-pattern>/servlet/HelloWorldExample</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>
