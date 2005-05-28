@@ -1,0 +1,1 @@
+Dieses verzeichnis enthaelt die SQL scripts zur erzeugung und befuellung der datenbank.

@@ -1,0 +1,1 @@
+Das document root verzeichnis. In diesem verzeichnis und seinen unterverzeichnissen liegen HTML, JSP, JavaScrip, CSS und image dateien.

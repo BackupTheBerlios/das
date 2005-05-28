@@ -1,0 +1,1 @@
+Dieses verzeichnis enthaelt die konfigurationsdateien der web anwendung.
