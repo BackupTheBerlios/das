@@ -11,6 +11,7 @@
 
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@ include file="/inc/nocache.jspf" %>
 	<link rel="stylesheet" type="text/css"
 		href="${pageContext.request.contextPath}/css/styles.css"/>

@@ -53,6 +53,7 @@ public class StatementBuilder {
 			
 			if (expr.getValue() instanceof String
 					&& ((String)expr.getValue()).indexOf('*') != -1){
+				System.out.println("------- ilike --------");
 				sb.append(" ilike ?");
 			}
 			else {
@@ -71,7 +72,6 @@ public class StatementBuilder {
 			Object value = expr.getValue();
 			if (value instanceof String){
 				String s = ((String)value).replaceAll("\\u002A", "%");
-				System.out.println("nach regex: " + s);
 				stmt.setString(i, s);
 			}
 			else if (value instanceof Long){
