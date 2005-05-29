@@ -17,6 +17,12 @@
 	<link rel="stylesheet" type="text/css"
 		href="${pageContext.request.contextPath}/css/styles.css"/>
 	<title>DAS - Zutaten suchen</title>
+	<script type="text/javascript">
+	function submitForm(command){
+		document.forms[0].action = 'find_zutat.jsp?cmd=' + command;
+		document.forms[0].submit();
+	}
+	</script>
 </head>
 <body>
 	<h3>Zutaten suchen</h3>
@@ -26,10 +32,10 @@
 		<a href="find_zutat.jsp?cmd=find&kat=${kat.id}">${kat.name}</a><br/>
 	</c:forEach>
 	<p/>
-	<form action="find_zutat.jsp" method="POST">
+	<form action="find_zutat.jsp?cmd=find" method="POST">
 		Zutat Name: 
 		<input name="nameExpr" value="${ctrl.fields.nameExpr}" size="30" maxlength="100"/></br>
-		<button name="cmd" value="find">Suchen</button>
+		<input type="submit" value="Suchen" />
 		<p/>
 		
 		${ctrl.message}
@@ -45,8 +51,8 @@
 		</c:if>
 		
 		<hr width="50%" align="left"/>
-		<button name="cmd" value="delete">L&ouml;schen</button>
-		<button name="cmd" value="new">Neu</button>
+		<button type="button" onClick="submitForm('delete')">L&ouml;schen</button>
+		<button type="button" onClick="submitForm('new')">Neu</button>
 	</form>
 </body>
 </html>

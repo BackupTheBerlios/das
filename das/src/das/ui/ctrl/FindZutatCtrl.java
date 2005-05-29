@@ -50,6 +50,9 @@ public class FindZutatCtrl extends ControllerBase {
 	}
 	
 	protected void action(String command) throws ServletException, IOException {
+		
+		System.out.println("command: " + command);
+		
 		if (command == null)
 			command = "view";
 

@@ -53,7 +53,6 @@ public class StatementBuilder {
 			
 			if (expr.getValue() instanceof String
 					&& ((String)expr.getValue()).indexOf('*') != -1){
-				System.out.println("------- ilike --------");
 				sb.append(" ilike ?");
 			}
 			else {
