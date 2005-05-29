@@ -12,17 +12,13 @@
 
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@ include file="/inc/nocache.jspf" %>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/dasutil.js">
+	</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css"
 		href="${pageContext.request.contextPath}/css/styles.css"/>
-	<title>DAS - Zutaten suchen</title>
-	<script type="text/javascript">
-	function submitForm(command){
-		document.forms[0].action = 'find_zutat.jsp?cmd=' + command;
-		document.forms[0].submit();
-	}
-	</script>
+	<title>DAS - Zutaten suchen</title>	
 </head>
 <body>
 	<h3>Zutaten suchen</h3>
@@ -51,8 +47,9 @@
 		</c:if>
 		
 		<hr width="50%" align="left"/>
-		<button type="button" onClick="submitForm('delete')">L&ouml;schen</button>
-		<button type="button" onClick="submitForm('new')">Neu</button>
+		<button type="button" onClick="submitForm('find_zutat.jsp?cmd=delete', 'Sicher?')">
+			L&ouml;schen</button>
+		<button type="button" onClick="submitForm('find_zutat.jsp?cmd=new')">Neu</button>
 	</form>
 </body>
 </html>
