@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@taglib tagdir="/WEB-INF/tags" prefix="das" %>
 
+<%-- Controller instantiieren und pageContext setzen --%>
 <jsp:useBean id="ctrl" class="das.ui.ctrl.FindZutatCtrl">
 	<jsp:setProperty name="ctrl" property="pageContext" value="${pageContext}"/>
 </jsp:useBean>
@@ -22,6 +23,7 @@
 </head>
 <body>
 	<h3>Zutaten suchen</h3>
+	<%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
 	<das:errorlist controller="${ctrl}"/>
 	Kategorien:<p>
 	<c:forEach items="${ctrl.kategorien}" var="kat">

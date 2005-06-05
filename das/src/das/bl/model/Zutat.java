@@ -1,5 +1,8 @@
 package das.bl.model;
 
+/**
+ * Domain klasse Zutat.
+ */
 public class Zutat {
 	
 	private Long id;

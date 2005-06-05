@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
 
+
+/**
+ * Die controller klasse zum suchen und auswaehlen von zutaten.
+ */
 public class FindZutatCtrl extends ControllerBase {
 	
 	private List<ObjName> results;
@@ -16,20 +20,33 @@ public class FindZutatCtrl extends ControllerBase {
 	private String nameExpr;
 	private String message;
 	
+	/**
+	 * Liefert eine liste von ObjNames fuer alle existierenden kategorien.
+	 */
 	public List<ObjName> getKategorien(){
 		Query q = new Query(ResultType.NAMES);
 		ZutatenService service = new ZutatenService(getUserName());
 		return htmlEscape(service.findKategorien(q));
 	}
 	
+	/**
+	 * Liefert die liste der suchergebnisse.
+	 */
 	public List<ObjName> getResults(){
 		return results;
 	}
-	
+
+	/**
+	 * Liefert eine meldung die dem user angezeigt werden kann 
+	 * (z.b. fuer den fall dass keine datensaetze gefunden wurden).
+	 */
 	public String getMessage(){
 		return message;
 	}
 	
+	/**
+	 * Konvertiert und validiert die request parameter
+	 */
 	protected boolean convertAndValidate(String command){
 		if (command == null)
 			return true;
@@ -49,6 +66,11 @@ public class FindZutatCtrl extends ControllerBase {
 		return errors.isEmpty();
 	}
 	
+	/**
+	 * Fuehrt das gegebene kommando aus. Wenn das kommando "find" ist, wird eine
+	 * abfrage ausgefuehrt und die ergebnisliste geladen. Wenn das kommando "delete" ist
+	 * werden die ausgewaehlten datensaetze geloescht.
+	 */
 	protected void action(String command) throws ServletException, IOException {
 		
 		System.out.println("command: " + command);

@@ -12,6 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Data Access Object zur verarbeitung der datenbankzugriffe im zusammenhang mit zutaten.
+ */
 public class ZutatDao {
 		
 	public static List findZutaten(Query q, Connection con) throws SQLException{

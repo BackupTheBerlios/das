@@ -8,10 +8,22 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+
+/**
+ * Hilfsklasse zur erzeugung von parametrisierten PreparedStatements. 
+ * Der aufrufer benutzt add um parameterausdruecke hinzuzufuegen und ruft danach
+ * buildQuery auf um das entsprechende PreparedStatement zu erzeugen.
+ */
 public class StatementBuilder {
 	
 	private LinkedHashMap<String,QueryExpr> fields = new LinkedHashMap<String,QueryExpr>();
 	
+	/**
+	 * Fuegt einen parameter ausdruck hinzu.
+	 *
+	 * @param name Der name des parameters.
+	 * @param expr Der wert des parameters.
+	 */
 	public void add(String name, QueryExpr expr){
 		if (expr == null)
 			return;
@@ -19,6 +31,10 @@ public class StatementBuilder {
 		fields.put(name, expr);
 	}
 	
+	/**
+	 * Erzeugt ein PreparedStatement, dass den zuvor mittels add hinzugefuegten parameter
+	 * ausdruecken entspricht.
+	 */
 	public PreparedStatement buildQuery(String select, Connection con) 
 		throws SQLException {
 		
@@ -29,6 +45,9 @@ public class StatementBuilder {
 		return stmt;
 	}
 	
+	/**
+	 * Erzeugt den where teil des statements.
+	 */
 	protected String buildWhere(){
 		if (fields.isEmpty())
 			return "";
@@ -63,6 +82,9 @@ public class StatementBuilder {
 		return sb.toString();
 	}
 	
+	/**
+	 * Setzt die statement parameter.
+	 */
 	protected void setParams(PreparedStatement stmt) throws SQLException {
 		
 		int i = 1;

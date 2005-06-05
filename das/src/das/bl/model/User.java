@@ -4,6 +4,9 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Domain klasse User
+ */
 public class User {
 	
 	private String login;

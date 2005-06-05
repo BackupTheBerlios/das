@@ -3,6 +3,9 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Domain klasse Rezept.
+ */
 public class Rezept {
 	
 	private Long id;

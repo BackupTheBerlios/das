@@ -15,17 +15,52 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.PageContext;
 
+
+/**
+ * Die basisklasse aller user interface controller.
+ */
 public abstract class ControllerBase {
 	
+	/**
+	 * Der name des command parameters.
+	 */
 	public static final String COMMAND_PARAM = "cmd";
+	
+	/**
+	 * Konstanten fuer die angabe der richtung einer datentyp konvertierung.
+	 * FROM_UI bedeutet konvertierung von der UI repraesentation (also Strings) in
+	 * die interne repraesentation. TO_UI bedeutet konvertierung von der internen
+	 * repraesentation in HTML taugliche Strings.
+	 */
 	public static final int FROM_UI = 1;
 	public static final int TO_UI = 2;
 	
+	/*
+	 * Der JSP PageContext
+	 */
 	protected PageContext pageContext;
+	
+	/*
+	 * Die sammlung der fehler die waehrend der verarbeitung eines requests aufgetreten sind.
+	 */
 	protected Map<String,String> errors = new LinkedHashMap<String,String>();
+	
+	/*
+	 * Die formularfelder und request parameter aus dem HTTP request.
+	 */
 	protected Map<String,Object> fields;
+	
+	/*
+	 * Wenn dieses flag den wert true hat, ist die der HTTP request erfolgreich verarbeitet
+	 * worden. Das heisst es sind keine konvertierungsfehler oder sonstige fehler aufgetreten.
+	 */
 	protected boolean valid = true;
 	
+	/**
+	 * Setzt den PageContext und initiiert die verarbeitung des HTTP requests. Diese
+	 * methode ruft convertAndValidate und danach action auf. action wird nur aufgerufen
+	 * wenn die konvertierung und validierung erfolgreich war.
+	 */
 	public void setPageContext(PageContext ctx) throws Exception {
 		
 		pageContext = ctx;
@@ -43,26 +78,47 @@ public abstract class ControllerBase {
 		}
 	}
 	
+	/**
+	 * Liefert die sammlung aller aufgetretenen fehler. Der key der Map ist der name
+	 * des fehlers, was im normalfall der name des fehlerhaften formular ist.
+	 * Bei fehlern die keinen formularfeldern zugeordnet sind, ist der name ein beliebiger
+	 * eindeutiger wert.
+	 */
 	public Map<String,String> getErrors(){
 		return errors;
 	}
 	
+	/**
+	 * Liefert eine sammlung aller fehler.
+	 */
 	public Collection<String> getErrorList(){
 		return errors.values();
 	}
 	
+	/**
+	 * Liefert true if der rquest fehlerfrei abgelaufen ist, sonst false.
+	 */
 	public boolean isValid(){
 		return valid;
 	}
 	
+	/**
+	 * Setzt das valid flag.
+	 */
 	public void setValid(boolean b){
 		valid = b;
 	}
 	
+	/**
+	 * Liefert die Map mit allen formularfeldern und request paraemtern.
+	 */
 	public Map<String,Object> getFields(){
 		return fields;
 	}
 	
+	/**
+	 * Laedt alle request parameter (einschliesslich der formularfelder) in die fields Map.
+	 */
 	protected Map loadFields(ServletRequest request){
 		
 		Map<String,String[]> params = (Map<String,String[]>)request.getParameterMap();
@@ -86,26 +142,47 @@ public abstract class ControllerBase {
 		return result;
 	}
 	
+	/**
+	 * Leitet den HTTP request an die JSP seite mit der gegebenen url weiter. Die url
+	 * ist relativ zum context root der web anwendung.
+	 */
 	protected void forward(String url) throws ServletException, IOException {
 				
 		RequestDispatcher rd = pageContext.getRequest().getRequestDispatcher(url);
 		rd.forward(pageContext.getRequest(), pageContext.getResponse());
 	}
 	
+	/**
+	 * Fuegt eine fehlermeldung in die sammlung aller fehler ein.
+	 */
 	protected void error(String msg){
 		error(String.valueOf(errors.size()), msg);
 	}
 	
+	/**
+	 * Fuegt eine fehlermeldung unter dem gegebenen key in die sammlung der fehler ein. 
+	 */
 	protected void error(String key, String msg){
 		errors.put(key, msg);
 		valid = false;
 	}
 	
+	/**
+	 * Liefert den namen des eingeloggten users.
+	 */
 	protected String getUserName(){
 		HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 		return request.getRemoteUser();
 	}
 	
+	/**
+	 * Liefert einen request parameter vom typ Long. Wenn der parameter nicht in einen
+	 * Long konvertierbar ist, wird eine DasException ausgeloest.
+	 *
+	 * @param name Der name des request parameters.
+	 * @param required Wenn required true ist und der request den gewuenschten
+	 * parameter nicht enthaelt, wird eine DasException ausgeloest.
+	 */
 	protected Long getLongParam(String name, boolean required){
 		
 		String param = Convert.normalize(pageContext.getRequest().getParameter(name));
@@ -124,6 +201,13 @@ public abstract class ControllerBase {
 		return n;
 	}
 	
+	/**
+	 * Liefert einen request parameter vom typ String.
+	 *
+	 * @param name Der name des request parameters.
+	 * @param required Wenn required true ist und der request den gewuenschten
+	 * parameter nicht enthaelt, wird eine DasException ausgeloest.
+	 */	
 	protected String getStringParam(String name, boolean required){
 		
 		String param = Convert.normalize(pageContext.getRequest().getParameter(name));
@@ -137,6 +221,11 @@ public abstract class ControllerBase {
 		return param;
 	}
 	
+	/**
+	 * Aendert die name attribute der ObjName in der liste so dass sie in HTML dargestellt
+	 * werden koennen. Das heisst die zeichen ", ', <, >, etc werden durch die entsprechenden
+	 * entity referenzen ersetzt.
+	 */
 	protected List<ObjName> htmlEscape(List<ObjName> names){
 		
 		for (ObjName name : names){
@@ -146,10 +235,19 @@ public abstract class ControllerBase {
 		return names;
 	}
 	
+	/**
+	 * Liefert die fuer die darstellung in HTML geeignete form von s.
+	 * Das heisst die zeichen ", ', <, >, etc werden durch die entsprechenden
+	 * entity referenzen ersetzt.
+	 */	
 	protected String htmlEscape(String s){
 		return WebUtil.htmlEscape(s);
 	}
 	
+	/**
+	 * Liefert den wert des formularfeldes mit dem gegebenen namen in einer liste.
+	 * Die liste kann einen, mehrere oder gar keinen wert enthalten. 
+	 */
 	protected List getFieldAsList(String name){
 		Object value = fields.get(name);
 		
@@ -164,8 +262,18 @@ public abstract class ControllerBase {
 			return result;
 		}
 	}
-			
+	
+	/**
+	 * Diese methode muss von allen konkreten controller klassen implementiert werden.
+	 * Sie dient dazu die request parameter zu validierung und in den gewuenschten typ
+	 * umzuwandeln. Die methode liefert true wenn die konvertierung und validierung 
+	 * erfolgreich waren, ansonsten false.
+	 */
 	protected abstract boolean convertAndValidate(String command);
 	
+	/**
+	 * action wird aufgerufen um die durch den command parameter angegebene aktion
+	 * auszufuehren. Die methode wird nur aufgerufen wenn convertAndValidate erfolgreich war.
+	 */
 	protected abstract void action(String command) throws ServletException, IOException;
 }

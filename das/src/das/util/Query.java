@@ -7,19 +7,36 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+
+/**
+ * Eine DBMS- und schema-unabhaengige repraesentation von abfragekriterien. 
+ * Query objekte werden von benutzern der backend services erzeugt 
+ * und von DAOs in SQL statements umgewandelt.
+ */
 public class Query {
 	
 	protected ResultType resultType;
 	protected Map<String,Object> expressions = new TreeMap<String,Object>();
 	
+	/**
+	 * Erzeugt ein Query objekt mit dem gegebenen ResultType. Der ResultType
+	 * bestimmt ob das ergebnis der abfrage eine liste von vollstaendig geladenen
+	 * domain objekten ist oder eine liste von ObjName objekten.
+	 */
 	public Query (ResultType rt){
 		resultType = rt;
 	}
 	
+	/**
+	 * Liefert den ResultType des Query objektes.
+	 */
 	public ResultType getResultType(){
 		return resultType;
 	}
 	
+	/**
+	 * Fuegt einen abfrageausdruck hinzu.
+	 */
 	public void addExpression(QueryExpr expr){
 		String name = expr.getField();
 		Object obj = expressions.get(name);
@@ -39,6 +56,9 @@ public class Query {
 		}
 	}
 	
+	/**
+	 * Liefert eine Collection aller abfrageausdruecke.
+	 */
 	public Collection<QueryExpr> getExpressions(){
 		List<QueryExpr> result = new ArrayList<QueryExpr>();
 		
@@ -56,10 +76,17 @@ public class Query {
 		return result;
 	}
 	
+	/**
+	 * Liefert true wenn die Query keine abfrageausdruecke enthaelt.
+	 */
 	public boolean isEmpty() {
 		return expressions.isEmpty();
 	}
 	
+	/**
+	 * Liefert die abfrageausdruecke mit dem gegebenen namen. Wenn kein ausdruck mit 
+	 * diesem namen existiert, wird eine leere Collection geliefert.
+	 */
 	public Collection<QueryExpr> getExpressions(String name){
 		Object obj = expressions.get(name);
 		
@@ -76,6 +103,10 @@ public class Query {
 		}
 	}
 	
+	/**
+	 * Liefert den ersten abfrageausdruck mit dem gegebenen namen oder null wenn kein
+	 * ausdruck mit diesem namen existiert.
+	 */
 	public QueryExpr getExpression(String name){
 		Object obj = expressions.get(name);
 		

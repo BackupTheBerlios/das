@@ -10,16 +10,25 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
 
+/**
+ * Die Controller klasse zur aenderung und neu erzeugung von zutaten.
+ */
 public class EditZutatCtrl extends ControllerBase {
 	
 	private Zutat zutat;
 	
+	/**
+	 * Liefert eine liste von ObjNames aller kategorien.
+	 */
 	public List<ObjName> getKategorien(){
 		Query q = new Query(ResultType.NAMES);
 		ZutatenService service = new ZutatenService(getUserName());
 		return htmlEscape(service.findKategorien(q));
 	}	
-	
+
+	/**
+	 * Konvertiert und validiert die request parameter
+	 */
 	protected boolean convertAndValidate(String command){
 		if (command == null)
 			return true;
@@ -32,6 +41,9 @@ public class EditZutatCtrl extends ControllerBase {
 		return errors.isEmpty();
 	}
 	
+	/**
+	 * Fuehrt das gegebene kommando aus. 
+	 */
 	protected void action(String command) throws ServletException, IOException {
 		if (command == null)
 			return;
@@ -56,6 +68,14 @@ public class EditZutatCtrl extends ControllerBase {
 		}
 	}	
 	
+	/**
+	 * Konvertiert die werte aus den formularfeldern von Strings in die interne repraesentation
+	 * oder umgekehrt.
+	 *
+	 * @param direction Entweder FROM_UI oder TO_UI je nachdem ob die werte von der
+	 * UI repraesentation in die interne repraesentatoin oder umgekehrt konvertiert
+	 * werden sollen.
+	 */
 	protected void convert(int direction){
 		if (direction == TO_UI){
 			fields.put("id", Convert.fromNumber(zutat.getId()));

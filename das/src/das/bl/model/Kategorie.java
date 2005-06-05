@@ -1,5 +1,8 @@
 package das.bl.model;
 
+/**
+ * Domain klasse Kategorie
+ */
 public class Kategorie {
 	
 	private Long id;

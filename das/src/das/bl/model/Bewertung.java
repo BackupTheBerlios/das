@@ -1,5 +1,8 @@
 package das.bl.model;
 
+/**
+ * Domain klasse Bewertung.
+ */
 public class Bewertung {
 	
 	private Long id;

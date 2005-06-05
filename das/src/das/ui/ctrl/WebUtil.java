@@ -3,6 +3,9 @@ package das.ui.ctrl;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * Utility methoden fuer web anwendungen.
+ */
 public class WebUtil {
    
    public static String htmlEscape(String s){

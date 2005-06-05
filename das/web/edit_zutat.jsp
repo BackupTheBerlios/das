@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="das" %>
 
+<%-- Controller instantiieren und pageContext setzen --%>
 <jsp:useBean id="ctrl" class="das.ui.ctrl.EditZutatCtrl">
 	<jsp:setProperty name="ctrl" property="pageContext" value="${pageContext}"/>
 </jsp:useBean>
@@ -19,6 +20,7 @@
 </head>
 <body>
 	<h3>Zutat editieren</h3>
+	<%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
 	<das:errorlist controller="${ctrl}"/>
 	<form action="edit_zutat.jsp?cmd=save" method="POST">
 		<table cellpadding="0" cellspacing="2">

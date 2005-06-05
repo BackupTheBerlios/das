@@ -9,10 +9,27 @@ import java.text.ParsePosition;
 import java.util.Locale;
 import java.util.Map;
 
+
+/**
+ * Utility methoden zur konvertierung und validierung. Alle methoden in dieser klasse
+ * nehmen unter anderem eine fehler Map als parameter, in die sie im fehlerfall eine
+ * fehlermeldung einfuegen. Die konverterung in beide richtungen erfolgt entsprechend
+ * der laenderkonventionen die durch die LOCALE konstante gegeben sind.
+ */
 public class Convert {
 	
 	public static final Locale LOCALE = Locale.GERMAN;
 	
+	/**
+	 * Validiert einen string.
+	 *
+	 * @param value der zu validierende wert.
+	 * @param field der name des formularfeldes aus dem der wert stammt.
+	 * @param allowNull true wenn das feld leer sein darf, sonst false.
+	 * @param minLen die minimale laenge des strings.
+	 * @param maxLen die maximale laenge des strings.
+	 * @param errors die fehler Map.
+	 */
 	public static String toString(String value, String field, boolean allowNull,
 		int minLen, int maxLen, Map<String,String> errors){
 		
@@ -29,11 +46,25 @@ public class Convert {
 		
 		return value;
 	}
-	
+
+	/**
+	 * Konvertiert einen string von der internen repraesentation in eine HTML taugliche.
+	 */
 	public static String fromString(String value){
 		return WebUtil.htmlEscape(value);
 	}
 		
+	/**
+	 * Konvertiert einen String wert in einen Integer und validiert ihn entsprechend der gegebenen
+	 * parameter.
+	 *
+	 * @param value der zu validierende wert.
+	 * @param field der name des formularfeldes aus dem der wert stammt.
+	 * @param allowNull true wenn das feld leer sein darf, sonst false.
+	 * @param min der kleinste erlaubte wert
+	 * @param max der groesste erlaubte wert
+	 * @param errors die fehler Map.
+	 */
 	public static Integer toInteger(String value, String field, boolean allowNull,
 		int min, int max, Map<String,String> errors){
 		
@@ -46,6 +77,17 @@ public class Convert {
 		return null;
 	}
 
+	/**
+	 * Konvertiert einen String wert in einen Long und validiert ihn entsprechend der gegebenen
+	 * parameter.
+	 *
+	 * @param value der zu validierende wert.
+	 * @param field der name des formularfeldes aus dem der wert stammt.
+	 * @param allowNull true wenn das feld leer sein darf, sonst false.
+	 * @param min der kleinste erlaubte wert
+	 * @param max der groesste erlaubte wert
+	 * @param errors die fehler Map.
+	 */	
 	public static Long toLong(String value, String field, boolean allowNull,
 		long min, long max, Map<String,String> errors){
 		
@@ -58,6 +100,17 @@ public class Convert {
 		return null;
 	}	
 	
+	/**
+	 * Konvertiert einen String wert in einen Double und validiert ihn entsprechend der gegebenen
+	 * parameter.
+	 *
+	 * @param value der zu validierende wert.
+	 * @param field der name des formularfeldes aus dem der wert stammt.
+	 * @param allowNull true wenn das feld leer sein darf, sonst false.
+	 * @param min der kleinste erlaubte wert
+	 * @param max der groesste erlaubte wert
+	 * @param errors die fehler Map.
+	 */		
 	public static Double toDouble(String value, String field, boolean allowNull,
 		double min, double max, Map<String,String> errors){
 		
@@ -70,6 +123,17 @@ public class Convert {
 		return null;
 	}
 
+	/**
+	 * Konvertiert einen String wert in einen Float und validiert ihn entsprechend der gegebenen
+	 * parameter.
+	 *
+	 * @param value der zu validierende wert.
+	 * @param field der name des formularfeldes aus dem der wert stammt.
+	 * @param allowNull true wenn das feld leer sein darf, sonst false.
+	 * @param min der kleinste erlaubte wert
+	 * @param max der groesste erlaubte wert
+	 * @param errors die fehler Map.
+	 */	
 	public static Float toFloat(String value, String field, boolean allowNull,
 		float min, float max, Map<String,String> errors){
 		
@@ -81,7 +145,11 @@ public class Convert {
 		
 		return null;
 	}
-	
+
+	/**
+	 * Konvertiert einen Number wert in einen UI tauglichen String entsprechend der
+	 * durch LOCALE gegebenen laenderkonventionen.
+	 */
 	public static String fromNumber(Number nbr){
 		if (nbr == null)
 			return null;
@@ -91,6 +159,10 @@ public class Convert {
       return nf.format(nbr);		
 	}
 
+	/**
+	 * Normalisiert einen string wert, sodass er einen leerzeichen hinten oder vorne
+	 * enthaelt und in einen null wert umgewandelt wird, falls der string leer ist.
+	 */
 	public static String normalize(String s){
 		if (s == null)
 			return null;
@@ -102,6 +174,9 @@ public class Convert {
 		return s;
 	}
 	
+	/**
+	 * Parst eine zahl.
+	 */
    private static BigDecimal parseNumber(String s, String field, boolean allowNull,
 			boolean isInt, BigDecimal min, BigDecimal max, Map<String,String> errors) {
 		
@@ -137,7 +212,9 @@ public class Convert {
       return bd;
    }
 	
-	
+	/**
+	 * Ueberprueft ob ein feld die null regel verletzt.
+	 */
 	private static boolean checkNull(String value, String field, boolean allowNull, 
 		Map<String,String> errors){
 

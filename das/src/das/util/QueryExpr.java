@@ -1,5 +1,8 @@
 package das.util;
 
+/**
+ * Ein abfrageausdruck in einem Query objekt.
+ */
 public class QueryExpr {
 	
 	public static final int AND = 1;
@@ -11,6 +14,17 @@ public class QueryExpr {
 	private String compOp = "=";
 	private Object value;
 
+	/**
+	 * Erzeugt ein QueryExpr objekt.
+	 *
+	 * @param logOp Der logische operator der diesen ausdruck mit dem vorangehenden ausdruck
+	 * im Query objekt verbindet. Der wert ist entweder AND, OR oder NOT.
+	 * @param field Der name des feldes auf das sich der ausdruck bezieht. Das feld muss
+	 * nicht real in der datenbank existieren sondern kann vom DAO beliebig interpretiert
+	 * werden.
+	 * @param compOp Der vergleichsoperator. Hier sind die operatoren <, <= = >= > <> erlaubt
+	 * @param value Der vergleichswert des ausdrucks.
+	 */
 	public QueryExpr(int logOp, String field, String compOp, Object value){
 		this.logOp = logOp;
 		this.field = field;

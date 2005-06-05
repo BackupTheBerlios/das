@@ -11,10 +11,20 @@ import java.sql.Types;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+/**
+ * Utility methoden fuer den datenbankzugriff.
+ */
 public class DbUtil {
 	
+	/**
+	 * JNDI name der JDBC DataDatasource.
+	 */
 	public static final String DATASOURCE_JNDI_NAME = "java:comp/env/jdbc/das";
 	
+	/**
+	 * Liefert eine Connection aus dem connection pool. Der aufrufer ist fuer das
+	 * schliessen der Connection mittels close verantwortlich.
+	 */
 	public static Connection getConnection(){
 		try {
 			InitialContext ctx = new InitialContext();
@@ -27,6 +37,9 @@ public class DbUtil {
 		}
 	}
 	
+	/**
+	 * Schliesst die uebergebenen JDBC objekte.
+	 */
 	public static void close(ResultSet rs, Statement stmt, Connection con){
 		try {
 			if (rs != null)
@@ -41,18 +54,30 @@ public class DbUtil {
 		}
 	}
 
+	/**
+	 * Schliesst das uebergebene Connection objekt.
+	 */
 	public static void close(Connection con){
 		close(null, null, con);
 	}
 
+	/**
+	 * Schliesst das uebergebene Statement objekt.
+	 */	
 	public static void close(Statement stmt){
 		close(null, stmt, null);
 	}
 
+	/**
+	 * Schliesst die uebergebenen JDBC objekte.
+	 */	
 	public static void close(ResultSet rs, Statement stmt){
 		close(rs, stmt, null);
 	}
 	
+	/**
+	* Erzeugt eine neue datenbankweit eindeutige ID.
+	*/
 	public static Long createId() throws SQLException {
 		Connection con = null;
 		try {
@@ -67,12 +92,20 @@ public class DbUtil {
 		}
 	}
 	
+	/**
+	 * Bereitet den String s fuer die verwendung als wert in einm SQL statement vor
+	 * indem steuerzeichen durch ihre escape sequenz ersetzt werden.
+	 */
 	public static String sqlEscape(String s){
 		if (s == null)
 			return null;
 		return s.replace("\'", "\'\'");
 	}
 	
+	/**
+	 * Liest ein Float objekt aus einem ResultSet. Wenn das feld im ResultSet NULL ist
+	 * wird null zurueckgeliefert.
+	 */
 	public static Float getFloat(ResultSet rs, String field) throws SQLException {
 		float nbr = rs.getFloat(field);
 		if (rs.wasNull())
@@ -80,6 +113,10 @@ public class DbUtil {
 		return nbr;
 	}
 	
+	/**
+	 * Liest ein Long objekt aus einem ResultSet. Wenn das feld im ResultSet NULL ist
+	 * wird null zurueckgeliefert.
+	 */	
 	public static Long getLong(ResultSet rs, String field) throws SQLException {
 		long nbr = rs.getLong(field);
 		if (rs.wasNull())
@@ -87,6 +124,10 @@ public class DbUtil {
 		return nbr;
 	}
 
+	/**
+	 * Liest ein Integer objekt aus einem ResultSet. Wenn das feld im ResultSet NULL ist
+	 * wird null zurueckgeliefert.
+	 */
 	public static Integer getInteger(ResultSet rs, String field) throws SQLException {
 		int nbr = rs.getInt(field);
 		if (rs.wasNull())
@@ -94,6 +135,9 @@ public class DbUtil {
 		return nbr;
 	}
 	
+	/**
+	 * Setzt den wert eines statement parameters vom typ String.
+	 */
 	public static void setString(PreparedStatement stmt, int index, String value)
 		throws SQLException {
 		
@@ -103,6 +147,9 @@ public class DbUtil {
 			stmt.setString(index, value);
 	}
 	
+	/**
+	 * Setzt den wert eines statement parameters vom typ Long.
+	 */
 	public static void setLong(PreparedStatement stmt, int index, Long value)
 		throws SQLException {
 		
@@ -112,6 +159,9 @@ public class DbUtil {
 			stmt.setObject(index, value);
 	}
 
+	/**
+	 * Setzt den wert eines statement parameters vom typ Float.
+	 */
 	public static void setFloat(PreparedStatement stmt, int index, Float value)
 		throws SQLException {
 		
@@ -120,5 +170,4 @@ public class DbUtil {
 		else
 			stmt.setObject(index, value);
 	}
-	
 }

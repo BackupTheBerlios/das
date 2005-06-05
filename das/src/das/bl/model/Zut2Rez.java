@@ -1,5 +1,9 @@
 package das.bl.model;
 
+
+/**
+ * Domain klasse Zut2Rez
+ */
 public class Zut2Rez {
 	
 	private Long zutatId;

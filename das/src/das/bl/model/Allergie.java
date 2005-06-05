@@ -1,5 +1,8 @@
 package das.bl.model;
 
+/**
+ * Domain klasse Allergie
+ */
 public class Allergie {
 	
 	private Long id;

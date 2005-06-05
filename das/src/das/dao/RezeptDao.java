@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.util.List;
 import das.util.Query;
 
+/**
+ * Data Access Object zur verarbeitung der datenbankzugriffe im zusammenhang mit Rezepten.
+ */
 public class RezeptDao {
 	
 	public static List findRezepte(Query q, Connection con){
