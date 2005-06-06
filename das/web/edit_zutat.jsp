@@ -16,7 +16,7 @@
 	<%@ include file="/inc/nocache.jspf" %>
 	<link rel="stylesheet" type="text/css"
 		href="${pageContext.request.contextPath}/css/dasneat.css"/>
-	<title>DAS - Zutat editieren</title>
+	<title>DAS - Nahrungsmittel bearbeiten</title>
 </head>
 <body>
 <div id="das-top">DAS - Di&auml;tassistent</div>
@@ -29,7 +29,7 @@
 	</td>
 	<td id="centercolumn" valign="top">
 		<div id="das-center">
-		<h4>Zutat bearbeiten</h4>
+		<h4>Nahrungsmittel bearbeiten</h4>
 		<%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
 		<das:errorlist controller="${ctrl}"/>
 		<form action="edit_zutat.jsp?cmd=save" method="POST">
