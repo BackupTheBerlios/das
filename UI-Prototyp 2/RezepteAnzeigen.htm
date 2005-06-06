@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>DAS</title>
+<link type="text/css" href="css/dasneat.css" rel="stylesheet">
+</head>
+<body>
+<div id="das-main">
+  <div id="das-top">DAS - GUI Prototyp v 0.2
+    <div id="das-mid">
+      <table border="0" cellpadding="0" cellspacing="0" id="das-midtbl">
+        <tbody>
+          <tr>
+            <td  id="leftcolumn" valign="top"><div class="box mnu_application_menu">
+                <div class="box-title">
+                  <table class="box-title">
+                    <tbody>
+                      <tr>
+                        <td><span class="box-titletext">Men&uuml;</span></td>
+                        <td width="11">&nbsp;</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div id="mod-mnu_application_menu" style="display: block;" class="box-data">
+                  <div id="mnu_application_menu" style="display: block;">
+                    <div class="option">&nbsp;<a href="Main.htm" class="linkmenu">Home</a></div>
+                    <div class="option">&nbsp;<a href="Nahrungsmittel.htm" class="linkmenu">Nahrungsmittel</a>
+                    </div>
+
+                    <div class="separator"><b>Rezepte</b>
+                      <div style="display: block;" id="menu1__1">
+                        <div class="option">&nbsp;<a href="RezepteAnzeigen.htm" class="linkmenu">anzeigen</a></div>
+                        <div class="option">&nbsp;<a href="RezeptErstellen.htm" class="linkmenu">erstellen</a></div>
+                      </div>
+                    </div>
+
+                    <div class="separator"><b>Bearbeiten</b>
+                      <div style="display: block;" id="menu1__1">
+                        <div class="option">&nbsp;<a href="NahrungsmittelBearbeiten.htm" class="linkmenu">Nahrungsmittel</a></div>
+                        <div class="option">&nbsp;<a href="RezepteBearbeiten.htm" class="linkmenu">Rezepte</a></div>
+                        <div class="option">&nbsp;<a href="AllergienBearbeiten.htm" class="linkmenu">Allergien</a></div>
+                      </div>
+                    </div>
+
+                    <div class="separator"><b>Verwalten</b>
+                      <div style="display: block;" id="menu1__1">
+                        <div class="option">&nbsp;<a href="MeinProfil.htm" class="linkmenu">Mein Profil</a></div>
+                        <div class="option">&nbsp;<a href="Benutzergruppen.htm" class="linkmenu">Benutzergruppen</a></div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div></td>
+            <td id="centercolumn" valign="top"><div id="das-center">
+
+<h4>Rezept suchen</h4><br>
+
+<table width="400" border="0">
+  <tr> 
+    <td>Max. Kalorien</td>
+    <td><input name="" type="text" width="300" value="" maxlength="300" size="25"></td>
+  </tr>
+  <tr> 
+    <td>Max. Fettgehalt</td>
+    <td><input name="" type="text" width="300" value="" maxlength="300" size="25"></td>
+  </tr>
+  <tr> 
+    <td>Mind. Bewertung</td>
+    <td><select name="menu1" onChange="MM_jumpMenu('parent',this,2)">
+          <option>egal</option>
+	  <option>1</option>
+          <option>2</option>
+	  <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+  <td>
+  </tr>
+  <tr> 
+    <td>Stichwort</td>
+    <td><input name="" type="text" width="300" value="Oma" maxlength="300" size="25"></td>
+  </tr>
+  <tr> 
+    <td></td>
+    <td><a href="OmasTorte.htm"><input name="" type="button" value="Suchen"></a></td>
+  </tr>
+</table>
+
+<br>
+
+
+<h4>Rezept auswählen</h4><br>
+
+<table width="400" border="0">
+  <tr> 
+    <td width="60%"><a href="OmasTorte.htm">Oma's Torte</a></td>
+  </tr>
+  <tr> 
+    <td width="60%"><a href="">Rezept2</a></td>
+  </tr>
+  <tr> 
+    <td width="60%"><a href="">Rezept3</a></td>
+  </tr>
+  <tr> 
+    <td width="60%"><a href="">Rezept4</a></td>
+  </tr>  
+  <tr> 
+    <td width="60%"><a href="">...</a></td>
+  </tr>
+</table>
+
+
+
+	    </div></td>
+            <td id="rightcolumn" valign="top"><div class="box logout_box">
+                <div class="box-title"><a href="Index.htm">Logout</a></div>
+                <img src="img/logo_kl.jpg" hspace="30">
+              </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="das-bot">
+      <div id="das-power">DAS - Di&auml;t Assistent Software </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
