@@ -1,0 +1,44 @@
+<div class="box mnu_application_menu">
+<!--
+<div class="box-title">
+<table class="box-title">
+	<tbody>
+		 <tr>
+				<td><span class="box-titletext">Men&uuml;</span></td>
+				<td width="11">&nbsp;</td>
+		 </tr>
+	</tbody>
+</table>
+</div>
+-->
+<div id="mod-mnu_application_menu" style="display: block;" class="box-data">
+<div id="mnu_application_menu" style="display: block;">
+<div class="option">&nbsp;<a href="Main.htm" class="linkmenu">Home</a></div>
+<div class="option">&nbsp;<a href="${pageContext.request.contextPath}/find_zutat.jsp" 
+	class="linkmenu">Nahrungsmittel</a>
+</div>
+
+<div class="separator"><b>Rezepte</b>
+<div style="display: block;" id="menu1__1">
+<div class="option">&nbsp;<a href="RezepteAnzeigen.htm" class="linkmenu">anzeigen</a></div>
+<div class="option">&nbsp;<a href="RezeptErstellen.htm" class="linkmenu">erstellen</a></div>
+</div>
+</div>
+
+<div class="separator"><b>Bearbeiten</b>
+<div style="display: block;" id="menu1__1">
+<div class="option">&nbsp;<a href="NahrungsmittelBearbeiten.htm" class="linkmenu">Nahrungsmittel</a></div>
+<div class="option">&nbsp;<a href="RezepteBearbeiten.htm" class="linkmenu">Rezepte</a></div>
+<div class="option">&nbsp;<a href="AllergienBearbeiten.htm" class="linkmenu">Allergien</a></div>
+</div>
+</div>
+
+<div class="separator"><b>Verwalten</b>
+<div style="display: block;" id="menu1__1">
+<div class="option">&nbsp;<a href="MeinProfil.htm" class="linkmenu">Mein Profil</a></div>
+<div class="option">&nbsp;<a href="Benutzergruppen.htm" class="linkmenu">Benutzergruppen</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
