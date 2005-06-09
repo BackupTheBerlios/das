@@ -19,7 +19,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css"
 		href="${pageContext.request.contextPath}/css/dasneat.css"/>
-	<title>DAS - Zutaten suchen</title>	
+	<title>DAS - Nahrungsmittel suchen</title>	
 </head>
 <body>
 <div id="das-top">DAS - Di&auml;tassistent</div>

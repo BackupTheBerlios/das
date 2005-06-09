@@ -18,22 +18,22 @@
 <div class="option">&nbsp;
 	<a href="${pageContext.request.contextPath}/members/edit_zutat.jsp?cmd=new" 
 		class="linkmenu">Nahrungsmittel anlegen</a></div>
-<div class="option">&nbsp;
-	<a href="${pageContext.request.contextPath}/members/edit_zutat.jsp?cmd=new" 
-		class="linkmenu">Allergien suchen</a></div>
-<div class="option">&nbsp;
-	<a href="${pageContext.request.contextPath}/members/edit_zutat.jsp?cmd=new" 
-		class="linkmenu">Allergie anlegen</a></div>
 </div>
 </div>
 
 <div class="separator"><b>Verwalten</b>
 <div style="display: block;" id="menu1__1">
 <div class="option">&nbsp;
-	<a href="${pageContext.request.contextPath}/logout.jsp" 
-		class="linkmenu">Logout</a></div>
+	<a href="${pageContext.request.contextPath}/members/edit_allergie.jsp?cmd=new" 
+		class="linkmenu">Allergien bearbeiten</a></div>
+<div class="option">&nbsp;
+	<a href="${pageContext.request.contextPath}/members/edit_kategorie.jsp?cmd=new" 
+		class="linkmenu">Kategorien bearbeiten</a></div>
 <div class="option">&nbsp;
 	<a href="MeinProfil.htm" class="linkmenu">Mein Profil</a></div>
+<div class="option">&nbsp;
+	<a href="${pageContext.request.contextPath}/logout.jsp" 
+		class="linkmenu">Logout</a></div>
 </div>
 </div>
 </div>
