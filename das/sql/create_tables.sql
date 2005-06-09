@@ -34,7 +34,7 @@ create table gruppe (
 create table benutzergruppe (
    login varchar(50) not null references benutzer on delete cascade,
    gru_id varchar(50) not null references gruppe on delete cascade,
-   primary key (bzr_login, gru_id)
+   primary key (login, gru_id)
 );
 
 create index i_bg_gru_id on benutzergruppe(gru_id);

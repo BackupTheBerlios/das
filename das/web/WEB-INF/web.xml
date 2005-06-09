@@ -13,6 +13,37 @@
 			<welcome-file>index.html</welcome-file>
 	 </welcome-file-list>
 	
+	 <security-role>
+			<role-name>users</role-name>
+	 </security-role>
+	 <security-role>
+			<role-name>editors</role-name>
+	 </security-role>
+	 <security-role>
+			<role-name>admins</role-name>
+	 </security-role>
+	 
+	 <security-constraint>
+			<web-resource-collection>
+				 <web-resource-name>members_area</web-resource-name>
+				 <url-pattern>/members/*</url-pattern>
+				 <http-method>GET</http-method>
+				 <http-method>POST</http-method>
+			</web-resource-collection>
+			
+			<auth-constraint>
+				 <role-name>*</role-name>
+			</auth-constraint>
+	 </security-constraint>
+	 
+	 <login-config>
+			<auth-method>FORM</auth-method>
+			<form-login-config>
+				 <form-login-page>/login.jsp</form-login-page>
+				 <form-error-page>/login_error.jsp</form-error-page>
+			</form-login-config>
+	 </login-config>
+	 
 	 <resource-ref>
 			<description>DAS DataSource</description>
 			<res-ref-name>jdbc/das</res-ref-name>
