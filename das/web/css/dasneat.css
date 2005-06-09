@@ -133,16 +133,19 @@ DIV#das-bot {
 	padding : 0px;
 	border-right : 1px solid #8CACBB;
 }
+
 #centercolumn {
 	background-color: #F3F6F9;
 	margin : 0;
 	width : 100%;
 }
+
 #rightcolumn {
 	width : 180px;
 	padding : 0px;
 	border-left : 1px solid #8CACBB;
 }
+
 DIV#das-center {
 	padding : 10px 0;
 }
@@ -388,8 +391,8 @@ border-top: 1px solid #99bec6;
 border-left: 1px solid #99bec6;
 border-right: 1px solid #99bec6;
 color: #225566;
-margin-left:2px;
-padding-left:2px;
+margin-left: 2px;
+padding-left: 2px;
 padding-right: 2px;
 background-color: #C7D0D9;
 }
