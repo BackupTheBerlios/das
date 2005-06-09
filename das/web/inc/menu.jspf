@@ -3,30 +3,37 @@
 <div id="mnu_application_menu" style="display: block;">
 <div class="option">&nbsp;<a href="${pageContext.request.contextPath}/members/index.jsp" 
 	class="linkmenu">Home</a></div>
-<div class="option">&nbsp;<a href="${pageContext.request.contextPath}/members/find_zutat.jsp" 
-	class="linkmenu">Nahrungsmittel</a></div>
 
-<div class="separator"><b>Rezepte</b>
+<div class="separator"><b>Di&auml;t</b>
 <div style="display: block;" id="menu1__1">
-<div class="option">&nbsp;<a href="RezepteAnzeigen.htm" class="linkmenu">anzeigen</a></div>
-<div class="option">&nbsp;<a href="RezeptErstellen.htm" class="linkmenu">erstellen</a></div>
-</div>
-</div>
-
-<div class="separator"><b>Bearbeiten</b>
-<div style="display: block;" id="menu1__1">
-<div class="option">&nbsp;<a href="NahrungsmittelBearbeiten.htm" class="linkmenu">Nahrungsmittel</a></div>
-<div class="option">&nbsp;<a href="RezepteBearbeiten.htm" class="linkmenu">Rezepte</a></div>
-<div class="option">&nbsp;<a href="AllergienBearbeiten.htm" class="linkmenu">Allergien</a></div>
+<div class="option">&nbsp;
+	<a href="${pageContext.request.contextPath}/members/find_rezept.jsp" 
+		class="linkmenu">Rezepte suchen</a></div>
+<div class="option">&nbsp;
+	<a href="${pageContext.request.contextPath}/members/edit_rezept.jsp?cmd=new" 
+		class="linkmenu">Rezept anlegen</a></div>
+<div class="option">&nbsp;
+	<a href="${pageContext.request.contextPath}/members/find_zutat.jsp" 
+		class="linkmenu">Nahrungsmittel suchen</a></div>
+<div class="option">&nbsp;
+	<a href="${pageContext.request.contextPath}/members/edit_zutat.jsp?cmd=new" 
+		class="linkmenu">Nahrungsmittel anlegen</a></div>
+<div class="option">&nbsp;
+	<a href="${pageContext.request.contextPath}/members/edit_zutat.jsp?cmd=new" 
+		class="linkmenu">Allergien suchen</a></div>
+<div class="option">&nbsp;
+	<a href="${pageContext.request.contextPath}/members/edit_zutat.jsp?cmd=new" 
+		class="linkmenu">Allergie anlegen</a></div>
 </div>
 </div>
 
 <div class="separator"><b>Verwalten</b>
 <div style="display: block;" id="menu1__1">
-<div class="option">&nbsp;<a href="${pageContext.request.contextPath}/logout.jsp" 
-	class="linkmenu">Logout</a></div>
-<div class="option">&nbsp;<a href="MeinProfil.htm" class="linkmenu">Mein Profil</a></div>
-<div class="option">&nbsp;<a href="Benutzergruppen.htm" class="linkmenu">Benutzergruppen</a></div>
+<div class="option">&nbsp;
+	<a href="${pageContext.request.contextPath}/logout.jsp" 
+		class="linkmenu">Logout</a></div>
+<div class="option">&nbsp;
+	<a href="MeinProfil.htm" class="linkmenu">Mein Profil</a></div>
 </div>
 </div>
 </div>
