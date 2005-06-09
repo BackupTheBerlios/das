@@ -1,12 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<%@taglib tagdir="/WEB-INF/tags" prefix="das" %>
-
-<%-- Controller instantiieren und pageContext setzen --%>
-<jsp:useBean id="ctrl" class="das.ui.ctrl.FindZutatCtrl">
-	<jsp:setProperty name="ctrl" property="pageContext" value="${pageContext}"/>
-</jsp:useBean>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,12 +8,10 @@
 <html>
 <head>
 	<%@ include file="/inc/nocache.jspf" %>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/dasutil.js">
-	</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css"
 		href="${pageContext.request.contextPath}/css/dasneat.css"/>
-	<title>DAS - Zutaten suchen</title>	
+	<title>DAS - Home</title>	
 </head>
 <body>
 <div id="das-top">DAS - Di&auml;tassistent</div>
@@ -32,15 +24,7 @@
 	</td>
 	<td id="centercolumn" valign="top">
 		<div id="das-center">
-		<h4>Login</h4>
-		
-		<form action="j_security_check" method="post">
-			<table>
-				<tr><td>Username:</td><td><input name="j_username"></td></tr>
-				<tr><td>Passwort:</td><td><input type="password" name="j_password"></td></tr>
-			</table>
-			<input type="submit" value="Login">
-		</form>
+		<h4>DAS Di&auml;tassistent</h4>		
 		</div>
 	</td>
 	</tr>
