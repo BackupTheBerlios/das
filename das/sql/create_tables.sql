@@ -32,7 +32,7 @@ create table gruppe (
 
 -- kuerzel: bg
 create table benutzergruppe (
-   bzr_login varchar(50) not null references benutzer on delete cascade,
+   login varchar(50) not null references benutzer on delete cascade,
    gru_id varchar(50) not null references gruppe on delete cascade,
    primary key (bzr_login, gru_id)
 );

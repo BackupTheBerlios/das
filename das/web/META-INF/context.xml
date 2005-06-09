@@ -4,4 +4,10 @@
 			maxActive="20" maxIdle="10" maxWait="-1" name="jdbc/das" 
 			password="aaaaaa" type="javax.sql.DataSource" 
 			url="jdbc:postgresql://127.0.0.1:5432/das" username="postgres"/>
+
+	
+		<Realm className="org.apache.catalina.realm.DataSourceRealm"
+			dataSourceName="jdbc/das" localDataSource="true"
+			userTable="benutzer" userNameCol="login" userCredCol="passwort"
+			userRoleTable="benutzergruppe" roleNameCol="gru_id"/>
 </Context>
