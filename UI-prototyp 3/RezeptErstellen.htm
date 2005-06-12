@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>DAS</title>
+<link type="text/css" href="css/dasneat.css" rel="stylesheet">
+</head>
+<body>
+<div id="das-main">
+  <div id="das-top">DAS - GUI Prototyp v 0.3
+    <div id="das-mid">
+      <table border="0" cellpadding="0" cellspacing="0" id="das-midtbl">
+        <tbody>
+          <tr>
+            <td  id="leftcolumn" valign="top"><div class="box mnu_application_menu">
+                <div class="box-title">
+                  <table class="box-title">
+                    <tbody>
+                      <tr>
+                        <td><span class="box-titletext">Men&uuml;</span></td>
+                        <td width="11">&nbsp;</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div id="mod-mnu_application_menu" style="display: block;" class="box-data">
+                  <div id="mnu_application_menu" style="display: block;">
+                    <div class="option"><a href="Main.htm" class="linkmenu">Home</a></div>
+                    <div class="option"><a href="Nahrungsmittel.htm" class="linkmenu">Nahrungsmittel</a>
+                    </div>
+                    <div class="separator"><b>Rezepte</b>
+                      <div style="display: block;" id="menu1__1">
+                        <div class="option">&nbsp;<a href="RezepteAnzeigen.htm" class="linkmenu">anzeigen</a></div>
+                        <div class="option">&nbsp;<a href="RezeptErstellen.htm" class="linkmenu">erstellen</a></div>
+                      </div>
+                    </div>
+                    <div class="separator"><b>Bearbeiten</b>
+                      <div style="display: block;" id="menu1__1">
+                        <div class="option">&nbsp;<a href="NahrungsmittelBearbeiten.htm" class="linkmenu">Nahrungsmittel</a></div>
+                        <div class="option">&nbsp;<a href="RezepteBearbeiten.htm" class="linkmenu">Rezepte</a></div>
+                        <div class="option">&nbsp;<a href="AllergienBearbeiten.htm" class="linkmenu">Allergien</a></div>
+                      </div>
+                    </div>
+                    <div class="separator"><b>Verwalten</b>
+                      <div style="display: block;" id="menu1__1">
+                        <div class="option">&nbsp;<a href="MeinProfil.htm" class="linkmenu">Mein Profil</a></div>
+                        <div class="option">&nbsp;<a href="Benutzergruppen.htm" class="linkmenu">Benutzergruppen</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div></td>
+            <td id="centercolumn" valign="top"><div id="das-center">
+              <h4>Rezept erstellen</h4>
+              <br>
+              <table width="500" border="0">
+                <tr> 
+                  <td>Name:</td>
+                  <td><input name="" type="text" width="100" value="Oma's Torte" size="25"></td>
+                </tr>
+                <tr> 
+                  <td width="80"> <form name="form1">
+                      <select name="menu1" onChange="MM_jumpMenu('parent',this,0)">
+                        <option>Allgemein: Mehl (g)</option>
+                        <option>Allgemein: Eier (Stk)</option>
+                        <option>Getraenke: Milch (ml)</option>
+                        <option>Süßstoff: Zucker (g)</option>
+                      </select>
+                    </form></td>
+                  <td><input name="einheit" type="text" size="10"></td>
+                </tr>
+                <tr> 
+                  <td width="80"> <form name="form1">
+                      <select name="menu1" onChange="MM_jumpMenu('parent',this,0)">
+                        <option>Allgemein: Eier (Stk)</option>
+                        <option>Allgemein: Mehl (g)</option>
+                        <option>Getraenke: Milch (ml)</option>
+                        <option>Süßstoff: Zucker (g)</option>
+                      </select>
+                    </form></td>
+                  <td><input name="einheit" type="text" size="10"></td>
+                </tr>
+              <tr> 
+                  <td width="80"> <form name="form1">
+                      <select name="menu1" onChange="MM_jumpMenu('parent',this,0)">
+                        <option>Getraenke: Milch (ml)</option>
+                        <option>Allgemein: Mehl (g)</option>
+                        <option>Allgemein: Eier (Stk)</option>
+                        <option>Süßstoff: Zucker (g)</option>
+                      </select>
+                    </form></td>
+                  <td><input name="einheit" type="text" size="10"></td>
+                </tr>
+                <tr> 
+                  <td width="80"> <form name="form1">
+                      <select name="menu1" onChange="MM_jumpMenu('parent',this,0)">
+                        <option>Süßstoff: Zucker (g)</option>
+                        <option>Allgemein: Mehl (g)</option>
+                        <option>Allgemein: Eier (Stk)</option>
+                        <option>Getraenke: Milch (ml)</option>
+                      </select>
+                    </form></td>
+                  <td><input name="einheit" type="text" size="10"></td>
+                </tr>
+                <tr>
+                   <td></td>
+                   <td> <input name="add" type="button" value="+"> <font face="Verdana" size="1">Mehr Zutaten</font> </td>
+                </tr>
+                <tr>
+                 <td valign="top">
+                 Anleitung:
+                 </td>
+                 <td>
+                    <textarea name="anleitung" cols="40" rows="5">Alle Zutaten mischen und 40 min backen bei 230 Grad.</textarea>
+                 </td>
+                </tr>
+                <tr>
+                  <td ><a href="Main.htm"><input name="cancel" type="submit" value="Abbrechen"></a></td>
+                 <td>
+                    <input name="ok" type="submit" value="Rezept erstellen">
+                 </td>
+                </tr>
+              </table>
+	          </div></td>
+            <td id="rightcolumn" valign="top"><div class="box logout_box">
+                <div class="box-title">Benutzer: "User"</div>
+                <br><center><a href="Index.htm">Logout</a><br>
+                <br><img src="img/logo_kl.jpg"></center>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="das-bot">
+      <div id="das-power">DAS - Di&auml;t Assistent Software </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
