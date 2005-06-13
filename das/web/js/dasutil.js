@@ -8,3 +8,6 @@ function submitForm(url, msg){
       document.forms[0].submit();
    }
 }
+function gotourl(url){
+   window.location = url;
+}
