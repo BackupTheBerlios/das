@@ -25,7 +25,16 @@ public class EditZutatCtrl extends ControllerBase {
 		ZutatenService service = new ZutatenService(getUserName());
 		return htmlEscape(service.findKategorien(q));
 	}	
-
+        
+        /**
+	 * Liefert eine Liste von ObjNames aller Allergien.
+	*/ 
+	public List<ObjName> getAllergien(){                 
+		Query q = new Query(ResultType.NAMES);
+		ZutatenService service = new ZutatenService(getUserName());
+		return htmlEscape(service.findAllergien(q));
+	}	
+                    
 	/**
 	 * Konvertiert und validiert die request parameter
 	 */

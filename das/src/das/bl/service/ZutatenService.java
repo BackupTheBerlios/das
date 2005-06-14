@@ -5,6 +5,7 @@ import das.bl.model.Allergie;
 import das.bl.model.Kategorie;
 import das.bl.model.Zutat;
 import das.dao.DbUtil;
+import das.dao.AllergieDao;
 import das.dao.KategorieDao;
 import das.dao.ZutatDao;
 import das.util.Query;
@@ -119,7 +120,25 @@ public class ZutatenService {
 	 * Wenn keine Kategorie mit dieser id gefunden wurde, wird eine DasException ausgeloest.
 	 */
 	public Kategorie loadKategorie(Long id){
-		throw new RuntimeException("todo");
+		Connection con = null;
+		try {
+			Query q = new Query(ResultType.OBJECTS);
+			q.addExpression(new QueryExpr("id", id));
+			con = DbUtil.getConnection();
+			List<Kategorie> kategorien = KategorieDao.findKategorien(q, con);
+			
+			if (kategorien.isEmpty()){
+				throw new DasException("Kategorie mit ID " + id + " nicht gefunden");
+			}
+			
+			return kategorien.get(0);
+		}
+		catch(SQLException ex){
+			throw new DasException("Kategorie mit id " + id + " konnte nicht geladen werden", ex);
+		}
+		finally {
+			DbUtil.close(con);
+		}
 	}
 	
 	/**
@@ -146,7 +165,22 @@ public class ZutatenService {
 	 * Speichert die Kategorie k in der datenbank.
 	 */
 	public void saveKategorie(Kategorie k){
-		throw new RuntimeException("todo");
+		Connection con = null;
+		try {
+			con = DbUtil.getConnection();
+			if (k.getId() == null){
+				KategorieDao.insertKategorie(k, con);
+			}
+			else {
+				KategorieDao.updateKategorie(k, con);
+			}
+		}
+		catch(Exception ex){
+			throw new DasException("Kategorie konnte nicht gespeichert werden", ex);
+		}
+		finally {
+			DbUtil.close(con);
+		}
 	}
 	
 	/**
@@ -154,7 +188,17 @@ public class ZutatenService {
 	 * Wenn die Kategorie nicht in der datenbank vorkommt, geschieht nichts.
 	 */
 	public void deleteKategorie(Long id){
-		throw new RuntimeException("todo");
+		Connection con = null;
+		try {
+			con = DbUtil.getConnection();
+			KategorieDao.deleteKategorie(id, con);
+		}
+		catch(Exception ex){
+			throw new DasException("Kategorie " + id + " konnte nicht geloescht werden", ex);
+		}
+		finally {
+			DbUtil.close(con);
+		}		
 	}
 	
 	/**
@@ -162,7 +206,25 @@ public class ZutatenService {
 	 * Wenn keine Allergie mit dieser id gefunden wurde, wird eine DasException ausgeloest.
 	 */	
 	public Allergie loadAllergie(Long id){
-		throw new RuntimeException("todo");
+		Connection con = null;
+		try {
+			Query q = new Query(ResultType.OBJECTS);
+			q.addExpression(new QueryExpr("id", id));
+			con = DbUtil.getConnection();
+			List<Allergie> allergien = AllergieDao.findAllergien(q, con);
+			
+			if (allergien.isEmpty()){
+				throw new DasException("Allergie mit ID " + id + " nicht gefunden");
+			}
+			
+			return allergien.get(0);
+		}
+		catch(SQLException ex){
+			throw new DasException("Allergie mit id " + id + " konnte nicht geladen werden", ex);
+		}
+		finally {
+			DbUtil.close(con);
+		}		
 	}
 	
 	/**
@@ -172,14 +234,39 @@ public class ZutatenService {
 	 * wird durch das resultType attribut von q bestimmt. 
 	 */		
 	public List findAllergien(Query q){
-		throw new RuntimeException("todo");
+		Connection con = null;
+		try {
+			con = DbUtil.getConnection();
+			return AllergieDao.findAllergien(q, con);
+		}
+		catch(SQLException ex){
+			throw new DasException(ex);
+		}
+		finally {
+			DbUtil.close(con);
+		}
 	}
 	
 	/**
 	 * Speichert die Allergie a in die datenbank.
 	 */
 	public void saveAllergie(Allergie a){
-		throw new RuntimeException("todo");
+		Connection con = null;
+		try {
+			con = DbUtil.getConnection();
+			if (a.getId() == null){
+				AllergieDao.insertAllergie(a, con);
+			}
+			else {
+				AllergieDao.updateAllergie(a, con);
+			}
+		}
+		catch(Exception ex){
+			throw new DasException("Allergie konnte nicht gespeichert werden", ex);
+		}
+		finally {
+			DbUtil.close(con);
+		}
 	}
 	
 	/**
@@ -187,6 +274,16 @@ public class ZutatenService {
 	 * Allergie mit dieser id gefunden wird, geschieht nichts.
 	 */
 	public void deleteAllergie(Long id){
-		throw new RuntimeException("todo");
+		Connection con = null;
+		try {
+			con = DbUtil.getConnection();
+			AllergieDao.deleteAllergie(id, con);
+		}
+		catch(Exception ex){
+			throw new DasException("Allergie " + id + " konnte nicht geloescht werden", ex);
+		}
+		finally {
+			DbUtil.close(con);
+		}
 	}
 }

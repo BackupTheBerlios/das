@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="das" %>
 
 <%-- Controller instantiieren und pageContext setzen --%>
@@ -62,7 +62,7 @@
 			<hr width="50%" align="left"/>
 			<button type="button" onClick="submitForm('find_zutat.jsp?cmd=delete', 'Sicher?')">
 				L&ouml;schen</button>
-			<button type="button" onClick="submitForm('find_zutat.jsp?cmd=new')">Neu</button>
+			<button type="button" onClick="submitForm('edit_zutat.jsp?cmd=new')">Neu</button>
 		</form>
 		</div>
 	</td>
