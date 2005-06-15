@@ -14,5 +14,11 @@ insert into benutzergruppe values('c', 'users');
 insert into kategorie values (1, 'Speisen');
 insert into kategorie values (2, 'Getränke');
 
-insert into zutat values(1, 'Mehl', 'g', 1.5, 0.1, 0.2, 1);
-insert into zutat values(2, 'Marmelade', 'g', 2, 0.2, 0.4, 1);
+insert into zutat values(1, 'Mehl', 'g', 1.5, 10, 20, 1);
+insert into zutat values(2, 'Marmelade', 'g', 2, 30, 40, 1);
+
+insert into allergie values(1, 'Nussallergie');
+insert into allergie values(2, 'Eiweissallergie');
+
+insert into zut2all values(1, 1);
+insert into zut2all values(1, 2);

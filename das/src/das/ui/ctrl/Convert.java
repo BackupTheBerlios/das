@@ -204,8 +204,8 @@ public class Convert {
 		}
 		
 		if (bd.compareTo(min) < 0 || bd.compareTo(max) > 0){
-			errors.put(field, field + " muss eine zahl zwischen " + min + " und " 
-				+ " max enthalten");
+			errors.put(field, field + " muss eine zahl zwischen " + fromNumber(min) 
+				+ " und " + fromNumber(max) + " enthalten");
 			return null;
 		}
 

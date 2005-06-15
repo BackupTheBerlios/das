@@ -46,13 +46,13 @@
 					<td>Einheit</td>
 					<td><input name="einheit" value="${ctrl.fields.einheit}"/></td>
 				</tr><tr>
-					<td>Kalorien</td>
+					<td>Kalorien (pro Einheit)</td>
 					<td><input name="kalorien" value="${ctrl.fields.kalorien}"/></td>
 				</tr><tr>
-					<td>Fett</td>
+					<td>Fettgehalt (in %)</td>
 					<td><input name="fett" value="${ctrl.fields.fett}"/></td>
 				</tr><tr>
-					<td>Zucker</td>
+					<td>Zuckergehalt (in %)</td>
 					<td><input name="zucker" value="${ctrl.fields.zucker}"/></td>
 				</tr>
 				</tr><tr>

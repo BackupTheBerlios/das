@@ -30,7 +30,7 @@ public class EditZutatCtrl extends ControllerBase {
 		return htmlEscape(service.findKategorien(q));
 	}	
         
-        /**
+   /**
 	 * Liefert eine Liste von ObjNames aller Allergien.
 	*/ 
 	public Collection<ObjName> getAllergien(){                 
@@ -120,10 +120,10 @@ public class EditZutatCtrl extends ControllerBase {
 				(String)fields.get("einheit"), "Einheit", false, 1, 20, errors));
 			zutat.setKalorien(Convert.toFloat(
 				(String)fields.get("kalorien"), "Kalorien", false, 1, 10000, errors));
-			zutat.setFett(Convert.toFloat(
-				(String)fields.get("fett"), "Fett", true, 0, Float.MAX_VALUE, errors));
-			zutat.setZucker(Convert.toFloat(
-				(String)fields.get("zucker"), "Zucker", true, 0, Float.MAX_VALUE, errors));
+			zutat.setFett(Convert.toInteger(
+				(String)fields.get("fett"), "Fett", true, 0, 100, errors));
+			zutat.setZucker(Convert.toInteger(
+				(String)fields.get("zucker"), "Zucker", true, 0, 100, errors));
 			zutat.setKatId(Convert.toLong(
 				(String)fields.get("katId"), "Kategorie", false, 0, Long.MAX_VALUE, errors));
 			allergienFromUi();

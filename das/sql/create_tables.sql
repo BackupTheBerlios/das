@@ -51,9 +51,9 @@ create table zutat (
    name varchar(100) not null unique,
    einheit varchar(20) not null,
    kalorien real not null,
-   fett real,
-   zucker real,
-   kat_id int not null references kategorie on delete cascade
+   fett smallint,
+   zucker smallint,
+   kat_id int not null references kategorie
 );
 
 create index i_zut_einheit on zutat(einheit);
@@ -71,7 +71,7 @@ create table rezept (
 -- kuerzel: zr
 create table zut2rez (
    id int primary key,
-   zut_id int not null references zutat on delete cascade,
+   zut_id int not null references zutat,
    rez_id int not null references rezept on delete cascade,
    menge real
 );

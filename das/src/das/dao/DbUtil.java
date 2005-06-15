@@ -170,6 +170,19 @@ public class DbUtil {
 	}
 
 	/**
+	 * Setzt den wert eines statement parameters vom typ Integer.
+	 */
+	public static void setInteger(PreparedStatement stmt, int index, Integer value)
+		throws SQLException {
+		
+		if (value == null)
+			stmt.setNull(index, Types.INTEGER);
+		else
+			stmt.setObject(index, value);
+	}
+	
+	
+	/**
 	 * Setzt den wert eines statement parameters vom typ Float.
 	 */
 	public static void setFloat(PreparedStatement stmt, int index, Float value)

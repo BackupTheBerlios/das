@@ -147,8 +147,8 @@ public class ZutatDao {
 		z.setName(rs.getString("name"));
 		z.setEinheit(rs.getString("einheit"));
 		z.setKalorien(DbUtil.getFloat(rs, "kalorien"));
-		z.setFett(DbUtil.getFloat(rs, "fett"));
-		z.setZucker(DbUtil.getFloat(rs, "zucker"));
+		z.setFett(DbUtil.getInteger(rs, "fett"));
+		z.setZucker(DbUtil.getInteger(rs, "zucker"));
 		z.setKatId(DbUtil.getLong(rs, "kat_id"));		
 		
 		return z;
@@ -160,8 +160,8 @@ public class ZutatDao {
 		DbUtil.setString(stmt, index++, z.getName());
 		DbUtil.setString(stmt, index++, z.getEinheit());
 		DbUtil.setFloat(stmt, index++, z.getKalorien());
-		DbUtil.setFloat(stmt, index++, z.getFett());
-		DbUtil.setFloat(stmt, index++, z.getZucker());
+		DbUtil.setInteger(stmt, index++, z.getFett());
+		DbUtil.setInteger(stmt, index++, z.getZucker());
 		DbUtil.setLong(stmt, index++, z.getKatId());		
 	}
 }
