@@ -60,28 +60,25 @@
 					<td><das:selectname name="katId" options="${ctrl.kategorien}" 
 						selected="${ctrl.fields.katId}"/></td>					
 				</tr><tr>
-                                        <td>Allergien:</td>                                 
-                                        <c:if test="${not empty ctrl.allergien}">
-
-                                        <c:forEach items="${ctrl.allergien}" var="item">
-			
-					<td>${item.name}</td>
-					<td><input type="checkbox" name="selected" value="${item.id}"/></td>
-				</tr><tr>
-                                        <td></td>
-                                        </c:forEach>
-                                        </c:if>
+					<td>Allergien:</td>                                 
+					<c:forEach items="${ctrl.allergien}" var="item">			
+						<td>${item.name}</td>
+						<td><input type="checkbox" name="selectedAllergien" value="${item.id}"
+							${ctrl.selectedAllergien[item.id]} /></td>
+						</tr><tr>
+						<td></td>
+					</c:forEach>
 				</tr>			
-                                <hr/>
-                                <tr>
-                                        <td><input type="submit" value="Speichern"/></td>
-                                        </form>
-                                        <td><form action="find_zutat.jsp" method="POST">
-                                                    <input type="submit" value="Zurück" />
-                                            </form>
-                                        </td>
-                                </tr>
-                            </table>
+				<hr/>
+				<tr>
+					<td><input type="submit" value="Speichern"/></td>
+					</form>
+					<td><form action="find_zutat.jsp" method="POST">
+						<input type="submit" value="Zurück" />
+					</form>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</td>
 	</tr>

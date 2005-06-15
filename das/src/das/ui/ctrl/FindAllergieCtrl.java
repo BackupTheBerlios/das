@@ -5,6 +5,7 @@ import das.util.Query;
 import das.util.QueryExpr;
 import das.util.ResultType;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import javax.servlet.ServletException;
 
@@ -14,8 +15,8 @@ import javax.servlet.ServletException;
  */
 public class FindAllergieCtrl extends ControllerBase {
 	
-	private List<ObjName> results;
-	private List<ObjName> allergien;
+	private Collection<ObjName> results;
+	private Collection<ObjName> allergien;
 	private Long alId;
 	private String nameExpr;
 	private String message;
@@ -23,7 +24,7 @@ public class FindAllergieCtrl extends ControllerBase {
 	/**
 	 * Liefert eine Liste von ObjNames fuer alle existierenden Allergien.
 	 */
-	public List<ObjName> getAllergien(){
+	public Collection<ObjName> getAllergien(){
 		Query q = new Query(ResultType.NAMES);
 		ZutatenService service = new ZutatenService(getUserName());
 		return htmlEscape(service.findAllergien(q));
@@ -32,7 +33,7 @@ public class FindAllergieCtrl extends ControllerBase {
 	/**
 	 * Liefert die Liste der Suchergebnisse.
 	 */
-	public List<ObjName> getResults(){
+	public Collection<ObjName> getResults(){
 		return results;
 	}
 

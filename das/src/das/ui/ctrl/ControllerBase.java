@@ -231,7 +231,7 @@ public abstract class ControllerBase {
 	 * werden koennen. Das heisst die zeichen ", ', <, >, etc werden durch die entsprechenden
 	 * entity referenzen ersetzt.
 	 */
-	protected List<ObjName> htmlEscape(List<ObjName> names){
+	protected Collection<ObjName> htmlEscape(Collection<ObjName> names){
 		
 		for (ObjName name : names){
 			name.setName(WebUtil.htmlEscape(name.getName()));

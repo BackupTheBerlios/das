@@ -24,18 +24,26 @@ public class AllergieDao {
 		ResultSet rs = null;
 		
 		try {
-			StatementBuilder builder = new StatementBuilder();
-			builder.add("id", q.getExpression("id"));
-			builder.add("name", q.getExpression("name"));
+			String sql = null;
+
+			if (q.getExpression("zut_id") != null){
+				sql = "select id, name from allergie join zut2all "
+					+ " on allergie.id = zut2all.all_id where zut_id = ?";
+				stmt = con.prepareStatement(sql);
+				stmt.setLong(1, (Long)q.getExpression("zut_id").getValue());
+			}
+			else {
+				sql = "select id, name from allergie";
+				StatementBuilder builder = new StatementBuilder();
+				builder.add("id", q.getExpression("id"));
+				builder.add("name", q.getExpression("name"));
+				stmt = builder.buildQuery(sql, con);
+			}
 			
-			if (q.getResultType() == ResultType.NAMES){				
-				stmt = builder.buildQuery("select id, name from allergie", con);
+			if (q.getResultType() == ResultType.NAMES){
 				return makeNameList(stmt.executeQuery());
 			}
 			else {
-				stmt = builder.buildQuery(
-					"select id, name from allergie ",
-					con);
 				return makeObjectList(stmt.executeQuery());
 			}
 		}
@@ -99,7 +107,7 @@ public class AllergieDao {
 		
 		List result = new ArrayList();
 		while (rs.next()){
-			result.add(new ObjName(rs.getString("id"), rs.getString("name")));
+			result.add(new ObjName(Long.valueOf(rs.getLong("id")), rs.getString("name")));
 		}
 		
 		return result;

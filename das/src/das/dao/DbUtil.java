@@ -75,6 +75,16 @@ public class DbUtil {
 		close(rs, stmt, null);
 	}
 	
+	public static void rollback(Connection con){
+		try {
+			if (con != null)
+				con.rollback();
+		}
+		catch(SQLException ex){
+			ex.printStackTrace();
+		}
+	}
+	
 	/**
 	* Erzeugt eine neue datenbankweit eindeutige ID.
 	*/

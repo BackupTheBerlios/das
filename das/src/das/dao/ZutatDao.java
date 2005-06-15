@@ -96,6 +96,31 @@ public class ZutatDao {
 		}		
 	}	
 		
+	public static void saveZut2All(Zutat z, Connection con) throws SQLException {
+		PreparedStatement stmt = null;
+		
+		try {
+			String sql = "delete from zut2all where zut_id = ?";
+			stmt = con.prepareStatement(sql);
+			stmt.setLong(1, z.getId());
+			stmt.execute();
+			stmt.close();
+			
+			sql = "insert into zut2all(zut_id, all_id) values(?,?)";
+			stmt = con.prepareStatement(sql);
+			
+			for (ObjName n : z.getAllergien()){
+				stmt.setLong(1, z.getId());
+				stmt.setLong(2, (Long)n.getId());
+				stmt.execute();
+				stmt.clearParameters();
+			}
+		}
+		finally {
+			DbUtil.close(stmt);
+		}
+	}
+	
 	protected static List makeNameList(ResultSet rs) throws SQLException {
 		List result = new ArrayList();
 		

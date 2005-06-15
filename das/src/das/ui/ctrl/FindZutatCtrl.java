@@ -5,6 +5,7 @@ import das.util.Query;
 import das.util.QueryExpr;
 import das.util.ResultType;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import javax.servlet.ServletException;
 
@@ -14,8 +15,8 @@ import javax.servlet.ServletException;
  */
 public class FindZutatCtrl extends ControllerBase {
 	
-	private List<ObjName> results;
-	private List<ObjName> kategorien;
+	private Collection<ObjName> results;
+	private Collection<ObjName> kategorien;
 	private Long katId;
 	private String nameExpr;
 	private String message;
@@ -23,7 +24,7 @@ public class FindZutatCtrl extends ControllerBase {
 	/**
 	 * Liefert eine liste von ObjNames fuer alle existierenden kategorien.
 	 */
-	public List<ObjName> getKategorien(){
+	public Collection<ObjName> getKategorien(){
 		Query q = new Query(ResultType.NAMES);
 		ZutatenService service = new ZutatenService(getUserName());
 		return htmlEscape(service.findKategorien(q));
@@ -32,7 +33,7 @@ public class FindZutatCtrl extends ControllerBase {
 	/**
 	 * Liefert die liste der suchergebnisse.
 	 */
-	public List<ObjName> getResults(){
+	public Collection<ObjName> getResults(){
 		return results;
 	}
 

@@ -58,16 +58,12 @@
 					<td>Kategorie</td>
 					<td>${ctrl.fields.katId}</td>					
 				</tr><tr>
-                                        <td>Allergien:</td>                                 
-                                        <c:if test="${not empty ctrl.allergien}">
-
-                                        <c:forEach items="${ctrl.allergien}" var="item">
-			
-					<td>${item.name}</td>
-				</tr><tr>
-                                        <td></td>
-                                        </c:forEach>
-                                        </c:if>
+					<td>Allergien:</td>                                 
+					<c:forEach items="${ctrl.allergien}" var="item">
+						<td>${item.name}</td>
+						</tr><tr>
+						<td></td>
+					</c:forEach>
 				</tr>			
 			</table>
 			<hr/>

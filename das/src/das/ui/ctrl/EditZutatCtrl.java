@@ -1,5 +1,4 @@
 package das.ui.ctrl;
-
 import das.bl.model.Zutat;
 import das.bl.service.ZutatenService;
 import static das.ui.ctrl.CtrlConstants.*;
@@ -7,7 +6,12 @@ import das.util.ObjName;
 import das.util.Query;
 import das.util.ResultType;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import javax.servlet.ServletException;
 
 /**
@@ -20,7 +24,7 @@ public class EditZutatCtrl extends ControllerBase {
 	/**
 	 * Liefert eine liste von ObjNames aller kategorien.
 	 */
-	public List<ObjName> getKategorien(){
+	public Collection<ObjName> getKategorien(){
 		Query q = new Query(ResultType.NAMES);
 		ZutatenService service = new ZutatenService(getUserName());
 		return htmlEscape(service.findKategorien(q));
@@ -29,11 +33,23 @@ public class EditZutatCtrl extends ControllerBase {
         /**
 	 * Liefert eine Liste von ObjNames aller Allergien.
 	*/ 
-	public List<ObjName> getAllergien(){                 
+	public Collection<ObjName> getAllergien(){                 
 		Query q = new Query(ResultType.NAMES);
 		ZutatenService service = new ZutatenService(getUserName());
 		return htmlEscape(service.findAllergien(q));
 	}	
+	
+	public Map getSelectedAllergien(){		
+		Map result = new TreeMap();
+		
+		if (zutat != null){
+			for (ObjName n : zutat.getAllergien()){
+				result.put(n.getId(), "checked");
+			}
+		}
+		
+		return result;
+	}
                     
 	/**
 	 * Konvertiert und validiert die request parameter
@@ -109,7 +125,21 @@ public class EditZutatCtrl extends ControllerBase {
 			zutat.setZucker(Convert.toFloat(
 				(String)fields.get("zucker"), "Zucker", true, 0, Float.MAX_VALUE, errors));
 			zutat.setKatId(Convert.toLong(
-				(String)fields.get("katId"), "Kategorie", false, 0, Long.MAX_VALUE, errors));			
+				(String)fields.get("katId"), "Kategorie", false, 0, Long.MAX_VALUE, errors));
+			allergienFromUi();
 		}
+	}
+	
+	protected void allergienFromUi(){
+		List<String> allergienList = getFieldAsList("selectedAllergien");
+		if (allergienList.isEmpty())
+			return;
+		
+		Set<ObjName> allergien = new TreeSet<ObjName>();
+		for (String s : allergienList){
+			allergien.add(new ObjName(Long.valueOf(s), s));
+		}
+		
+		zutat.setAllergien(allergien);
 	}
 }

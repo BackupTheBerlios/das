@@ -43,15 +43,15 @@
 					<td>Name</td>
 					<td><input name="name" value="${ctrl.fields.name}"/></td>
 				</tr>
-                                <hr/>
-                                <tr>
-                                        <td><input type="submit" value="Speichern"/></td>
-                                        </form>
-                                        <td><form action="find_allergie.jsp" method="POST">
-                                                    <input type="submit" value="Zurück" />
-                                            </form>
-                                        </td>
-                                </tr>
+					<hr/>
+					<tr>
+					<td><input type="submit" value="Speichern"/></td>
+					</form>
+					<td><form action="find_allergie.jsp" method="POST">
+						<input type="submit" value="Zurück" />
+					</form>
+					</td>
+				</tr>
 			</table>
 		</div>
 	</td>

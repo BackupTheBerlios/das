@@ -8,12 +8,14 @@ import das.dao.DbUtil;
 import das.dao.AllergieDao;
 import das.dao.KategorieDao;
 import das.dao.ZutatDao;
+import das.util.ObjName;
 import das.util.Query;
 import das.util.QueryExpr;
 import das.util.ResultType;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * Backend service zur verwaltung von zutaten, kategorien und allergien. 
@@ -30,29 +32,19 @@ public class ZutatenService {
 	}
 
 	/**
-	 * Laedt die durch id identifiziert Zutat aus der datenbank.
+	 * Laedt die durch id identifizierte Zutat aus der datenbank.
 	 * Wenn keine Zutat mit dieser id gefunden wurde, wird eine DasException ausgeloest.
 	 */
 	public Zutat loadZutat(Long id){
-		Connection con = null;
-		try {
-			Query q = new Query(ResultType.OBJECTS);
-			q.addExpression(new QueryExpr("id", id));
-			con = DbUtil.getConnection();
-			List<Zutat> zutaten = ZutatDao.findZutaten(q, con);
-			
-			if (zutaten.isEmpty()){
-				throw new DasException("Zutat mit ID " + id + " nicht gefunden");
-			}
-			
-			return zutaten.get(0);
+		Query q = new Query(ResultType.OBJECTS);
+		q.addExpression(new QueryExpr("id", id));
+		List<Zutat> zutaten = findZutaten(q);
+
+		if (zutaten.isEmpty()){
+			throw new DasException("Zutat mit ID " + id + " nicht gefunden");
 		}
-		catch(SQLException ex){
-			throw new DasException("Zutat mit id " + id + " konnte nicht geladen werden", ex);
-		}
-		finally {
-			DbUtil.close(con);
-		}		
+
+		return zutaten.get(0);
 	}
 	
 	/**
@@ -65,7 +57,19 @@ public class ZutatenService {
 		Connection con = null;
 		try {
 			con = DbUtil.getConnection();
-			return ZutatDao.findZutaten(q, con);
+			List result = ZutatDao.findZutaten(q, con);
+			
+			if (q.getResultType() == ResultType.OBJECTS){
+				for (Zutat z : (List<Zutat>)result){
+					Query qAllergien = new Query(ResultType.NAMES);
+					qAllergien.addExpression(new QueryExpr("zut_id", z.getId()));
+					List allergien = AllergieDao.findAllergien(qAllergien, con);
+					z.setAllergien(new TreeSet<ObjName>(
+						AllergieDao.findAllergien(qAllergien, con)));
+				}
+			}
+			
+			return result;
 		}
 		catch(Exception ex){
 			throw new DasException(ex);
@@ -82,14 +86,18 @@ public class ZutatenService {
 		Connection con = null;
 		try {
 			con = DbUtil.getConnection();
+			con.setAutoCommit(false);
 			if (z.getId() == null){
 				ZutatDao.insertZutat(z, con);
 			}
 			else {
 				ZutatDao.updateZutat(z, con);
 			}
+			ZutatDao.saveZut2All(z, con);
+			con.commit();
 		}
 		catch(Exception ex){
+			DbUtil.rollback(con);
 			throw new DasException("Zutat konnte nicht gespeichert werden", ex);
 		}
 		finally {

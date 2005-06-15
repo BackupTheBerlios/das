@@ -7,7 +7,9 @@ import das.util.ObjName;
 import das.util.Query;
 import das.util.ResultType;
 import java.io.IOException;
-import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
 import javax.servlet.ServletException;
 
 /**
@@ -20,7 +22,7 @@ public class ShowZutatUserCtrl extends ControllerBase {
 	/**
 	 * Liefert eine liste von ObjNames aller kategorien.
 	 */
-	public List<ObjName> getKategorien(){
+	public Collection<ObjName> getKategorien(){
 		Query q = new Query(ResultType.NAMES);
 		ZutatenService service = new ZutatenService(getUserName());
 		return htmlEscape(service.findKategorien(q));
@@ -29,10 +31,11 @@ public class ShowZutatUserCtrl extends ControllerBase {
         /**
 	 * Liefert eine Liste von ObjNames aller Allergien.
 	*/ 
-	public List<ObjName> getAllergien(){                 
-		Query q = new Query(ResultType.NAMES);
-		ZutatenService service = new ZutatenService(getUserName());
-		return htmlEscape(service.findAllergien(q));
+	public Collection<ObjName> getAllergien(){
+		if (zutat == null)
+			return Collections.emptySet();
+		
+		return htmlEscape(zutat.getAllergien());
 	}	
                     
 	/**
