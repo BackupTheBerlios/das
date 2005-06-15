@@ -16,7 +16,7 @@
 	<a href="${pageContext.request.contextPath}/members/find_zutat_user.jsp" 
 		class="linkmenu">Nahrungsmittel suchen</a></div>
 <div class="option">
-	<a href="$%7BpageContext.request.contextPath%7D/members/find_zutat.jsp" 
+	<a href="${pageContext.request.contextPath}/members/find_zutat.jsp" 
 		class="linkmenu">Nahrungsmittel bearbeiten</a></div>
 <div class="option">
 	<a href="${pageContext.request.contextPath}/members/find_allergie.jsp" 
