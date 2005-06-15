@@ -64,8 +64,13 @@ public abstract class ControllerBase {
 	public void setPageContext(PageContext ctx) throws Exception {
 		
 		pageContext = ctx;
-		fields = loadFields(ctx.getRequest());
-		String command = ctx.getRequest().getParameter(COMMAND_PARAM);
+		
+		ServletRequest req = ctx.getRequest();
+		if (req.getCharacterEncoding() == null)
+			req.setCharacterEncoding("utf-8");
+		
+		fields = loadFields(req);
+		String command = req.getParameter(COMMAND_PARAM);
 
 		if (command != null)
 			command = command.trim().toLowerCase();
