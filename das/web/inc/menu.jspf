@@ -18,6 +18,16 @@
 </div>
 </div>
 
+<div class="separator"><b>Mein Account</b>
+<div style="display: block;" id="menu1__1">
+<div class="option">
+	<a href="${pageContext.request.contextPath}/members/edit_userprofil.jsp" class="linkmenu">Mein Profil</a></div>
+<div class="option">
+	<a href="${pageContext.request.contextPath}/logout.jsp" 
+		class="linkmenu">Logout</a></div>
+</div>
+</div>
+
 <div class="separator"><b>Verwalten</b>
 <div style="display: block;" id="menu1__1">
 <div class="option">
@@ -29,11 +39,6 @@
 <div class="option">
 	<a href="${pageContext.request.contextPath}/members/find_kategorie.jsp" 
 		class="linkmenu">Kategorien bearbeiten</a></div>
-<div class="option">
-	<a href="${pageContext.request.contextPath}/members/edit_userprofil.jsp" class="linkmenu">Mein Profil</a></div>
-<div class="option">
-	<a href="${pageContext.request.contextPath}/logout.jsp" 
-		class="linkmenu">Logout</a></div>
 </div>
 </div>
 </div>

@@ -46,13 +46,13 @@
 					<td>Einheit</td>
 					<td>${ctrl.fields.einheit}</td>
 				</tr><tr>
-					<td>Kalorien</td>
+					<td>Kalorien (100g)</td>
 					<td>${ctrl.fields.kalorien}</td>
 				</tr><tr>
-					<td>Fett</td>
+					<td>Fett (g/100g)</td>
 					<td>${ctrl.fields.fett}</td>
 				</tr><tr>
-					<td>Zucker</td>
+					<td>Zucker (g/100g)</td>
 					<td>${ctrl.fields.zucker}</td>
 				</tr><tr>
 					<td>Kategorie</td>
