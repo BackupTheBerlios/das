@@ -41,19 +41,19 @@
 					</td>
 				</tr><tr>
 					<td>Name</td>
-					<td><input name="name" value="${ctrl.fields.name}"/></td>
+					<td><input name="name" value="${ctrl.fields.name}" maxlength="100"/></td>
 				</tr><tr>
 					<td>Einheit</td>
-					<td><input name="einheit" value="${ctrl.fields.einheit}"/></td>
+					<td><input name="einheit" value="${ctrl.fields.einheit}" maxlength="20"/></td>
 				</tr><tr>
-					<td>Kalorien (pro Einheit)</td>
-					<td><input name="kalorien" value="${ctrl.fields.kalorien}"/></td>
+					<td>Kalorien (100g)</td>
+					<td><input name="kalorien" value="${ctrl.fields.kalorien}" maxlength="20"/></td>
 				</tr><tr>
-					<td>Fettgehalt (in %)</td>
-					<td><input name="fett" value="${ctrl.fields.fett}"/></td>
+					<td>Fettgehalt (g/100g)</td>
+					<td><input name="fett" value="${ctrl.fields.fett}" maxlength="3"/></td>
 				</tr><tr>
-					<td>Zuckergehalt (in %)</td>
-					<td><input name="zucker" value="${ctrl.fields.zucker}"/></td>
+					<td>Zuckergehalt (g/100g)</td>
+					<td><input name="zucker" value="${ctrl.fields.zucker}" maxlength="3"/></td>
 				</tr>
 				</tr><tr>
 					<td>Kategorie</td>

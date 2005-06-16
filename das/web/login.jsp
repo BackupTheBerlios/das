@@ -36,6 +36,7 @@
 			</table>
 			<input type="submit" value="Login">
 		</form>
+		
 		</div>
 	</td>
 	</tr>
