@@ -1,7 +1,13 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<jsp:useBean id="menu" class="das.ui.ctrl.MenuCtrl">
+	<jsp:setProperty name="menu" property="pageContext" value="${pageContext}"/>
+</jsp:useBean>
+
 <div class="box mnu_application_menu">
 <div id="mod-mnu_application_menu" style="display: block;" class="box-data">
 <div id="mnu_application_menu" style="display: block;">
-<div class="option">&nbsp;<a href="${pageContext.request.contextPath}/index.jsp" 
+<div class="option">&nbsp;<a href="${pageContext.request.contextPath}/members/index.jsp" 
 	class="linkmenu">Home</a></div>
 
 <div class="separator"><b>Di&auml;t</b>
@@ -24,23 +30,25 @@
 	<a href="${pageContext.request.contextPath}/members/edit_userprofil.jsp" class="linkmenu">Mein Profil</a></div>
 <div class="option">
 	<a href="${pageContext.request.contextPath}/logout.jsp" 
-		class="linkmenu">Logout</a></div>
+		class="linkmenu">Login/out</a></div>
 </div>
 </div>
 
-<div class="separator"><b>Verwalten</b>
-<div style="display: block;" id="menu1__1">
-<div class="option">
-	<a href="${pageContext.request.contextPath}/members/find_zutat.jsp" 
-		class="linkmenu">Nahrungsmittel bearbeiten</a></div>
-<div class="option">
-	<a href="${pageContext.request.contextPath}/members/find_allergie.jsp" 
-		class="linkmenu">Allergien bearbeiten</a></div>
-<div class="option">
-	<a href="${pageContext.request.contextPath}/members/find_kategorie.jsp" 
-		class="linkmenu">Kategorien bearbeiten</a></div>
-</div>
-</div>
+<c:if test="${menu.editor}">
+	<div class="separator"><b>Verwalten</b>
+	<div style="display: block;" id="menu1__1">
+	<div class="option">
+		<a href="${pageContext.request.contextPath}/members/find_zutat.jsp" 
+			class="linkmenu">Nahrungsmittel bearbeiten</a></div>
+	<div class="option">
+		<a href="${pageContext.request.contextPath}/members/find_allergie.jsp" 
+			class="linkmenu">Allergien bearbeiten</a></div>
+	<div class="option">
+		<a href="${pageContext.request.contextPath}/members/find_kategorie.jsp" 
+			class="linkmenu">Kategorien bearbeiten</a></div>
+	</div>
+	</div>
+</c:if>
 </div>
 </div>
 </div>
