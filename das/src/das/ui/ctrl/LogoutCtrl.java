@@ -8,13 +8,7 @@ import static das.ui.ctrl.CtrlConstants.HOME_PAGE;
 import javax.servlet.http.HttpServletRequest;
 
 public class LogoutCtrl extends ControllerBase {
-	
-	protected String msg;
-	
-	public String getMessage(){
-		return msg;
-	}
-	
+		
 	protected boolean convertAndValidate(String command){
 		return true;
 	}
@@ -33,12 +27,6 @@ public class LogoutCtrl extends ControllerBase {
 			catch(IllegalStateException ex){
 				ex.printStackTrace();
 			}
-			finally {
-				msg = "Sie wurden erfolgreich ausgeloggt";
-			}
-		}
-		else {
-			msg = "Sie sind nicht eingeloggt";
 		}
 	}
 }

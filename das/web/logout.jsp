@@ -31,7 +31,7 @@
 	</td>
 	<td id="centercolumn" valign="top">
 		<div id="das-center">
-		<h4>${ctrl.message}</h4>
+		<h4>Ausgeloggt</h4>
 		</div>
 	</td>
 	</tr>
