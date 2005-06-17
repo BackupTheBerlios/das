@@ -6,7 +6,6 @@
 <jsp:useBean id="ctrl" class="das.ui.ctrl.EditRezeptCtrl">
     <jsp:setProperty name="ctrl" property="pageContext" value="${pageContext}"/>
 </jsp:useBean>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -34,8 +33,14 @@
                                 <%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
                                 <das:errorlist controller="${ctrl}"/>
                                 <form action="edit_rezept.jsp?cmd=save" method="POST">
-                                    <input name="id" type="hidden" value="${ctrl.fields.id}"/>
+                                    
                                     <table width="500" border="0">
+                                        <tr>
+                                            <td>ID</td>
+                                            <td>${ctrl.fields.id}
+                                                <input name="id" type="hidden" value="${ctrl.fields.id}"/>
+                                            </td>
+                                        </tr>
                                         <tr> 
                                             <td>Name:</td>
                                             <td><input name="name" type="text" width="100" value="${ctrl.fields.name}" size="40">
@@ -63,13 +68,13 @@
                                         
                                         
                                         
-                                        <c:forEach items="${ctrl.zutaten}" var="zut">
+                                        <c:forEach items="${ctrl.zutaten}" var="z">
                                             <tr>
                                                 <td>
-                                                    <b>${zut.name}</b>, (einheit)
+                                                    <b>${z.name}</b>, (einheit)
                                                 </td>
                                                 <td>
-                                                    <input name="${zut.id}" type="text" width="20" value="0" maxlength="">
+                                                    <input name="${z.id}" type="text" width="20" value="0" maxlength="">
                                                 </td>
                                             </tr>
                                         </c:forEach>
