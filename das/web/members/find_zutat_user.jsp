@@ -43,6 +43,7 @@
 		<p/>
 		<form action="find_zutat_user.jsp?cmd=find" method="POST">
 			Name der Zutat:<br/>
+			(Grosskleinschreibung egal. * steht f&uuml;r jede beliebige Buchstabenfolge)<p />
 			<input name="nameExpr" value="${ctrl.fields.nameExpr}" size="30" maxlength="100"/>
 			<input type="submit" value="Suchen" />
 			<p/>

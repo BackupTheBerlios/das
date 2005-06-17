@@ -46,6 +46,9 @@
 	<div class="option">
 		<a href="${pageContext.request.contextPath}/members/find_kategorie.jsp" 
 			class="linkmenu">Kategorien bearbeiten</a></div>
+	<div class="option">
+		<a href="${pageContext.request.contextPath}/members/edit_gruppe.jsp" 
+			class="linkmenu">Gruppen bearbeiten</a></div>
 	</div>
 	</div>
 </c:if>
