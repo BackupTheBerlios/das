@@ -15,7 +15,7 @@
     </head>
     <body>
         <div id="das-main">
-            <div id="das-top">DAS - GUI Prototyp v 0.3
+            <div id="das-top"><%@ include file="/inc/dascaption.jspf" %>
                 <div id="das-mid">
                     <table border="0" cellpadding="0" cellspacing="0" id="das-midtbl">
                         <tbody>

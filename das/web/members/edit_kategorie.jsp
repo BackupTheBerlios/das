@@ -19,7 +19,7 @@
 	<title>DAS - Kategorien bearbeiten</title>
 </head>
 <body>
-<div id="das-top">DAS - Di&auml;tassistent</div>
+<div id="das-top"><%@ include file="/inc/dascaption.jspf" %></div>
 <div id="das-mid">
 <table border="0" cellpadding="0" cellspacing="0" id="das-midtbl">
 <tbody>
