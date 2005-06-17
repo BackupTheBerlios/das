@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
  * autor: Kirill 
  * date: 14.06.2005
  * 
- * Die controller klasse zum suchen und auswaehlen von zutaten.
+ * Die controller klasse zum suchen und auswaehlen von rezepten.
  */
 public class FindRezeptCtrl extends ControllerBase {
 	
@@ -82,11 +82,12 @@ public class FindRezeptCtrl extends ControllerBase {
 				q.addExpression(new QueryExpr("name", nameExpr));
 			}
 			
-			results = htmlEscape(service.findRezepte(q));
+			results = (service.findRezepte(q));
 			if (results.size() == 0)
 				message = "Kein Datensatz gefunden";
 			
 			fields.put("nameExpr", htmlEscape(nameExpr));
+                
 		}
 		else if (command.equals("delete")){
 			int count = 0;

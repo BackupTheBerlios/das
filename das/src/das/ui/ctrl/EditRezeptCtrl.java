@@ -12,6 +12,7 @@ import das.util.Query;
 import das.util.ResultType;
 import java.io.IOException;
 import java.util.List;
+import java.util.Collection;
 import javax.servlet.ServletException;
 
 /**
@@ -19,17 +20,15 @@ import javax.servlet.ServletException;
  */
 public class EditRezeptCtrl extends ControllerBase {
 	private List<ObjName> zutaten;
-	private Rezept rezept;
+	private List<ObjName> kategorien;
+        private Rezept rezept;
         
-        /**
-	 * Liefert eine liste von ObjNames aller kategorien.
-	 */
+
 	public List<ObjName> getZutaten(){
 		Query q = new Query(ResultType.NAMES);
 		ZutatenService service = new ZutatenService(getUserName());
-		return htmlEscape(service.findZutaten(q));
+		return service.findZutaten(q);
 	}
-
                     
 	/**
 	 * Konvertiert und validiert die request parameter
@@ -59,7 +58,7 @@ public class EditRezeptCtrl extends ControllerBase {
 			rezept = new Rezept();
 			convert(TO_UI);
 		}
-		else if (command.equals("edit")){
+		else if ((command.equals("edit")) || (command.equals("view"))){
 			rezept = service.loadRezept(getLongParam("id", true));
 			convert(TO_UI);
 		}
