@@ -1,7 +1,9 @@
 package das.ui.ctrl;
 
 import das.bl.model.Rezept;
+import das.bl.model.Zutat;
 import das.bl.service.RezepteService;
+import das.bl.service.ZutatenService;
 import static das.ui.ctrl.CtrlConstants.*;
 import das.util.ObjName;
 import das.util.Query;

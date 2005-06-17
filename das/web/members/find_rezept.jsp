@@ -12,33 +12,31 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-<head>
-	<%@ include file="/inc/nocache.jspf" %>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/dasutil.js">
-	</script>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css"
-		href="${pageContext.request.contextPath}/css/dasneat.css"/>
-	<title>DAS - Rezept suchen</title>	
-</head>
-<body>
-<div id="das-top"><%@ include file="/inc/dascaption.jspf" %></div>
-<div id="das-mid">
-<table border="0" cellpadding="0" cellspacing="0" id="das-midtbl">
-<tbody>
-	<tr>
-	<td  id="leftcolumn" valign="top">
-		<%@ include file="/inc/menu.jspf" %>
-	</td>
-	<td id="centercolumn" valign="top">
-		<div id="das-center">
-		<h4>Rezepte suchen</h4>
+    <head>
+        <%@ include file="/inc/nocache.jspf" %>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/dasutil.js">
+        </script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css"
+        href="${pageContext.request.contextPath}/css/dasneat.css"/>
+        <title>DAS - Rezept suchen</title>	
+    </head>
+    <body>
+        <div id="das-top"><%@ include file="/inc/dascaption.jspf" %></div>
+        <div id="das-mid">
+            <table border="0" cellpadding="0" cellspacing="0" id="das-midtbl">
+                <tbody>
+                    <tr>
+                        <td  id="leftcolumn" valign="top">
+                            <%@ include file="/inc/menu.jspf" %>
+                        </td>
+                        <td id="centercolumn" valign="top">
+                        <div id="das-center">
+                        <h4>Rezepte suchen</h4>
 
                         <%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
                         <das:errorlist controller="${ctrl}"/>
-                        <p/>&nbsp;&nbsp;
-		
-                        <p/>&nbsp;&nbsp;
+                        <p/>&nbsp;
                         <form action="find_rezept.jsp?cmd=find" method="POST">
 
                             <table width="400" border="0">
@@ -76,7 +74,7 @@
                             </table>
 
                         </form>
-                            <p />&nbsp;&nbsp;
+                            <p />&nbsp;
                             <!-- eine auflistung von allen Rezepten -->
                             <h4>Rezept auswдhlen</h4>
 		
@@ -85,13 +83,21 @@
                                 <table cellpadding="0" cellspacing="2">
                                     <c:forEach items="${ctrl.results}" var="item">
                                         <tr>
-                                            <td><a href="show_rezept.jsp?id=${item.id}">${item.name}</a></td>
+                                            <td width="400"><a href="show_rezept.jsp?id=${item.id}">${item.name}</a></td>
+                                            <c:if test="${ctrl.editor}">
+                                                <td>
+                                                <a href="edit_rezept.jsp?cmd=edit&id=${item.id}">editieren</a>
+                                                </td>                                            
+                                                <td>
+                                                <a href="edit_rezept.jsp?cmd=delete&id=${item.id}">loeschen</a>
+                                                </td>
+                                            </c:if>
                                         </tr>
                                     </c:forEach>
                                 </table>
                             </c:if>
 
-		
+                            
 		
                             </div>
                         </td>

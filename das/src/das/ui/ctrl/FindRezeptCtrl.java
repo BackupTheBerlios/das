@@ -7,7 +7,8 @@ import das.util.ResultType;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.PageContext;
 
 /**
  * autor: Kirill 
@@ -27,7 +28,13 @@ public class FindRezeptCtrl extends ControllerBase {
         
 	private String nameExpr;
 	private String message;
-	
+
+        
+       	public boolean isEditor(){				
+		HttpServletRequest httpRequest = (HttpServletRequest)pageContext.getRequest();
+		return httpRequest.isUserInRole("editors") || httpRequest.isUserInRole("admins");
+	}
+        
 	/**
 	 * Liefert die liste der suchergebnisse.
 	 */

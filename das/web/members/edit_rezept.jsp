@@ -44,9 +44,7 @@
                                         <tr> 
                                             <td>Name:</td>
                                             <td><input name="name" type="text" width="100" value="${ctrl.fields.name}" size="40">
-                                            
                                             </td>
-                                        
                                         </tr>
                                         <tr>
                                             <td valign="top">
@@ -58,29 +56,41 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                
                                             </td>
                                             <td>
                                                 <hr>
+                                            </td>
+                                        </tr>
+                                               
+                                        
+                                        <tr>
+                                            <td>
+                                                <table>
+                                                    <c:forEach items="${ctrl.zutaten}" var="z">
+                                                        <tr>
+                                                            <td>
+                                                                <b>${z.name}</b>
+                                                            </td>
+                                                            <td>
+                                                                <input name="${z.id}" type="text" width="10" value="0" maxlength="10">
+                                                            </td>
+                                                            <td>
+                                                            <c:out value="${einheit[z.id]}" />
+
+                                                            </td>
+                                                           
+                                                        </tr>
+                                                    </c:forEach>
+                                        
+                                                </table>
                                             </td>
                                         </tr>
                                         
                                         
                                         
                                         
-                                        <c:forEach items="${ctrl.zutaten}" var="z">
-                                            <tr>
-                                                <td>
-                                                    <b>${z.name}</b>, (einheit)
-                                                </td>
-                                                <td>
-                                                    <input name="${z.id}" type="text" width="20" value="0" maxlength="">
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
+
                                 
-                                        
-                                        
                                         <tr>
                                             <td>
                                             </td>
