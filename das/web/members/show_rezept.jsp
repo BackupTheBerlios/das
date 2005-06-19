@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="das" %>
+<%@ page import='java.util.*' %>
+<%@ page import='das.bl.model.Zutat' %>
+<%@ page import='das.bl.service.ZutatenService' %>
+
+
 
 <%-- Controller instantiieren und pageContext setzen --%>
 <jsp:useBean id="ctrl" class="das.ui.ctrl.ShowRezeptCtrl">
@@ -37,20 +42,27 @@
                     <table width="600" border="0">
                         <tr valign="top"> 
                             <td>Zutaten:</td>
-                            <td>4 Stk Eier</td>   
-                        </tr>
-                        <tr> 
+                            <td></td>   
+                        </tr>                       
+                        <%
+                        Map zutaten = ctrl.getZutaten();
+                        Set set = zutaten.keySet();
+                        Iterator iter = set.iterator();
+                        ZutatenService zs = new ZutatenService(request.getRemoteUser());
+                        Zutat z;
+                        
+                        while(iter.hasNext()){
+                            Long id = (Long)iter.next();
+                            Long wert = (Long)zutaten.get(id);
+                            
+                            z = zs.loadZutat(id);
+                            String name = z.getName();
+                            String einheit = z.getEinheit();
+                        %><tr> 
                             <td></td>
-                            <td>300 g Mehl</td>   
-                        </tr>
-                        <tr> 
-                            <td></td>
-                            <td>100 ml Milch</td>   
-                        </tr>
-                        <tr> 
-                            <td></td>
-                            <td>100 g Zucker</td>   
-                        </tr>
+                            <td><%=wert%> <%=einheit%> <%=name%></td>   
+                        </tr>     <%}%>
+                        
                         <tr height="20"></tr>
                         <tr valign="top"> 
                             <td>Anleitung:</td>
@@ -59,13 +71,13 @@
                         <tr height="20"></tr>
                         <tr> 
                             <td>Kalorien:</td>
-                            <td>777</td>   
+                            <td>77777777</td>   
                         </tr>
                         <tr height="20"></tr>
                         <tr> 
                             <td>Bewerten:</td>
-                            <td><input name="1" type="radio"> 1  <input name="2" type="radio"> 2  <input name="3" type="radio"> 3  
-                            <input name="4" type="radio"> 4  <input name="5" type="radio"> 5</td>   
+                            <td><input name="bew" type="radio"> 1  <input name="bew" type="radio"> 2  <input name="bew" type="radio"> 3  
+                            <input name="bew" type="radio"> 4  <input name="bew" type="radio"> 5</td>   
                         </tr>
                         <tr> 
                             <td></td>

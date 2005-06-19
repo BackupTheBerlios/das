@@ -3,6 +3,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="das" %>
 
+<%@ page import='das.bl.model.Rezept' %>
+<%@ page import='java.util.List' %>
+<%@ page import='java.util.Iterator' %>
+
 <%-- Controller instantiieren und pageContext setzen --%>
 <jsp:useBean id="ctrl" class="das.ui.ctrl.FindRezeptCtrl">
     <jsp:setProperty name="ctrl" property="pageContext" value="${pageContext}"/>
@@ -79,23 +83,34 @@
                             <h4>Rezept auswдhlen</h4>
 		
                         ${ctrl.message}
-                            <c:if test="${not empty ctrl.results}">
-                                <table cellpadding="0" cellspacing="2">
-                                    <c:forEach items="${ctrl.results}" var="item">
-                                        <tr>
-                                            <td width="400"><a href="show_rezept.jsp?id=${item.id}">${item.name}</a></td>
-                                            <c:if test="${ctrl.editor}">
-                                                <td>
-                                                <a href="edit_rezept.jsp?cmd=edit&id=${item.id}">editieren</a>
-                                                </td>                                            
-                                                <td>
-                                                <a href="edit_rezept.jsp?cmd=delete&id=${item.id}">loeschen</a>
-                                                </td>
-                                            </c:if>
-                                        </tr>
-                                    </c:forEach>
-                                </table>
-                            </c:if>
+                            <table cellpadding="0" cellspacing="2">
+                                <%
+                                List rlist = ctrl.getResults();
+                                for (Iterator iter = rlist.iterator(); iter.hasNext();) {
+                                    Rezept r = (Rezept) iter.next();
+                                    Long id = r.getId();
+                                    String name = r.getName();
+                                    String user = r.getBenutzer();
+
+                                %>
+                                <tr>
+                                    <td width="300"><a href="show_rezept.jsp?id=<% out.print(id); %>"><% out.print(name); %></a></td>
+                                    <%
+                                    if(ctrl.isEditor() || ctrl.isAutor(id)){
+                                    %>
+                                    <td>
+                                        <a href="edit_rezept.jsp?id=<%=id%>"><img src="../img/edit.gif" alt="editieren" border="0"></a>
+                                    </td>                                            
+                                    <td>
+                                        <a href="javascript:submitForm('edit_rezept.jsp?cmd=delete&id=<% out.print(id); %>', 'Sicher?')"><img border="0" src="../img/delete.gif" alt="l&ouml;schen"></a>
+                                    </td>                  
+                                    <%}
+                                    %>
+                                </tr>
+                                <%
+                                }%>
+                            </table>    
+
 
                             
 		

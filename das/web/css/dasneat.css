@@ -94,6 +94,15 @@ input[type=submit]:hover {
 	background-color : #FFFFFF;
 	cursor : pointer;
 }
+input[type=button] {
+	border : 1px solid #46596f;
+	background-color: #C7D0D9;
+	font-weight : bold;
+}
+input[type=button]:hover {
+	background-color : #FFFFFF;
+	cursor : pointer;
+}
 textarea {
 	width : 100%;
 }

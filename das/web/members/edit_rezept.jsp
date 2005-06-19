@@ -2,6 +2,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="das" %>
 
+<%@ page import='das.bl.model.Zutat' %>
+<%@ page import='java.util.List' %>
+<%@ page import='java.util.Iterator' %>
+
+
+
 <%-- Controller instantiieren und pageContext setzen --%>
 <jsp:useBean id="ctrl" class="das.ui.ctrl.EditRezeptCtrl">
     <jsp:setProperty name="ctrl" property="pageContext" value="${pageContext}"/>
@@ -35,68 +41,47 @@
                                 <form action="edit_rezept.jsp?cmd=save" method="POST">
                                     
                                     <table width="500" border="0">
-                                        <tr>
+                                        <tr> 
                                             <td>ID</td>
-                                            <td>${ctrl.fields.id}
-                                                <input name="id" type="hidden" value="${ctrl.fields.id}"/>
-                                            </td>
+                                            <td>${ctrl.fields.id} 
+                                            <input name="id" type="hidden" value="${ctrl.fields.id}"/> </td>
                                         </tr>
                                         <tr> 
                                             <td>Name:</td>
-                                            <td><input name="name" type="text" width="100" value="${ctrl.fields.name}" size="40">
+                                            <td><input name="name" type="text" width="200" value="${ctrl.fields.name}" size="40"> 
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td valign="top">
-                                                Anleitung:
-                                            </td>
-                                            <td>
-                                                <textarea name="anleitung" cols="40" rows="5">${ctrl.fields.anleitung}</textarea>
-                                            </td>
+                                        <tr> 
+                                            <td valign="top"> Anleitung: </td>
+                                            <td> <textarea name="anleitung" cols="40" rows="5">${ctrl.fields.anleitung}</textarea> </td>
+                                        </tr>
+                                        <tr> 
+                                            <td> </td>
+                                            <td> <hr> </td>
                                         </tr>
                                         <tr>
+                                            <td> </td>
                                             <td>
-                                            </td>
-                                            <td>
-                                                <hr>
-                                            </td>
-                                        </tr>
-                                               
-                                        
-                                        <tr>
-                                            <td>
-                                                <table>
-                                                    <c:forEach items="${ctrl.zutaten}" var="z">
-                                                        <tr>
-                                                            <td>
-                                                                <b>${z.name}</b>
-                                                            </td>
-                                                            <td>
-                                                                <input name="${z.id}" type="text" width="10" value="0" maxlength="10">
-                                                            </td>
-                                                            <td>
-                                                            <c:out value="${einheit[z.id]}" />
-
-                                                            </td>
-                                                           
-                                                        </tr>
-                                                    </c:forEach>
-                                        
+                                                <table width="400" border="0">     
+                                                    <%
+                                                     for (Iterator iter = ctrl.getZutaten().iterator(); iter.hasNext();) {
+                                                        Zutat z = (Zutat ) iter.next();
+                                                        Long id = z.getId();
+                                                        String name = z.getName();
+                                                        String einheit = z.getEinheit();
+                                                    %>
+                                                    <tr> 
+                                                        <td><b><%=name%></b></td>
+                                                        <td><input name="<%=id%>" type="text" width="4" value="0" maxlength="4" size="4"><%=einheit%>
+                                                        </td>
+                                                    </tr>
+                                                    <%}%>
                                                 </table>
                                             </td>
                                         </tr>
-                                        
-                                        
-                                        
-                                        
-
-                                
                                         <tr>
-                                            <td>
-                                            </td>
-                                            <td><hr>
-                                                <input name="ok" type="submit" value="Rezept speichern">
-                                            </td>
+                                            <td> </td>
+                                            <td><hr><a href="find_rezept.jsp"><input type="button" value="Zur&uuml;ck">  <input name="ok" type="submit" value="Speichern"></a></td>
                                         </tr>
                                     </table>
                                 </form>
