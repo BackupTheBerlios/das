@@ -72,7 +72,7 @@ create table rezept (
 create table zut2rez (
    zut_id int not null references zutat,
    rez_id int not null references rezept on delete cascade,
-   menge real
+   menge real,
    primary key(zut_id, rez_id)
 );
 
