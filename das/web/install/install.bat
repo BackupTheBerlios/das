@@ -2,23 +2,19 @@
 REM Installer for D.A.S - Diät Assistent Software
 REM Copyright (C) 2005 Arash Zargamy e0126071 [AT] student.tuwien.ac.at
 REM 
-REM This program is free softwareREM you can redistribute it and/or modify
+REM This program is free software; you can redistribute it and/or modify
 REM it under the terms of the GNU General Public License as published by
-REM the Free Software FoundationREM either version 2 of the License, or
+REM the Free Software Foundation; either version 2 of the License, or
 REM (at your option) any later version.
 REM 
 REM This program is distributed in the hope that it will be useful,
-REM but WITHOUT ANY WARRANTYREM without even the implied warranty of
+REM but WITHOUT ANY WARRANTY; without even the implied warranty of
 REM MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 REM GNU General Public License for more details.
 REM 
 REM You should have received a copy of the GNU General Public License
-REM along with this programREM if not, write to the Free Software
+REM along with this program; if not, write to the Free Software
 REM Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
-
-echo programm noch unvollstaendig
-goto ende
 
 rem -- init vars --
 set createdb="createdb.sql"
