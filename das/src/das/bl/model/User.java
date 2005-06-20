@@ -1,21 +1,39 @@
 package das.bl.model;
 
+import das.util.ObjName;
 import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Domain klasse User
  */
 public class User {
 	
+	private Long id;
 	private String login;
 	private String name;
-	private String password;
-	private String userGroup;
+	private String passwort;
+	private Long gruId;
 	private String email;
-	private Map<Long,Bewertung> bewertungen = new LinkedHashMap<Long,Bewertung>();
-	private Map<Long,Allergie> allergien = new LinkedHashMap<Long,Allergie>();
+	//private Map<Long,Bewertung> bewertungen = new LinkedHashMap<Long,Bewertung>();
+	private Set<ObjName> allergien = new TreeSet<ObjName>();
+
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public String getPasswort() {
+		return passwort;
+	}
+
+	public void setPasswort(String passwort) {
+		this.passwort = passwort;
+	}
 
 	public String getLogin() {
 		return login;
@@ -33,20 +51,12 @@ public class User {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
+	public Long getGruId(){
+		return gruId;
 	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getUserGroup() {
-		return userGroup;
-	}
-
-	public void setUserGroup(String userGroup) {
-		this.userGroup = userGroup;
+	
+	public void setGruId(Long gruId){
+		this.gruId = gruId;
 	}
 
 	public String getEmail() {
@@ -56,7 +66,8 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	/*
 	public void addBewertung(Bewertung b){
 		bewertungen.put(b.getId(), b);
 	}
@@ -68,16 +79,13 @@ public class User {
 	public Collection<Bewertung> getBewertungen(){
 		return bewertungen.values();
 	}
+	 */
 	
-	public void addAllergie(Allergie a){
-		allergien.put(a.getId(), a);
+	public Set<ObjName> getAllergien(){
+		return allergien;
 	}
 	
-	public void removeAllergie(Long allergieId){
-		allergien.remove(allergieId);
-	}
-	
-	public Collection<Allergie> getAllergien(){
-		return allergien.values();
+	public void setAllergien(Set<ObjName> allergien){
+		this.allergien = allergien;
 	}
 }

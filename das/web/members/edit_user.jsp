@@ -16,7 +16,7 @@
 	<%@ include file="/inc/nocache.jspf" %>
 	<link rel="stylesheet" type="text/css"
 		href="${pageContext.request.contextPath}/css/dasneat.css"/>
-	<title>DAS - Registrieren</title>
+	<title>DAS - User bearbeiten</title>
 </head>
 <body>
 <div id="das-top">DAS - Di&auml;tassistent</div>
@@ -29,10 +29,10 @@
 	</td>
 	<td id="centercolumn" valign="top">
 		<div id="das-center">
-		<h4>Registrieren</h4>
+		<h4>User</h4>
 		<%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
 		<das:errorlist controller="${ctrl}"/>
-		<form action="register.jsp?cmd=save" method="POST">
+		<form action="edit_user.jsp?cmd=save" method="POST">
 			<table cellpadding="0" cellspacing="2">
 				<tr>
 					<td>ID</td>
@@ -67,12 +67,12 @@
 				</tr>			
 				<hr/>
 				<tr>
-					<td><input type="submit" value="Anlegen"/></td>
-				</form>
-					<td><form action="index.jsp" method="POST">
-						<input type="submit" value="Abbrechen" />
+					<td><input type="submit" value="Speichern"/></td>
 					</form>
-					</td>				
+					<td><form action="find_user.jsp" method="POST">
+						<input type="submit" value="Zurück" />
+					</form>
+					</td>
 				</tr>
 			</table>
 		</div>

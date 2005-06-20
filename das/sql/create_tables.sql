@@ -1,4 +1,3 @@
-
 drop table bewertung;
 drop table bzr2all;
 drop table zut2all;
@@ -18,11 +17,15 @@ create sequence seq
 
 -- kuerzel: bzr
 create table benutzer (
-   login varchar(50) primary key,
-   name varchar(100) not null,
+   id int primary key,
+   name varchar(100) not null unique,	
+   login varchar(50) not null unique,
    passwort varchar(50) not null,
-   email varchar(50)
+   email varchar(50),
+   gru_id int not null references gruppe
 );
+
+create index i_bzr_gru_id on benutzer(gru_id);
 
 -- kuerzel: gru
 create table gruppe (
@@ -30,6 +33,7 @@ create table gruppe (
    name varchar(100) not null unique
 );
 
+/*
 -- kuerzel: bg
 create table benutzergruppe (
    login varchar(50) not null references benutzer on delete cascade,
@@ -38,6 +42,7 @@ create table benutzergruppe (
 );
 
 create index i_bg_gru_id on benutzergruppe(gru_id);
+*/
 
 -- kuerzel: kat
 create table kategorie (
@@ -70,10 +75,10 @@ create table rezept (
 
 -- kuerzel: zr
 create table zut2rez (
+   id int primary key,
    zut_id int not null references zutat,
    rez_id int not null references rezept on delete cascade,
-   menge real,
-   primary key(zut_id, rez_id)
+   menge real
 );
 
 create index i_zr_zut_id on zut2rez(zut_id);

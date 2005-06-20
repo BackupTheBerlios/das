@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/das">
   <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="jdbc/das" password="aaaaaa" type="javax.sql.DataSource" url="jdbc:postgresql://127.0.0.1:5432/das" username="postgres"/>
-  <Realm className="org.apache.catalina.realm.DataSourceRealm" dataSourceName="jdbc/das" localDataSource="true" roleNameCol="gru_id" userCredCol="passwort" userNameCol="login" userRoleTable="benutzergruppe" userTable="benutzer"/>
+   <Realm className="org.apache.catalina.realm.DataSourceRealm" dataSourceName="jdbc/das" localDataSource="true" roleNameCol="gru_id" userCredCol="passwort" userNameCol="login" userRoleTable="benutzer" userTable="benutzer"/>
+   <!-- <Realm className="org.apache.catalina.realm.DataSourceRealm" dataSourceName="jdbc/das" localDataSource="true" roleNameCol="gru_id" userCredCol="passwort" userNameCol="login" userRoleTable="benutzergruppe" userTable="benutzer"/> -->
 </Context>
