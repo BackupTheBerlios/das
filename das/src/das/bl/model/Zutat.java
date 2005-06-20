@@ -3,6 +3,7 @@ import das.util.ObjName;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import das.bl.model.Kategorie;
 
 /**
  * Domain klasse Zutat.
@@ -77,6 +78,11 @@ public class Zutat {
 	public Set<ObjName> getAllergien(){
 		return allergien;
 	}
+        
+        /* is in kat */
+        public boolean inKat(Kategorie k){
+            return katId.equals(k.getId());
+        }
 	
 	public void setAllergien(Set<ObjName> allergien){
 		this.allergien = allergien;

@@ -36,6 +36,7 @@ public class RezepteService {
      * Wenn kein Rezept mit dieser id gefunden wurde, wird eine DasException ausgeloest.
      */
     public Rezept loadRezept(Long id){
+        Rezept r;
         Connection con = null;
         try {
             Query q = new Query(ResultType.OBJECTS);
@@ -47,7 +48,9 @@ public class RezepteService {
                 throw new DasException("Rezept mit ID " + id + " nicht gefunden");
             }
             
-            return rezepten.get(0);
+            r = rezepten.get(0);
+            r.zutaten = RezeptDao.loadZutaten(r.getId(), con);
+            return r;
         } catch(SQLException ex){
             throw new DasException("Rezept mit ID " + id + " konnte nicht geladen werden", ex);
         } finally {
@@ -80,7 +83,27 @@ public class RezepteService {
      * Speichert das Rezept r in die datenbank.
      */
     public void saveRezept(Rezept r){
-        throw new RuntimeException("todo");
+		Connection con = null;
+		try {
+			con = DbUtil.getConnection();
+			con.setAutoCommit(false);
+			if (r.getId() == null){
+				RezeptDao.insertRezept(r, con);
+			}
+			else {
+				RezeptDao.updateRezept(r, con);
+			}
+                        RezeptDao.saveZutaten(r, con);
+			//RezeptDao.saveZut2Rez(r, con);
+			con.commit();
+		}
+		catch(Exception ex){
+			DbUtil.rollback(con);
+			throw new DasException("Rezept konnte nicht gespeichert werden", ex);
+		}
+		finally {
+			DbUtil.close(con);
+		}	
     }
     
     /**
@@ -88,7 +111,17 @@ public class RezepteService {
      * Wenn das Rezept nicht in der datenbank vorkommt, geschieht nichts.
      */
     public void deleteRezept(Long id){
-        throw new RuntimeException("todo");
+		Connection con = null;
+		try {
+			con = DbUtil.getConnection();
+			RezeptDao.deleteRezept(id, con);
+		}
+		catch(Exception ex){
+			throw new DasException("Rezept " + id + " konnte nicht geloescht werden", ex);
+		}
+		finally {
+			DbUtil.close(con);
+		}		
     }
     
 }

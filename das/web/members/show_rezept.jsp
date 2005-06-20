@@ -5,8 +5,6 @@
 <%@ page import='das.bl.model.Zutat' %>
 <%@ page import='das.bl.service.ZutatenService' %>
 
-
-
 <%-- Controller instantiieren und pageContext setzen --%>
 <jsp:useBean id="ctrl" class="das.ui.ctrl.ShowRezeptCtrl">
     <jsp:setProperty name="ctrl" property="pageContext" value="${pageContext}"/>

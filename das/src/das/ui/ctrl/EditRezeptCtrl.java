@@ -3,8 +3,8 @@ package das.ui.ctrl;
  * date: 14.06.2005
  * autor: Kirill
  */
-import das.bl.model.Rezept;
-import das.bl.model.Zutat;
+import com.sun.java_cup.internal.runtime.Symbol;
+import das.bl.model.*;
 import das.bl.service.RezepteService;
 import das.bl.service.ZutatenService;
 import static das.ui.ctrl.CtrlConstants.*;
@@ -12,32 +12,34 @@ import das.util.ObjName;
 import das.util.Query;
 import das.util.ResultType;
 import java.io.IOException;
-import java.util.List;
-import java.util.Collection;
+import java.util.*;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 
 /**
  * Die Controller klasse zur aenderung und neu erzeugung von Rezepten.
  */
 public class EditRezeptCtrl extends ControllerBase {
-    private List<Zutat> zutaten;
-    private List<ObjName> kategorien;
     private Rezept rezept;
     
-    
-    public List<ObjName> getZutaten(){
-        Query q = new Query(ResultType.NAMES);
+    public List<Zutat> getZutaten(){
+        Query q = new Query(ResultType.OBJECTS);
         ZutatenService service = new ZutatenService(getUserName());
         return service.findZutaten(q);
     }
     
-    /* liefert den einheit des gegebenen Zutats. */
-    public String getEinheit(String zID){
-        ZutatenService service = new ZutatenService(getUserName());
-        Zutat zutat = service.loadZutat(Convert.toLong(zID, "ID", true, 0, Long.MAX_VALUE, errors));
-        return zutat.getEinheit();
+    public Map<Long,Long> getRezZutaten(){
+        return rezept.zutaten;
     }
     
+    	/**
+	 * Liefert eine liste von ObjNames aller kategorien.
+	 */
+	public List<Kategorie> getKategorien(){
+		Query q = new Query(ResultType.OBJECTS);
+		ZutatenService service = new ZutatenService(getUserName());
+		return service.findKategorien(q);
+	}	
     
     /**
      * Konvertiert und validiert die request parameter
@@ -48,6 +50,8 @@ public class EditRezeptCtrl extends ControllerBase {
         
         if (command.equals("save")){
             rezept = new Rezept();
+            convert(FROM_UI);
+        } else if(command.equals("edit")){
             convert(FROM_UI);
         }
         
@@ -70,13 +74,16 @@ public class EditRezeptCtrl extends ControllerBase {
             rezept = service.loadRezept(getLongParam("id", true));
             convert(TO_UI);
         } else if (command.equals("save")){
+            rezept.setBenutzer(getUserName());
             service.saveRezept(rezept);
             convert(TO_UI);
         } else if (command.equals("delete")){
             service.deleteRezept(getLongParam("id", true));
-            forward(DELETED_PAGE + "?msg=Rezept");
+            forward("find_rezept.jsp?cmd=find");
         }
     }
+    
+    
     
     /**
      * Konvertiert die werte aus den formularfeldern von Strings in die interne repraesentation
@@ -98,7 +105,25 @@ public class EditRezeptCtrl extends ControllerBase {
                     (String)fields.get("name"), "Name", false, 1, 200, errors));
             rezept.setAnleitung(Convert.toString(
                     (String)fields.get("anleitung"), "Anleitung", false, 1, 5000, errors));
+            convertZutaten();
             
         }
     }
+    
+    /* sucht und valiediert die zutaten. */
+    protected void convertZutaten(){
+        List<Zutat> zlist = getZutaten();
+        for(Zutat z : zlist){
+            Long ID = z.getId();
+            String sID = String.valueOf(ID);
+            if(fields.containsKey(sID)){
+                Long wert = Convert.toLong((String)fields.get(sID), "Anzahl von "+z.getName(), true, 0, Long.MAX_VALUE, errors);
+                if(wert != null) 
+                    if(!wert.equals(Long.valueOf("0"))) rezept.zutaten.put(ID, wert);
+            }
+        }
+        
+        
+    }
+    
 }

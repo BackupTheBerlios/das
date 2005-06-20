@@ -11,7 +11,7 @@ import das.util.ResultType;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Set;
+import java.util.*;
 import javax.servlet.ServletException;
 
 /**
@@ -20,6 +20,11 @@ import javax.servlet.ServletException;
 public class ShowRezeptCtrl extends ControllerBase {
     
     private Rezept rezept;
+    
+   
+        public Map<Long,Long> getZutaten(){
+        return rezept.zutaten;
+    }
     
     /**
      * Konvertiert und validiert die request parameter

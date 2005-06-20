@@ -20,7 +20,6 @@ public class FindRezeptCtrl extends ControllerBase {
 	
 	private List<ObjName> results;
 
-	//private Long katId;
         private String maxCal;
         private String maxFett;
         private String mindScore;
@@ -29,10 +28,16 @@ public class FindRezeptCtrl extends ControllerBase {
 	private String nameExpr;
 	private String message;
 
-        
+        /* liefert TRUE wenn der eingellogter user die editor rechte hat. */
        	public boolean isEditor(){				
 		HttpServletRequest httpRequest = (HttpServletRequest)pageContext.getRequest();
 		return httpRequest.isUserInRole("editors") || httpRequest.isUserInRole("admins");
+	}
+        
+        /* liefert TRUE wenn der current user tatsachlich den autor des rezepts ist */
+        public boolean isAutor(Long rID){
+            RezepteService service = new RezepteService(getUserName());
+            return getUserName().equals(service.loadRezept(rID).getBenutzer());
 	}
         
 	/**
@@ -55,14 +60,12 @@ public class FindRezeptCtrl extends ControllerBase {
 	 */
 	protected boolean convertAndValidate(String command){
 		if (command == null)
-			return true;
+			command = "find";
 		
 		if (command.equals("find")){
 			nameExpr = Convert.toString((String)fields.get("nameExpr"), "nameExpr", true,
-				0, 100, errors);
+				0, 200, errors);
 			}
-		
-
 		return errors.isEmpty();
 	}
 	
@@ -73,8 +76,6 @@ public class FindRezeptCtrl extends ControllerBase {
 	 */
 	protected void action(String command) throws ServletException, IOException {
 		
-		System.out.println("command: " + command);
-		
 		if (command == null)
 			command = "find";
 
@@ -82,7 +83,7 @@ public class FindRezeptCtrl extends ControllerBase {
 
                 
 		if (command.equals("find")){
-			Query q = new Query(ResultType.NAMES);
+			Query q = new Query(ResultType.OBJECTS);
 			
 
 			if (nameExpr != null){
@@ -97,16 +98,9 @@ public class FindRezeptCtrl extends ControllerBase {
                 
 		}
 		else if (command.equals("delete")){
-			int count = 0;
-			for (Object value : getFieldAsList("selected")){
-				Long id = Long.valueOf((String)value);
-				service.deleteRezept(id);
-				count++;
-			}
-			if (count == 1)
-				message = "1 Datensatz gel&ouml;scht: ";
-			else
-				message = count + " Datens&auml;tze gel&ouml;scht";
+
+				message = "1 Datensatz gel&ouml;scht";
+
 		}
 		else if (command.equals("new")){
 			forward("/edit_rezept.jsp?cmd=new");

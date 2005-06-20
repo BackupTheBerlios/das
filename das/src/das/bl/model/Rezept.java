@@ -1,7 +1,7 @@
 package das.bl.model;
 import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Domain klasse Rezept.
@@ -11,7 +11,14 @@ public class Rezept {
 	private Long id;
 	private String name;
 	private String anleitung;
+        private String benutzer;
 	private Integer avgRating;
+        public Map<Long,Long> zutaten; //zutat_id,wert
+        
+        public Rezept(){
+            zutaten = new HashMap<Long,Long>();
+            
+        }
 
 	public Long getId() {
 		return id;
@@ -27,6 +34,14 @@ public class Rezept {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+        
+        public String getBenutzer(){
+		return benutzer;
+	}
+       
+       	public void setBenutzer(String benutzer) {
+		this.benutzer = benutzer;
 	}
 
 	public String getAnleitung() {
@@ -56,4 +71,6 @@ public class Rezept {
 	public double summeZucker(){
 		throw new RuntimeException("todo");
 	}
+        
+     
 }

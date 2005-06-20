@@ -115,9 +115,10 @@ create index i_ba_all_id on bzr2all(all_id);
 
 -- kuerzel: bew
 create table bewertung (
-   id int primary key,
    bzr_id int not null references benutzer on delete cascade,
-   rating int not null
+   rez_id int not null references benutzer on delete cascade,
+   rating float not null,
+   primary key(bzr_id, rez_id)
 );
 
 create index i_bew_bzr_id on bewertung(bzr_id);
