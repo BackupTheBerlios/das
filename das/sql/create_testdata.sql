@@ -1,7 +1,7 @@
 
-insert into gruppe values ('31', 'Administrator');
-insert into gruppe values ('32', 'Editor');
-insert into gruppe values ('33', 'Benutzer');
+insert into gruppe values ('31', 'admins');
+insert into gruppe values ('32', 'editors');
+insert into gruppe values ('33', 'users');
 
 insert into benutzer values(10, 'User A', 'a', 'a', 'a@das.com', 31);
 insert into benutzer values(11, 'User B', 'b', 'b', 'b@das.com', 32);

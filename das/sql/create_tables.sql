@@ -6,7 +6,7 @@ drop table zut2rez;
 drop table rezept;
 drop table zutat;
 drop table kategorie;
---drop table benutzergruppe;
+drop view benutzergruppe;
 drop table benutzer;
 drop table gruppe;
 drop sequence seq;
@@ -33,6 +33,10 @@ create table benutzer (
 
 create index i_bzr_gru_id on benutzer(gru_id);
 
+create view benutzergruppe(login, gruppe) as
+   select benutzer.login, gruppe.name 
+   from benutzer join gruppe on benutzer.gru_id = gruppe.id;
+   
 /*
 -- kuerzel: bg
 create table benutzergruppe (
