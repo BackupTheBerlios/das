@@ -105,8 +105,8 @@ create index i_za_all_id on zut2all(all_id);
 
 -- kuerzel: ba
 create table bzr2all (
-   bzr_id int not null references benutzer,
-   all_id int not null references allergie,
+   bzr_id int not null references benutzer on delete cascade,
+   all_id int not null references allergie on delete cascade,
    primary key(bzr_id, all_id)
 );
 
