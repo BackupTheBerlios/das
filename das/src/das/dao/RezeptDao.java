@@ -1,5 +1,6 @@
 package das.dao;
 
+import com.mysql.jdbc.Statement;
 import das.DasException;
 import das.bl.model.Rezept;
 import das.util.ObjName;
@@ -28,6 +29,7 @@ public class RezeptDao {
             
             if (q.getResultType() == ResultType.NAMES){
                 stmt = builder.buildQuery("select id, name from rezept", con);
+                
                 return makeNameList(stmt.executeQuery());
             } else {
                 stmt = builder.buildQuery(
@@ -40,6 +42,40 @@ public class RezeptDao {
         }
     }
     
+    public static void bewerteRezept(Rezept r, Connection con, String login, int rating) throws SQLException{
+        String sql = "SELECT * FROM bewertung WHERE rez_id = ? AND login = ?";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setObject(1,r.getId());
+        stmt.setObject(2,login);
+        ResultSet rs = stmt.executeQuery();
+        
+        if(rs.next()){
+            //update
+            stmt = con.prepareStatement("UPDATE bewertung SET rating = ? WHERE rez_id = ? AND login = ?");
+            stmt.setObject(1,rating);
+            stmt.setObject(2,r.getId());
+            stmt.setObject(3,login);
+            stmt.execute();
+        }else{
+            //insert
+            stmt = con.prepareStatement("INSERT INTO bewertung(rating,rez_id,login) VALUES(?,?,?)");
+            stmt.setObject(1,rating);
+            stmt.setObject(2,r.getId());
+            stmt.setObject(3,login);
+            stmt.execute();
+        }
+    }
+    
+    public static float getBewertung(Rezept r, Connection con) throws SQLException{
+        float bew = 0.0f;
+        String sql = "SELECT AVG(rating) FROM bewertung WHERE rez_id = ?";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setObject(1,r.getId());
+        ResultSet rs = stmt.executeQuery();
+        rs.next();
+        bew = rs.getFloat("avg");
+        return bew;
+    }
     
     public static void insertRezept(Rezept r, Connection con) throws SQLException{
         String sql = "insert into rezept(id, name, anleitung, bzr_login) "

@@ -1,8 +1,9 @@
 package das.ui.ctrl;
-import das.bl.service.RezepteService;
+import das.bl.service.*;
 import das.util.ObjName;
 import das.util.Query;
 import das.util.QueryExpr;
+import das.bl.model.*;
 import das.util.ResultType;
 import java.io.IOException;
 import java.util.List;
@@ -37,6 +38,7 @@ public class FindRezeptCtrl extends ControllerBase {
         /* liefert TRUE wenn der current user tatsachlich den autor des rezepts ist */
         public boolean isAutor(Long rID){
             RezepteService service = new RezepteService(getUserName());
+            System.out.println(service.loadRezept(rID).getBenutzer());
             return getUserName().equals(service.loadRezept(rID).getBenutzer());
 	}
         

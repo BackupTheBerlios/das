@@ -76,7 +76,22 @@ public class RezepteService {
         }
     }
     
-   
+   /**
+    * Bewerten den Rezept r durch User u
+    */
+    public void bewerteRezept(String login, Rezept r, int rating){
+		Connection con = null;
+		try {
+			con = DbUtil.getConnection();
+			RezeptDao.bewerteRezept(r, con, login, rating);
+		}
+		catch(Exception ex){
+			throw new DasException("Rezept " + r.getName() + " konnte nicht bewertet werden", ex);
+		}
+		finally {
+			DbUtil.close(con);
+		}		
+    }
     
     
     /**
@@ -94,7 +109,6 @@ public class RezepteService {
 				RezeptDao.updateRezept(r, con);
 			}
                         RezeptDao.saveZutaten(r, con);
-			//RezeptDao.saveZut2Rez(r, con);
 			con.commit();
 		}
 		catch(Exception ex){

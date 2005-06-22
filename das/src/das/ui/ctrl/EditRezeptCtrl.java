@@ -5,8 +5,7 @@ package das.ui.ctrl;
  */
 import com.sun.java_cup.internal.runtime.Symbol;
 import das.bl.model.*;
-import das.bl.service.RezepteService;
-import das.bl.service.ZutatenService;
+import das.bl.service.*;
 import static das.ui.ctrl.CtrlConstants.*;
 import das.util.ObjName;
 import das.util.Query;
@@ -32,14 +31,14 @@ public class EditRezeptCtrl extends ControllerBase {
         return rezept.zutaten;
     }
     
-    	/**
-	 * Liefert eine liste von ObjNames aller kategorien.
-	 */
-	public List<Kategorie> getKategorien(){
-		Query q = new Query(ResultType.OBJECTS);
-		ZutatenService service = new ZutatenService(getUserName());
-		return service.findKategorien(q);
-	}	
+    /**
+     * Liefert eine liste von ObjNames aller kategorien.
+     */
+    public List<Kategorie> getKategorien(){
+        Query q = new Query(ResultType.OBJECTS);
+        ZutatenService service = new ZutatenService(getUserName());
+        return service.findKategorien(q);
+    }
     
     /**
      * Konvertiert und validiert die request parameter
@@ -69,6 +68,7 @@ public class EditRezeptCtrl extends ControllerBase {
         
         if (command.equals("new")){
             rezept = new Rezept();
+            rezept.setBenutzer(getUserName());
             convert(TO_UI);
         } else if ((command.equals("edit")) || (command.equals("view"))){
             rezept = service.loadRezept(getLongParam("id", true));
@@ -118,7 +118,7 @@ public class EditRezeptCtrl extends ControllerBase {
             String sID = String.valueOf(ID);
             if(fields.containsKey(sID)){
                 Long wert = Convert.toLong((String)fields.get(sID), "Anzahl von "+z.getName(), true, 0, Long.MAX_VALUE, errors);
-                if(wert != null) 
+                if(wert != null)
                     if(!wert.equals(Long.valueOf("0"))) rezept.zutaten.put(ID, wert);
             }
         }
