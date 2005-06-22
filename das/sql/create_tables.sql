@@ -79,10 +79,10 @@ create table rezept (
 
 -- kuerzel: zr
 create table zut2rez (
-   id int primary key,
    zut_id int not null references zutat,
    rez_id int not null references rezept on delete cascade,
-   menge real
+   menge real,
+   primary key(zut_id, rez_id)
 );
 
 create index i_zr_zut_id on zut2rez(zut_id);

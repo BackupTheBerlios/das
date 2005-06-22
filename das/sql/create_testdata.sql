@@ -26,5 +26,5 @@ insert into zut2all values(1, 1);
 insert into zut2all values(1, 2);
 
 insert into rezept values (1, 'Omas Torte', 'Hier gehoert die Anleitung her', 12);
-insert into zut2rez values (1, 1, 1, 100);
-insert into zut2rez values (2, 2, 1, 300);
+insert into zut2rez values (1, 1, 100);
+insert into zut2rez values (2, 1, 300);
