@@ -74,7 +74,8 @@ create table rezept (
    id int primary key,
    name varchar(100) not null unique,
    anleitung text,
-   bzr_id int references benutzer on delete set null
+   bzr_login varchar(50),
+   FOREIGN KEY (bzr_login) references benutzer(login) on delete set null
 );
 
 -- kuerzel: zr
