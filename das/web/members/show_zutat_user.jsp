@@ -46,7 +46,7 @@
 					<td>Einheit</td>
 					<td>${ctrl.fields.einheit}</td>
 				</tr><tr>
-					<td>Kalorien (100g)</td>
+					<td>Kalorien (pro Einheit)</td>
 					<td>${ctrl.fields.kalorien}</td>
 				</tr><tr>
 					<td>Fett (g/100g)</td>

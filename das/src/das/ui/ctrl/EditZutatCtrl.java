@@ -119,7 +119,7 @@ public class EditZutatCtrl extends ControllerBase {
 			zutat.setEinheit(Convert.toString(
 				(String)fields.get("einheit"), "Einheit", false, 1, 20, errors));
 			zutat.setKalorien(Convert.toFloat(
-				(String)fields.get("kalorien"), "Kalorien", false, 1, 10000, errors));
+				(String)fields.get("kalorien"), "Kalorien", false, 0, 10000, errors));
 			zutat.setFett(Convert.toInteger(
 				(String)fields.get("fett"), "Fett", true, 0, 100, errors));
 			zutat.setZucker(Convert.toInteger(

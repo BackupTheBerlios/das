@@ -46,7 +46,7 @@
 					<td>Einheit</td>
 					<td><input name="einheit" value="${ctrl.fields.einheit}" maxlength="20"/></td>
 				</tr><tr>
-					<td>Kalorien (100g)</td>
+					<td>Kalorien (pro Einheit)</td>
 					<td><input name="kalorien" value="${ctrl.fields.kalorien}" maxlength="20"/></td>
 				</tr><tr>
 					<td>Fettgehalt (g/100g)</td>
