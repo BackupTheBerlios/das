@@ -79,6 +79,21 @@ public class ZutatenService {
 		}
 	}
 	
+	public boolean zutatExists(Zutat zutat){
+		Query q = new Query(ResultType.NAMES);
+		q.addExpression(new QueryExpr("name", zutat.getName()));
+		List found = findZutaten(q);
+		
+		if (!found.isEmpty()){
+			Long foundId = (Long)((ObjName)found.get(0)).getId();
+			if (!foundId.equals(zutat.getId())){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	/**
 	 * Speichert die Zutat z in die datenbank.
 	 */

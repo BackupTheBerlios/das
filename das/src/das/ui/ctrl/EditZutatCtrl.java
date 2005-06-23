@@ -4,6 +4,7 @@ import das.bl.service.ZutatenService;
 import static das.ui.ctrl.CtrlConstants.*;
 import das.util.ObjName;
 import das.util.Query;
+import das.util.QueryExpr;
 import das.util.ResultType;
 import java.io.IOException;
 import java.util.Collection;
@@ -84,8 +85,13 @@ public class EditZutatCtrl extends ControllerBase {
 			convert(TO_UI);
 		}
 		else if (command.equals("save")){
-			service.saveZutat(zutat);
-			convert(TO_UI);
+			if (service.zutatExists(zutat)){
+				error("Eine Zutat mit diesem Namen existiert bereits");
+			}
+			else {
+				service.saveZutat(zutat);
+				convert(TO_UI);
+			}
 		}
 		else if (command.equals("delete")){
 			service.deleteZutat(getLongParam("id", true));
