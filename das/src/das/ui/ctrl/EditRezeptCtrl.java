@@ -4,6 +4,7 @@ package das.ui.ctrl;
  * autor: Kirill
  */
 import com.sun.java_cup.internal.runtime.Symbol;
+import das.DasException;
 import das.bl.model.*;
 import das.bl.service.*;
 import static das.ui.ctrl.CtrlConstants.*;
@@ -50,9 +51,12 @@ public class EditRezeptCtrl extends ControllerBase {
         if (command.equals("save")){
             rezept = new Rezept();
             convert(FROM_UI);
+            //pruefe das name eindeutig ist
+            validateName();
         } else if(command.equals("edit")){
             convert(FROM_UI);
         }
+        
         
         return errors.isEmpty();
     }
@@ -107,6 +111,14 @@ public class EditRezeptCtrl extends ControllerBase {
                     (String)fields.get("anleitung"), "Anleitung", false, 1, 5000, errors));
             convertZutaten();
             
+            
+        }
+    }
+    
+    protected void validateName(){
+        RezepteService service = new RezepteService(getUserName());
+        if(service.nameExists(rezept)){
+            errors.put("nameExists", "Rezept mit diesen Namen existiert bereit");
         }
     }
     

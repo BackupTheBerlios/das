@@ -76,48 +76,56 @@ public class RezepteService {
         }
     }
     
-   /**
-    * Bewerten den Rezept r durch User u
-    */
+    /**
+     * Bewerten den Rezept r durch User u
+     */
     public void bewerteRezept(String login, Rezept r, int rating){
-		Connection con = null;
-		try {
-			con = DbUtil.getConnection();
-			RezeptDao.bewerteRezept(r, con, login, rating);
-		}
-		catch(Exception ex){
-			throw new DasException("Rezept " + r.getName() + " konnte nicht bewertet werden", ex);
-		}
-		finally {
-			DbUtil.close(con);
-		}		
+        Connection con = null;
+        try {
+            con = DbUtil.getConnection();
+            RezeptDao.bewerteRezept(r, con, login, rating);
+        } catch(Exception ex){
+            throw new DasException("Rezept " + r.getName() + " konnte nicht bewertet werden", ex);
+        } finally {
+            DbUtil.close(con);
+        }
     }
     
+    
+    public boolean nameExists(Rezept r){
+        Connection con = null;
+        try {
+            con = DbUtil.getConnection();
+            return RezeptDao.nameExists(r, con);
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        } finally {
+            DbUtil.close(con);
+        }
+        return true; //wird nie aufgerufen
+    }
     
     /**
      * Speichert das Rezept r in die datenbank.
      */
     public void saveRezept(Rezept r){
-		Connection con = null;
-		try {
-			con = DbUtil.getConnection();
-			con.setAutoCommit(false);
-			if (r.getId() == null){
-				RezeptDao.insertRezept(r, con);
-			}
-			else {
-				RezeptDao.updateRezept(r, con);
-			}
-                        RezeptDao.saveZutaten(r, con);
-			con.commit();
-		}
-		catch(Exception ex){
-			DbUtil.rollback(con);
-			throw new DasException("Rezept konnte nicht gespeichert werden", ex);
-		}
-		finally {
-			DbUtil.close(con);
-		}	
+        Connection con = null;
+        try {
+            con = DbUtil.getConnection();
+            con.setAutoCommit(false);
+            if (r.getId() == null){
+                RezeptDao.insertRezept(r, con);
+            } else {
+                RezeptDao.updateRezept(r, con);
+            }
+            RezeptDao.saveZutaten(r, con);
+            con.commit();
+        } catch(Exception ex){
+            DbUtil.rollback(con);
+            throw new DasException("Rezept konnte nicht gespeichert werden", ex);
+        } finally {
+            DbUtil.close(con);
+        }
     }
     
     /**
@@ -125,17 +133,15 @@ public class RezepteService {
      * Wenn das Rezept nicht in der datenbank vorkommt, geschieht nichts.
      */
     public void deleteRezept(Long id){
-		Connection con = null;
-		try {
-			con = DbUtil.getConnection();
-			RezeptDao.deleteRezept(id, con);
-		}
-		catch(Exception ex){
-			throw new DasException("Rezept " + id + " konnte nicht geloescht werden", ex);
-		}
-		finally {
-			DbUtil.close(con);
-		}		
+        Connection con = null;
+        try {
+            con = DbUtil.getConnection();
+            RezeptDao.deleteRezept(id, con);
+        } catch(Exception ex){
+            throw new DasException("Rezept " + id + " konnte nicht geloescht werden", ex);
+        } finally {
+            DbUtil.close(con);
+        }
     }
     
 }

@@ -1,6 +1,5 @@
 package das.dao;
 
-import com.mysql.jdbc.Statement;
 import das.DasException;
 import das.bl.model.Rezept;
 import das.util.ObjName;
@@ -40,6 +39,19 @@ public class RezeptDao {
         } finally {
             DbUtil.close(rs, stmt);
         }
+    }
+    
+    public static boolean nameExists(Rezept r, Connection con) throws SQLException{
+            String sql = "SELECT * FROM rezept WHERE name = ? AND ID != ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setObject(1,r.getName());
+            stmt.setObject(2,r.getId());
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                return true;
+            }else
+                return false;
     }
     
     public static void bewerteRezept(Rezept r, Connection con, String login, int rating) throws SQLException{
