@@ -122,5 +122,5 @@ create table bewertung (
    primary key(login, rez_id)
 );
 
-create index i_bew_bzr_id on bewertung(bzr_id);
+create index i_bew_bzr_id on bewertung(login);
 create index i_bew_rating on bewertung(rating);
