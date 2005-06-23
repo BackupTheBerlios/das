@@ -19,7 +19,7 @@ import javax.servlet.ServletException;
  */
 public class ShowRezeptCtrl extends ControllerBase {
     
-    private Rezept rezept;
+    public Rezept rezept;
     
     
     public Map<Long,Long> getZutaten(){

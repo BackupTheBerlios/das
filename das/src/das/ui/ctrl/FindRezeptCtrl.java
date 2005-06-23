@@ -21,9 +21,6 @@ public class FindRezeptCtrl extends ControllerBase {
 	
 	private List<ObjName> results;
 
-        private String maxCal;
-        private String maxFett;
-        private String mindScore;
         private String anleitung;
         
 	private String nameExpr;

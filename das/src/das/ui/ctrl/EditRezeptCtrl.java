@@ -79,7 +79,12 @@ public class EditRezeptCtrl extends ControllerBase {
             convert(TO_UI);
         } else if (command.equals("save")){
             rezept.setBenutzer(getUserName());
+            try{
             service.saveRezept(rezept);
+            }catch(DasException de){
+                errors.put("rezeptExists", "Rezept mit Name '"+rezept.getName()+"' existiert bereits");
+                valid = false;
+            }
             convert(TO_UI);
         } else if (command.equals("delete")){
             service.deleteRezept(getLongParam("id", true));

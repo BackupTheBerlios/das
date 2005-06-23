@@ -112,6 +112,11 @@ public class RezepteService {
         Connection con = null;
         try {
             con = DbUtil.getConnection();
+            
+            if (nameExists(r)){
+                throw new DasException( "Rezept mit Name '"+r.getName()+"' existiert bereits");
+            }
+            
             con.setAutoCommit(false);
             if (r.getId() == null){
                 RezeptDao.insertRezept(r, con);
