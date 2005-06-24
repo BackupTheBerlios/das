@@ -24,7 +24,7 @@ create table gruppe (
 -- kuerzel: bzr
 create table benutzer (
    id int primary key,
-   name varchar(100),	
+   name varchar(100) not null,	
    login varchar(50) not null unique,
    passwort varchar(50) not null,
    email varchar(50),
