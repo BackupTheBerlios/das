@@ -44,7 +44,7 @@
                         <form action="find_rezept.jsp?cmd=find" method="POST">
 
                             <table width="400" border="0">
-                                <tr> 
+                              <!--  <tr> 
                                     <td>Max. Kalorien</td>
                                     <td><input name="cal" type="text" width="300" value="" maxlength="300" size="25"></td>
                                 </tr>
@@ -65,7 +65,7 @@
                                     </select><br>
                                     <td>
                                 </tr>
-                                <tr height="5"></tr>
+                                <tr height="5"></tr> -->
                                 <tr> 
                                     <td>Stichwort</td>
                                     <td><input name="nameExpr" type="text" width="300" value="" maxlength="300" size="25"></td>
@@ -90,11 +90,12 @@
                                     Rezept r = (Rezept) iter.next();
                                     Long id = r.getId();
                                     String name = r.getName();
-                                    String user = r.getBenutzer();
+                                    Float avgrating = r.getAvgRating();
+                                    
 
                                 %>
                                 <tr>
-                                    <td width="300"><a href="show_rezept.jsp?id=<% out.print(id); %>"><% out.print(name); %></a></td>
+                                    <td width="300"><a href="show_rezept.jsp?id=<%=id%>"><%=name%></a> (<%=String.valueOf(avgrating)%>)</td>
                                     <%
                                     if(ctrl.isEditor() || ctrl.isAutor(id)){
                                     %>

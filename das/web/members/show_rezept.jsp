@@ -69,23 +69,34 @@
                         <tr height="20"></tr>
                         <tr> 
                             <td>Kalorien:</td>
-                            <td>77777777</td>   
+                        <td><%= ctrl.sumKalorien() %></td>   
+                        </tr>
+                         <tr> 
+                            <td>Fett:</td>
+                        <td><%= ctrl.sumFett() %> g</td>   
+                        </tr>
+                         <tr> 
+                            <td>Zucker:</td>
+                        <td><%= ctrl.sumZucker() %> g</td>   
                         </tr>
                         <tr height="20"></tr>
                         <tr> 
-                            <td>Bewerten:</td>
-                            <td><input name="bew" type="radio"> 1  <input name="bew" type="radio"> 2  <input name="bew" type="radio"> 3  
-                            <input name="bew" type="radio"> 4  <input name="bew" type="radio"> 5</td>   
+                        <form action="show_rezept.jsp?cmd=bewerten" method="POST">
+                        <input name="id" type="hidden" value="${ctrl.fields.id}"/>
+                            <td valign="middle"></td>
+                            <td valign="middle"><img src="../img/thumbdown.gif" border="0">   <input name="bew" type="radio" value="1"> 1  <input name="bew" type="radio" value="2"> 2  <input name="bew" type="radio" CHECKED  value="3"> 3  
+                            <input name="bew" type="radio"  value="4"> 4  <input name="bew" type="radio" value="5"> 5   <img src="../img/thumbup.gif" border="0"></td>   
+                        </tr>
+                        <tr> 
+                            <td>&empty; Bewertung:</td>
+                            <td><%= ctrl.rezept.getAvgRating() %> </td>  
                         </tr>
                         <tr> 
                             <td></td>
-                            <td><input name="save" type="submit" value="Bewerten"></td>   
+                            <td><input name="save" type="submit" value="Bewerten"></td>  
                         </tr>
-                    </table>      
-                                        
-                              
-                                        
-                                        
+                         </form>
+                    </table>            
                 </td>
             </tr>
         </tbody>

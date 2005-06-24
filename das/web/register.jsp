@@ -41,16 +41,16 @@
 					</td>
 				</tr><tr>
 					<td>Name</td>
-					<td><input name="name" value="${ctrl.fields.name}" maxlength="100"/></td>
+					<td><input name="name" value="${ctrl.fields.name}" maxlength="100"/> *</td>
 				</tr><tr>
 					<td>Login</td>
-					<td><input name="login" value="${ctrl.fields.login}" maxlength="50"/></td>
+					<td><input name="login" value="${ctrl.fields.login}" maxlength="50"/> *</td>
 				</tr><tr>
 					<td>Passwort</td>
-					<td><input name="passwort" value="${ctrl.fields.passwort}" maxlength="50"/></td>
+					<td><input name="passwort" value="${ctrl.fields.passwort}" maxlength="50"/> *</td>
 				</tr><tr>
 					<td>E-Mail</td>
-					<td><input name="email" value="${ctrl.fields.email}" maxlength="50"/></td>
+					<td><input name="email" value="${ctrl.fields.email}" maxlength="50"/> *</td>
 				</tr><tr>
 					<td>Gruppe</td>
 					<td><das:selectname name="gruId" options="${ctrl.gruppen}" 
@@ -64,8 +64,9 @@
 						</tr><tr>
 						<td></td>
 					</c:forEach>
-				</tr>			
+				</tr>	
 				<hr/>
+				
 				<tr>
 					<td><input type="submit" value="Anlegen"/></td>
 				</form>
@@ -75,6 +76,7 @@
 					</td>				
 				</tr>
 			</table>
+			Die mit * gekennzeichneten Felder darfen nicht leer sein.
 		</div>
 	</td>
 	</tr>
