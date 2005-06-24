@@ -41,7 +41,7 @@ public class UserService {
 	 * Laedt den durch id oder namen identifizierten User aus der datenbank.
 	 * Wenn keine User gefunden wurde, wird eine DasException ausgeloest.	 
          */
-        public User loadUser(Long id){
+	public User loadUser(Long id){
 		Query q = new Query(ResultType.OBJECTS);
 		q.addExpression(new QueryExpr("id", id));
 		List<User> users = findUsers(q);
@@ -55,8 +55,8 @@ public class UserService {
                 
 	/**
 	 * Laedt den eingeloggten User aus der datenbank. 
-         */
-        public User loadUser(String login){
+    */
+	public User loadUser(String login){
 		Query q = new Query(ResultType.OBJECTS);
 		q.addExpression(new QueryExpr("login", login));
 		List<User> users = findUsers(q);
