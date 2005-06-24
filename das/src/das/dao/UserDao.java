@@ -31,6 +31,7 @@ public class UserDao {
 			builder.add("id", q.getExpression("id"));                        
 			builder.add("name", q.getExpression("name"));
 			builder.add("gru_id", q.getExpression("gru_id"));
+			builder.add("login", q.getExpression("login"));
                         
 			if (q.getResultType() == ResultType.NAMES){				
 				stmt = builder.buildQuery("select id, name from benutzer", con);
