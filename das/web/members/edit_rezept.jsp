@@ -85,7 +85,7 @@
                             %>       
                         <tr>
                             <td </td>
-                            <td><hr><a href="find_rezept.jsp"><input type="button" value="Zur&uuml;ck">  <input name="ok" type="submit" value="Speichern"></a></td>
+                            <td><hr><a href="find_rezept.jsp">Zur&uuml;ck</a> <input name="ok" type="submit" value="Speichern"></td>
                         </tr>
                         </table>
                     </form>

@@ -68,7 +68,7 @@
                                 <tr height="5"></tr> -->
                                 <tr> 
                                     <td>Stichwort</td>
-                                    <td><input name="nameExpr" type="text" width="300" value="" maxlength="300" size="25"></td>
+                                    <td><input name="nameExpr" type="text" width="300" value="${ctrl.fields.nameExpr}" maxlength="200" size="25"></td>
                                 </tr>
                                 <tr height="5"></tr>
                                 <tr> 
@@ -80,7 +80,7 @@
                         </form>
                             <p />&nbsp;
                             <!-- eine auflistung von allen Rezepten -->
-                            <h4>Rezept auswдhlen</h4>
+                            <h4>Rezept ausw&auml;hlen</h4>
 		
                         ${ctrl.message}
                             <table cellpadding="0" cellspacing="2">

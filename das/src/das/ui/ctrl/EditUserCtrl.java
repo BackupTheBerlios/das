@@ -11,6 +11,7 @@ import das.bl.service.ZutatenService;
 import static das.ui.ctrl.CtrlConstants.*;
 import das.util.ObjName;
 import das.util.Query;
+import das.util.QueryExpr;
 import das.util.ResultType;
 import java.io.IOException;
 import java.util.Collection;
