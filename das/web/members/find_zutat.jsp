@@ -61,7 +61,8 @@
 			</c:if>
 
 			<hr width="50%" align="left"/>
-			<button type="button" onClick="submitForm('find_zutat.jsp?cmd=delete', 'Sicher?')">
+			<button type="button" onClick="submitForm('find_zutat.jsp?cmd=delete', 'Sicher?')"
+				${ctrl.deleteEnabled}>
 				L&ouml;schen</button>
 			<button type="button" onClick="submitForm('edit_zutat.jsp?cmd=new')">Neu</button>
 		</form>
