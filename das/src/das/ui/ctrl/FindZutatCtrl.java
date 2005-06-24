@@ -44,13 +44,7 @@ public class FindZutatCtrl extends ControllerBase {
 	public String getMessage(){
 		return message;
 	}
-	
-	public String getDeleteEnabled(){
-		if (results == null || results.isEmpty())
-			return "disabled";
-		return null;
-	}
-	
+		
 	/**
 	 * Konvertiert und validiert die request parameter
 	 */

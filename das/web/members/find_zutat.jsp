@@ -54,15 +54,16 @@
 			<c:forEach items="${ctrl.results}" var="item">
 				<tr>
 					<td><a href="edit_zutat.jsp?cmd=edit&id=${item.id}">${item.name}</a></td>
-					<td><input type="checkbox" name="selected" value="${item.id}"/></td>
+					<td><input type="checkbox" name="selected" value="${item.id}"
+						onclick="deleteButton.disabled = false"/></td>
 				</tr>
 			</c:forEach>
 			</table>
 			</c:if>
 
 			<hr width="50%" align="left"/>
-			<button type="button" onClick="submitForm('find_zutat.jsp?cmd=delete', 'Sicher?')"
-				${ctrl.deleteEnabled}>
+			<button id="deleteButton" type="button" disabled
+				onClick="submitForm('find_zutat.jsp?cmd=delete', 'Sicher?')">
 				L&ouml;schen</button>
 			<button type="button" onClick="submitForm('edit_zutat.jsp?cmd=new')">Neu</button>
 		</form>
