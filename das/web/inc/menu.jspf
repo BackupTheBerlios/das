@@ -35,7 +35,7 @@
 </div>
 </div>
 
-<c:if test="${menu.editor}">
+<c:if test="${menu.showVerwaltungMenu}">
 	<div class="separator"><b>Verwalten</b>
 	<div style="display: block;" id="menu1__1">
 	<div class="option">
@@ -47,9 +47,11 @@
 	<div class="option">
 		<a href="${pageContext.request.contextPath}/members/find_kategorie.jsp" 
 			class="linkmenu">Kategorien bearbeiten</a></div>
+	<c:if test="${menu.showUserBearbeiten}">
 	<div class="option">
 		<a href="${pageContext.request.contextPath}/members/find_user.jsp" 
 			class="linkmenu">User bearbeiten</a></div>		
+	</c:if>
 	</div>
 	</div>
 </c:if>

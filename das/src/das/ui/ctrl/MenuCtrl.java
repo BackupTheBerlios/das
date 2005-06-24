@@ -14,4 +14,15 @@ public class MenuCtrl {
 		HttpServletRequest httpRequest = (HttpServletRequest)pageContext.getRequest();
 		return httpRequest.isUserInRole("editors") || httpRequest.isUserInRole("admins");
 	}
+	
+	public boolean isShowVerwaltungMenu(){
+		HttpServletRequest httpRequest = (HttpServletRequest)pageContext.getRequest();
+		return httpRequest.isUserInRole("editors") || httpRequest.isUserInRole("admins");		
+	}
+	
+	public boolean isShowUserBearbeiten(){
+		HttpServletRequest httpRequest = (HttpServletRequest)pageContext.getRequest();
+		return httpRequest.isUserInRole("admins");		
+	}
+
 }
