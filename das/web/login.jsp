@@ -27,6 +27,8 @@
 	</td>
 	<td id="centercolumn" valign="top">
 		<div id="das-center">
+		
+		<% if(request.getParameter("msg") != null) out.println(request.getParameter("msg")+"<p />"); %>
 		<h4>Login</h4>
 		
 		<form action="j_security_check" method="post">

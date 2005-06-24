@@ -38,23 +38,18 @@
 					<td>ID</td>
 					<td>${ctrl.fields.id}
 						<input name="id" type="hidden" value="${ctrl.fields.id}"/>
+						<input name="login" value="${ctrl.fields.login}" type="hidden"/>
+						<input name="gruId" value="${ctrl.fields.gruId}" type="hidden"/>
 					</td>
 				</tr><tr>
 					<td>Name</td>
 					<td><input name="name" value="${ctrl.fields.name}" maxlength="100"/></td>
-				</tr><tr>
-					<td>Login</td>
-					<td><input name="login" value="${ctrl.fields.login}" maxlength="50"/></td>
 				</tr><tr>
 					<td>Passwort</td>
 					<td><input name="passwort" value="${ctrl.fields.passwort}" maxlength="50"/></td>
 				</tr><tr>
 					<td>E-Mail</td>
 					<td><input name="email" value="${ctrl.fields.email}" maxlength="50"/></td>
-				</tr><tr>
-					<td>Gruppe</td>
-					<td><das:selectname name="gruId" options="${ctrl.gruppen}" 
-						selected="${ctrl.fields.gruId}"/></td>					
 				</tr><tr>
 					<td>Allergien:</td>                                 
 					<c:forEach items="${ctrl.allergien}" var="item">			

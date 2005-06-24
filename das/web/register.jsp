@@ -32,6 +32,7 @@
 		<h4>Registrieren</h4>
 		<%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
 		<das:errorlist controller="${ctrl}"/>
+		${ctrl.message}
 		<form action="register.jsp?cmd=save" method="POST">
 			<table cellpadding="0" cellspacing="2">
 				<tr>
@@ -50,7 +51,7 @@
 					<td><input name="passwort" value="${ctrl.fields.passwort}" maxlength="50"/> *</td>
 				</tr><tr>
 					<td>E-Mail</td>
-					<td><input name="email" value="${ctrl.fields.email}" maxlength="50"/> *</td>
+					<td><input name="email" value="${ctrl.fields.email}" maxlength="50"/></td>
 				</tr><tr>
 					<td>Gruppe</td>
 					<td><das:selectname name="gruId" options="${ctrl.gruppen}" 
@@ -76,7 +77,7 @@
 					</td>				
 				</tr>
 			</table>
-			Die mit * gekennzeichneten Felder darfen nicht leer sein.
+			Die mit * gekennzeichneten Felder d&uuml;rfen nicht leer sein.
 		</div>
 	</td>
 	</tr>

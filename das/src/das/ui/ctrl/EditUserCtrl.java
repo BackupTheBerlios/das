@@ -30,6 +30,11 @@ import javax.servlet.ServletException;
 public class EditUserCtrl extends ControllerBase {
     
     private User user;
+    private String message;
+    
+    public String getMessage(){
+        return message;
+    }
     
     /**
      * Liefert eine liste von ObjNames aller Gruppen.
@@ -99,7 +104,8 @@ public class EditUserCtrl extends ControllerBase {
             convert(TO_UI);
         } else if (command.equals("save")){
             try{
-            service.saveUser(user);
+                service.saveUser(user);
+                //forward("/login.jsp?msg=User wurde erfolgreich gespeichert");
             }catch(DasException de){
                 errors.put("userExists", "User mit Login '"+user.getLogin()+"' existiert bereits");
                 valid = false;
@@ -137,7 +143,7 @@ public class EditUserCtrl extends ControllerBase {
             user.setPasswort(Convert.toString(
                     (String)fields.get("passwort"), "Passwort", false, 0, 50, errors));
             user.setEmail(Convert.toString(
-                    (String)fields.get("email"), "Email", false, 1, 50, errors));
+                    (String)fields.get("email"), "Email", true, 1, 50, errors));
             user.setGruId(Convert.toLong(
                     (String)fields.get("gruId"), "Gruppe", true, 0, Long.MAX_VALUE, errors));
             allergienFromUi();
