@@ -1,10 +1,10 @@
 package das.ui.ctrl;
+import das.IntegrityConstraintException;
 import das.bl.model.Zutat;
 import das.bl.service.ZutatenService;
 import static das.ui.ctrl.CtrlConstants.*;
 import das.util.ObjName;
 import das.util.Query;
-import das.util.QueryExpr;
 import das.util.ResultType;
 import java.io.IOException;
 import java.util.Collection;
@@ -94,8 +94,14 @@ public class EditZutatCtrl extends ControllerBase {
 			}
 		}
 		else if (command.equals("delete")){
-			service.deleteZutat(getLongParam("id", true));
-			forward(DELETED_PAGE + "?msg=Zutat");
+			try {
+				service.deleteZutat(getLongParam("id", true));
+				forward(DELETED_PAGE + "?msg=Zutat");
+			}
+			catch(IntegrityConstraintException ex){
+				error("Die Zutat kann nicht gel&ouml;scht werden, "
+						+ "solange sie in einem Rezept verwendet wird");
+			}
 		}
 	}	
 	

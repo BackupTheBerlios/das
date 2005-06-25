@@ -1,6 +1,7 @@
 package das.bl.service;
 
 import das.DasException;
+import das.IntegrityConstraintException;
 import das.bl.model.Allergie;
 import das.bl.model.Kategorie;
 import das.bl.model.Zutat;
@@ -129,6 +130,12 @@ public class ZutatenService {
 		try {
 			con = DbUtil.getConnection();
 			ZutatDao.deleteZutat(id, con);
+		}
+		catch(SQLException ex){
+			String sqlState = ex.getSQLState();
+			if (sqlState != null && sqlState.startsWith("23"))
+				throw new IntegrityConstraintException("Zutat " + id 
+					+ " kann nicht geloescht werden");
 		}
 		catch(Exception ex){
 			throw new DasException("Zutat " + id + " konnte nicht geloescht werden", ex);

@@ -1,4 +1,5 @@
 package das.ui.ctrl;
+import das.IntegrityConstraintException;
 import das.bl.service.ZutatenService;
 import das.util.ObjName;
 import das.util.Query;
@@ -6,7 +7,6 @@ import das.util.QueryExpr;
 import das.util.ResultType;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
 import javax.servlet.ServletException;
 
 
@@ -98,16 +98,22 @@ public class FindZutatCtrl extends ControllerBase {
 			fields.put("nameExpr", htmlEscape(nameExpr));
 		}
 		else if (command.equals("delete")){
-			int count = 0;
-			for (Object value : getFieldAsList("selected")){
-				Long id = Long.valueOf((String)value);
-				service.deleteZutat(id);
-				count++;
+			try {
+				int count = 0;
+				for (Object value : getFieldAsList("selected")){
+					Long id = Long.valueOf((String)value);
+					service.deleteZutat(id);
+					count++;
+				}
+				if (count == 1)
+					message = "1 Datensatz gel&ouml;scht: ";
+				else
+					message = count + " Datens&auml;tze gel&ouml;scht";
 			}
-			if (count == 1)
-				message = "1 Datensatz gel&ouml;scht: ";
-			else
-				message = count + " Datens&auml;tze gel&ouml;scht";
+			catch(IntegrityConstraintException ex){
+				error("Mindestens eine der ausgew&auml;hlten Zutaten konnte nicht gel&ouml;escht" +
+						" werden, weil sie noch in einem Rezept verwendet wird");
+			}
 		}
 		else if (command.equals("new")){
 			forward("/edit_zutat.jsp?cmd=new");
