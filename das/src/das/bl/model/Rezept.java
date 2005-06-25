@@ -7,6 +7,7 @@ import das.bl.service.ZutatenService;
 
 import das.bl.model.Rezept;
 import das.DasException;
+import das.util.ObjName;
 import das.bl.model.Allergie;
 import das.bl.model.Kategorie;
 import das.bl.model.Zutat;
@@ -68,6 +69,33 @@ public class Rezept {
     
     public void setAnleitung(String anleitung) {
         this.anleitung = anleitung;
+    }
+    
+    /* liefert einen Set von Allergien der enthaltenden Zutaten */
+    public Set<ObjName> getAllergies(){
+        Set<ObjName> allergies = new TreeSet<ObjName>();
+        
+        Set set = zutaten.keySet();
+        Iterator iter = set.iterator();
+        ZutatenService zs = new ZutatenService(benutzer);
+        Zutat z = null;
+        
+        while(iter.hasNext()){
+            Long id = (Long) iter.next();
+            
+            try{
+                z = zs.loadZutat(id);
+            }catch(DasException de){
+                
+            }
+            
+            if (z != null) {
+                System.out.println("Zutat: "+z.getAllergien());
+                allergies.addAll(z.getAllergien());
+            }
+        }
+        
+        return allergies;
     }
     
     public Float getAvgRating() {

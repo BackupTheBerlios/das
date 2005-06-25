@@ -13,9 +13,9 @@ public class Zutat {
 	private Long id;
 	private String name;
 	private String einheit;
-	private Float kalorien;
-	private Integer fett;
-	private Integer zucker;
+	private Float kalorien = 0.0f;
+	private Integer fett = 0;
+	private Integer zucker = 0;
 	private Long katId;
 	private Set<ObjName> allergien = new TreeSet<ObjName>();
 

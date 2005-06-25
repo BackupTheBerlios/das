@@ -33,6 +33,7 @@
                     </td>
                     <td id="centercolumn" valign="top">
                         <div id="das-center">
+                       
                         <h4>Rezept bearbeiten</h4>
 		
                         <%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
@@ -84,11 +85,13 @@
                             }
                             %>       
                         <tr>
-                            <td </td>
-                            <td><hr><a href="find_rezept.jsp">Zur&uuml;ck</a> <input name="ok" type="submit" value="Speichern"></td>
+                            <td> </td>
+                            <td><hr><input name="ok" type="submit" value="Speichern">
+                            <button type="reset" onClick="submitForm('find_rezept.jsp?cmd=find')">Zur&uuml;ck</button></form>
+                            </td>
                         </tr>
                         </table>
-                    </form>
+                    
                 </div>
                 </td>
                 </tr>

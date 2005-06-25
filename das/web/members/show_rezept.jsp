@@ -26,81 +26,100 @@
         <div id="das-mid">
         <table border="0" cellpadding="0" cellspacing="0" id="das-midtbl">
         <tbody>
-            <tr>
-                <td  id="leftcolumn" valign="top">
-                    <%@ include file="/inc/menu.jspf" %>
-                </td>
-                <td id="centercolumn" valign="top">
-                    <div id="das-center">
-                    <h4>${ctrl.fields.name}</h4>
+        <tr>
+        <td  id="leftcolumn" valign="top">
+            <%@ include file="/inc/menu.jspf" %>
+        </td>
+        <td id="centercolumn" valign="top">
+        <div id="das-center">
+                    
+            <table>
+                <tr>
+                    <td align=left>
+                        
+                    
+                        <h4>${ctrl.fields.name}</h4>
 		
-                    <%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
-                    <das:errorlist controller="${ctrl}"/>
+                        <%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
+                        <das:errorlist controller="${ctrl}"/>
                       
-                    <table width="600" border="0">
-                        <tr valign="top"> 
-                            <td>Zutaten:</td>
-                            <td></td>   
-                        </tr>                       
-                        <%
-                        Map zutaten = ctrl.getZutaten();
-                        Set set = zutaten.keySet();
-                        Iterator iter = set.iterator();
-                        ZutatenService zs = new ZutatenService(request.getRemoteUser());
-                        Zutat z;
-                        
-                        while(iter.hasNext()){
-                            Long id = (Long)iter.next();
-                            Long wert = (Long)zutaten.get(id);
+                        <table width="600" border="0">
+                            <tr valign="top"> 
+                                <td>Zutaten:</td>
+                                <td></td>   
+                            </tr>                       
+                            <%
+                            Map zutaten = ctrl.getZutaten();
+                            Set set = zutaten.keySet();
+                            Iterator iter = set.iterator();
+                            ZutatenService zs = new ZutatenService(request.getRemoteUser());
+                            Zutat z;
                             
-                            z = zs.loadZutat(id);
-                            String name = z.getName();
-                            String einheit = z.getEinheit();
-                        %><tr> 
-                            <td></td>
-                            <td><%=wert%> <%=einheit%> <%=name%></td>   
-                        </tr>     <%}%>
+                            while(iter.hasNext()){
+                                Long id = (Long)iter.next();
+                                Long wert = (Long)zutaten.get(id);
+                                
+                                z = zs.loadZutat(id);
+                                String name = z.getName();
+                                String einheit = z.getEinheit();
+                            %><tr> 
+                                <td></td>
+                                <td><%=wert%> <%=einheit%> <%=name%></td>   
+                            </tr>     <%}%>
                         
-                        <tr height="20"></tr>
-                        <tr valign="top"> 
-                            <td>Anleitung:</td>
-                            <td>${ctrl.fields.anleitung}</td>   
-                        </tr>
-                        <tr height="20"></tr>
-                        <tr> 
-                            <td>Kalorien:</td>
-                        <td><%= ctrl.sumKalorien() %></td>   
-                        </tr>
-                         <tr> 
-                            <td>Fett:</td>
-                        <td><%= ctrl.sumFett() %> g</td>   
-                        </tr>
-                         <tr> 
-                            <td>Zucker:</td>
-                        <td><%= ctrl.sumZucker() %> g</td>   
-                        </tr>
-                        <tr height="20"></tr>
-                        <tr> 
-                        <form action="show_rezept.jsp?cmd=bewerten" method="POST">
-                        <input name="id" type="hidden" value="${ctrl.fields.id}"/>
-                            <td valign="middle"></td>
-                            <td valign="middle"><img src="../img/thumbdown.gif" border="0">   <input name="bew" type="radio" value="1"> 1  <input name="bew" type="radio" value="2"> 2  <input name="bew" type="radio" CHECKED  value="3"> 3  
-                            <input name="bew" type="radio"  value="4"> 4  <input name="bew" type="radio" value="5"> 5   <img src="../img/thumbup.gif" border="0"></td>   
-                        </tr>
-                        <tr> 
-                            <td>&empty; Bewertung:</td>
-                            <td><%= ctrl.rezept.getAvgRating() %> </td>  
-                        </tr>
-                        <tr> 
-                            <td></td>
-                            <td><input name="save" type="submit" value="Bewerten"></td>  
-                        </tr>
-                         </form>
-                    </table>            
-                </td>
-            </tr>
-        </tbody>
+                            <tr height="20"></tr>
+                            <tr valign="top"> 
+                                <td>Anleitung:</td>
+                                <td>${ctrl.fields.anleitung}</td>   
+                            </tr>
+                            <tr height="20"></tr>
+                            <tr> 
+                                <td>Kalorien:</td>
+                                <td><%= ctrl.sumKalorien() %></td>   
+                            </tr>
+                            <tr> 
+                                <td>Fett:</td>
+                                <td><%= ctrl.sumFett() %> g</td>   
+                            </tr>
+                            <tr> 
+                                <td>Zucker:</td>
+                                <td><%= ctrl.sumZucker() %> g</td>   
+                            </tr>
+                            <tr height="20"></tr>
+                            <tr> 
+                                <form action="show_rezept.jsp?cmd=bewerten" method="POST">
+                                <input name="id" type="hidden" value="${ctrl.fields.id}"/>
+                                <td valign="middle"></td>
+                                <td valign="middle"><img src="../img/thumbdown.gif" border="0">   <input name="bew" type="radio" value="1"> 1  <input name="bew" type="radio" value="2"> 2  <input name="bew" type="radio" CHECKED  value="3"> 3  
+                                <input name="bew" type="radio"  value="4"> 4  <input name="bew" type="radio" value="5"> 5   <img src="../img/thumbup.gif" border="0"></td>   
+                            </tr>
+                                <tr> 
+                                    <td>&empty; Bewertung:</td>
+                                    <td><%= ctrl.rezept.getAvgRating() %> </td>  
+                                </tr>
+                                <tr> 
+                                    <td></td>
+                                    <td><input name="save" type="submit" value="Bewerten"></td>  
+                                </tr>
+                            </form>
+                        </table>            
+                      
+                            
+                    </td>
+                    <td align="center">
+                        <%
+                        if(ctrl.isAllergic()){
+                        %>
+                        <img src="../img/achtung.gif" alt="Allergisch!"><p />
+                        <h3>Rezept enthaelt Zutaten zu den Sie allergisch sind.</h3>
+                          
+                          
+                          
+                        <% }  %>
+                    </td>
+                </tr>
             </table>
+                        
         </div>
     </body>
 </html>    

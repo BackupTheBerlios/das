@@ -1,9 +1,7 @@
 package das.ui.ctrl;
 
-import das.bl.model.Rezept;
-import das.bl.model.Zutat;
-import das.bl.service.RezepteService;
-import das.bl.service.ZutatenService;
+import das.bl.model.*;
+import das.bl.service.*;
 import static das.ui.ctrl.CtrlConstants.*;
 import das.util.ObjName;
 import das.util.Query;
@@ -20,6 +18,29 @@ import javax.servlet.ServletException;
 public class ShowRezeptCtrl extends ControllerBase {
     
     public Rezept rezept;
+    
+    /* prueft ob das eingellogter User allergisch zu diesen Rezept(seine Zutaten) ist */
+    public boolean isAllergic(){
+        Set<ObjName> myAllergies;
+        Set<ObjName> rezeptAllergies;
+        User u;
+        UserService us = new UserService(getUserName());
+        u = us.loadUser(getUserName());
+        myAllergies = u.getAllergien();
+        rezeptAllergies = rezept.getAllergies();
+        System.out.println("myALL: "+myAllergies);
+        
+        System.out.println("rezALL: "+rezeptAllergies);
+        
+        Iterator i = myAllergies.iterator();
+        while(i.hasNext()){
+            ObjName a = (ObjName) i.next();
+            if(rezeptAllergies.contains(a)) return true;
+        }
+        
+        
+        return false;
+    }
     
     
     public Map<Long,Long> getZutaten(){
@@ -39,7 +60,10 @@ public class ShowRezeptCtrl extends ControllerBase {
             Long anzahl = (Long)rezept.zutaten.get(id);
             
             z = zs.loadZutat(id);
-            Float zucker = (float)z.getZucker()/100;
+            Float zucker = 0.0f;
+            if(z.getZucker() != null)
+                zucker = (float)z.getZucker()/100;
+            
             sum += (zucker*anzahl);
         }
         
@@ -58,7 +82,8 @@ public class ShowRezeptCtrl extends ControllerBase {
             Long anzahl = (Long)rezept.zutaten.get(id);
             
             z = zs.loadZutat(id);
-            Float fett = (float)z.getFett()/100;
+            Float fett = 0.0f;
+            if(z.getFett() != null) fett = (float)z.getFett()/100;
             sum += (fett*anzahl);
         }
         
@@ -103,10 +128,10 @@ public class ShowRezeptCtrl extends ControllerBase {
      * Laedet den Rezept ein.
      */
     protected void action(String command) throws ServletException, IOException {
-       
+        
         RezepteService service = new RezepteService(getUserName());
         rezept = service.loadRezept(getLongParam("id", true));
-       
+        
         if (command != null){ //equals bewerten
             int bew = Convert.toInteger( (String)fields.get("bew"), "Bewertung", true, 1, 5, errors);
             service.bewerteRezept(getUserName(), rezept, bew);
