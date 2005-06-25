@@ -99,8 +99,8 @@ public class EditZutatCtrl extends ControllerBase {
 				forward(DELETED_PAGE + "?msg=Zutat");
 			}
 			catch(IntegrityConstraintException ex){
-				error("Die Zutat kann nicht gel&ouml;scht werden, "
-						+ "solange sie in einem Rezept verwendet wird");
+				error("Das Nahrungsmittel kann nicht gel&ouml;scht werden, "
+						+ "solange es in einem Rezept verwendet wird");
 			}
 		}
 	}	

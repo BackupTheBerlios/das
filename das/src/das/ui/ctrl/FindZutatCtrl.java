@@ -98,22 +98,26 @@ public class FindZutatCtrl extends ControllerBase {
 			fields.put("nameExpr", htmlEscape(nameExpr));
 		}
 		else if (command.equals("delete")){
-			try {
-				int count = 0;
-				for (Object value : getFieldAsList("selected")){
+			boolean constraintViolation = false;
+			int count = 0;
+			for (Object value : getFieldAsList("selected")){
+				try {
 					Long id = Long.valueOf((String)value);
 					service.deleteZutat(id);
 					count++;
 				}
-				if (count == 1)
-					message = "1 Datensatz gel&ouml;scht: ";
-				else
-					message = count + " Datens&auml;tze gel&ouml;scht";
+				catch(IntegrityConstraintException ex){
+					constraintViolation = true;
+				}
 			}
-			catch(IntegrityConstraintException ex){
-				error("Mindestens eine der ausgew&auml;hlten Zutaten konnte nicht gel&ouml;escht" +
-						" werden, weil sie noch in einem Rezept verwendet wird");
+			if (constraintViolation){
+				error("Mindestens eines der ausgew&auml;hlten Nahrungsmittel konnte nicht " +
+						"gel&ouml;escht werden, weil es noch in einem Rezept verwendet wird");				
 			}
+			if (count == 1)
+				message = "1 Datensatz gel&ouml;scht: ";
+			else
+				message = count + " Datens&auml;tze gel&ouml;scht";
 		}
 		else if (command.equals("new")){
 			forward("/edit_zutat.jsp?cmd=new");
