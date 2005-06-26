@@ -41,13 +41,13 @@
 					</td>
 				</tr><tr>
 					<td>Name</td>
-					<td><input name="name" value="${ctrl.fields.name}" maxlength="100"/></td>
+					<td><input name="name" value="${ctrl.fields.name}" maxlength="100"/>*</td>
 				</tr><tr>
 					<td>Einheit</td>
-					<td><input name="einheit" value="${ctrl.fields.einheit}" maxlength="20"/></td>
+					<td><input name="einheit" value="${ctrl.fields.einheit}" maxlength="20"/>*</td>
 				</tr><tr>
 					<td>Kalorien (pro Einheit)</td>
-					<td><input name="kalorien" value="${ctrl.fields.kalorien}" maxlength="20"/></td>
+					<td><input name="kalorien" value="${ctrl.fields.kalorien}" maxlength="10"/>*</td>
 				</tr><tr>
 					<td>Fettgehalt (g/100g)</td>
 					<td><input name="fett" value="${ctrl.fields.fett}" maxlength="3"/></td>
