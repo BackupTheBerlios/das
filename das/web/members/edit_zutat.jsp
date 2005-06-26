@@ -30,6 +30,7 @@
 	<td id="centercolumn" valign="top">
 		<div id="das-center">
 		<h4>Nahrungsmittel bearbeiten</h4>
+		(Felder die mit * gekennzeichnet sind m&uuml;ssen bef&uuml;llt werden)
 		<%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
 		<das:errorlist controller="${ctrl}"/>
 		<form action="edit_zutat.jsp?cmd=save" method="POST">
@@ -58,7 +59,7 @@
 				</tr><tr>
 					<td>Kategorie</td>
 					<td><das:selectname name="katId" options="${ctrl.kategorien}" 
-						selected="${ctrl.fields.katId}"/></td>					
+						selected="${ctrl.fields.katId}"/>*</td>					
 				</tr><tr>
 					<td>Allergien:</td>                                 
 					<c:forEach items="${ctrl.allergien}" var="item">			

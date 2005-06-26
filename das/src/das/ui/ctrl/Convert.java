@@ -187,7 +187,8 @@ public class Convert {
 			return null;
 		}
 		
-		String msg = field + " enhaelt keine gueltige Zahl";
+		String zahl = isInt ? "Ganzzahl" : "Zahl";
+		String msg = field + " enhaelt keine gueltige " + zahl;
       DecimalFormat nf = (DecimalFormat)NumberFormat.getInstance(LOCALE);
       nf.setParseBigDecimal(true);
       ParsePosition pos = new ParsePosition(0);
@@ -204,7 +205,7 @@ public class Convert {
 		}
 		
 		if (bd.compareTo(min) < 0 || bd.compareTo(max) > 0){
-			errors.put(field, field + " muss eine zahl zwischen " + fromNumber(min) 
+			errors.put(field, field + " muss eine " + zahl + " zwischen " + fromNumber(min) 
 				+ " und " + fromNumber(max) + " enthalten");
 			return null;
 		}

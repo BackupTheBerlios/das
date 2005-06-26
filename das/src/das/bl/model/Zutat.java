@@ -13,9 +13,9 @@ public class Zutat {
 	private Long id;
 	private String name;
 	private String einheit;
-	private Float kalorien = 0.0f;
-	private Integer fett = 0;
-	private Integer zucker = 0;
+	private Float kalorien;
+	private Integer fett;
+	private Integer zucker;
 	private Long katId;
 	private Set<ObjName> allergien = new TreeSet<ObjName>();
 
@@ -79,10 +79,10 @@ public class Zutat {
 		return allergien;
 	}
         
-        /* is in kat */
-        public boolean inKat(Kategorie k){
-            return katId.equals(k.getId());
-        }
+	/* is in kat */
+	public boolean inKat(Kategorie k){
+		return katId.equals(k.getId());
+	}
 	
 	public void setAllergien(Set<ObjName> allergien){
 		this.allergien = allergien;
