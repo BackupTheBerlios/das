@@ -7,6 +7,8 @@ import das.bl.model.Kategorie;
 
 /**
  * Domain klasse Zutat.
+ *
+ * @author k
  */
 public class Zutat {
 	

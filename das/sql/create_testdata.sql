@@ -1,3 +1,4 @@
+-- @author k --
 
 insert into gruppe values ('31', 'admins');
 insert into gruppe values ('32', 'editors');

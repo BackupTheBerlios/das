@@ -12,6 +12,8 @@ import java.util.TreeMap;
  * Eine DBMS- und schema-unabhaengige repraesentation von abfragekriterien. 
  * Query objekte werden von benutzern der backend services erzeugt 
  * und von DAOs in SQL statements umgewandelt.
+ *
+ * @author k
  */
 public class Query {
 	

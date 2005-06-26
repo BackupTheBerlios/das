@@ -2,6 +2,8 @@ package das.bl.model;
 
 /**
  * Domain klasse Kategorie
+ *
+ * @author k
  */
 public class Kategorie {
 	

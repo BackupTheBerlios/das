@@ -2,6 +2,8 @@ package das.bl.model;
 
 /**
  * Domain klasse Bewertung.
+ *
+ * @author k
  */
 public class Bewertung {
 	

@@ -20,6 +20,8 @@ import java.util.TreeSet;
 
 /**
  * Backend service zur verwaltung von zutaten, kategorien und allergien. 
+ *
+ * @author k
  */
 public class ZutatenService {
 	

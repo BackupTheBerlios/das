@@ -1,3 +1,4 @@
+<%-- @author k --%>
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -28,7 +29,7 @@
 	<td id="centercolumn" valign="top">
 		<div id="das-center">
 		
-		<% if(request.getParameter("msg") != null) out.println(request.getParameter("msg")+"<p />"); %>
+		${param.msg}<br/>
 		<h4>Login</h4>
 		
 		<form action="j_security_check" method="post">

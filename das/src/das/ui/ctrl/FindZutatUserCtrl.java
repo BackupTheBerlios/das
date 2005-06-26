@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 
 /**
  * Die controller klasse zum suchen und auswaehlen von zutaten.
+ *
+ * @author Mario, k
  */
 public class FindZutatUserCtrl extends ControllerBase {
 	

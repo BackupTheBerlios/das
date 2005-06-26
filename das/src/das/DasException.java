@@ -1,5 +1,10 @@
 package das;
 
+/**
+ * Basisklasse aller DAS exceptions
+ *
+ * @author k
+ */
 public class DasException extends RuntimeException {
 
 	public DasException(){}

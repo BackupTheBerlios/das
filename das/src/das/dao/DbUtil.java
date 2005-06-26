@@ -13,6 +13,8 @@ import javax.sql.DataSource;
 
 /**
  * Utility methoden fuer den datenbankzugriff.
+ *
+ * @author k
  */
 public class DbUtil {
 	

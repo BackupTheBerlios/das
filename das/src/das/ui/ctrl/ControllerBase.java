@@ -18,6 +18,8 @@ import javax.servlet.jsp.PageContext;
 
 /**
  * Die basisklasse aller user interface controller.
+ *
+ * @author k
  */
 public abstract class ControllerBase {
 	

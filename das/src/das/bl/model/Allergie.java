@@ -2,6 +2,8 @@ package das.bl.model;
 
 /**
  * Domain klasse Allergie
+ *
+ * @author k
  */
 public class Allergie {
 	

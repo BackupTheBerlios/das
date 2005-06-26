@@ -13,6 +13,8 @@ import java.util.Map;
  * Hilfsklasse zur erzeugung von parametrisierten PreparedStatements. 
  * Der aufrufer benutzt add um parameterausdruecke hinzuzufuegen und ruft danach
  * buildQuery auf um das entsprechende PreparedStatement zu erzeugen.
+ *
+ * @author k
  */
 public class StatementBuilder {
 	

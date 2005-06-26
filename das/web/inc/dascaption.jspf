@@ -1,1 +1,2 @@
+<%-- @author k --%>
 DAS - Di&auml;tassistent - Tip der Sekunde: <%= das.ui.ctrl.TipOfTheSec.nextTip() %><br />

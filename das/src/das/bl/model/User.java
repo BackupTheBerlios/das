@@ -7,6 +7,8 @@ import java.util.TreeSet;
 
 /**
  * Domain klasse User
+ *
+ * @author Mario; k
  */
 public class User {
 	

@@ -4,6 +4,8 @@ package das.util;
  * Enthaelt die id und einen sprechenden namen eines domaenenobjektes. Diese klasse
  * dient hauptsaechlich dazu um auswahllisten zu befuellen ohne jedesmal ein vollstaendiges
  * domaenenobjekt laden zu muessen. 
+ *
+ * @author k
  */
 public class ObjName implements Comparable<ObjName> {
 	

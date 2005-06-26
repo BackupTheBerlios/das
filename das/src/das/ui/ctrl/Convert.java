@@ -15,6 +15,8 @@ import java.util.Map;
  * nehmen unter anderem eine fehler Map als parameter, in die sie im fehlerfall eine
  * fehlermeldung einfuegen. Die konverterung in beide richtungen erfolgt entsprechend
  * der laenderkonventionen die durch die LOCALE konstante gegeben sind.
+ *
+ * @author k
  */
 public class Convert {
 	

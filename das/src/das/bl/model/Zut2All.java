@@ -3,6 +3,8 @@ package das.bl.model;
 
 /**
  * Domainklasse Zut2All
+ *
+ * @author k
  */
 public class Zut2All {
 	

@@ -7,6 +7,11 @@ import javax.servlet.http.HttpSession;
 import static das.ui.ctrl.CtrlConstants.HOME_PAGE;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Controller klasse fuer die logout seite
+ *
+ * @author k
+ */
 public class LogoutCtrl extends ControllerBase {
 		
 	protected boolean convertAndValidate(String command){

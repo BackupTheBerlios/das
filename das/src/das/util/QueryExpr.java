@@ -2,6 +2,8 @@ package das.util;
 
 /**
  * Ein abfrageausdruck in einem Query objekt.
+ *
+ * @author k
  */
 public class QueryExpr {
 	

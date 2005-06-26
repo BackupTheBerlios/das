@@ -1,3 +1,5 @@
+/* @author k */
+
 function submitForm(url, msg){
    var doSubmit = true;
    if (msg)

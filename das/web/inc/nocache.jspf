@@ -1,3 +1,4 @@
+<%-- @author k --%>
 <%-- Verhindert das caching von JSP seiten --%>
 <%
 	response.addHeader("Pragma", "no-cache");

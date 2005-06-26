@@ -1,5 +1,10 @@
 package das;
 
+/**
+ * Wird ausgeloest wenn ein datenbank constraint verletzt wurde, z.b. referentielle integritaet
+ *
+ * @author k
+ */
 public class IntegrityConstraintException extends DasException {
 	public IntegrityConstraintException(){}
 

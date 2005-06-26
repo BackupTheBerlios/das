@@ -1,3 +1,4 @@
+-- @author k --
 drop table bewertung;
 drop table bzr2all;
 drop table zut2all;

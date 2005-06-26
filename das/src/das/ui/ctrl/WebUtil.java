@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 /**
  * Utility methoden fuer web anwendungen.
+ *
+ * @author k
  */
 public class WebUtil {
    

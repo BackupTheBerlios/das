@@ -17,6 +17,8 @@ import javax.servlet.ServletException;
 
 /**
  * Die Controller klasse zur aenderung und neu erzeugung von zutaten.
+ *
+ * @author k
  */
 public class EditZutatCtrl extends ControllerBase {
 	

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 /**
  * Data Access Object zur verarbeitung der datenbankzugriffe im zusammenhang mit zutaten.
+ *
+ * @author k
  */
 public class ZutatDao {
 		

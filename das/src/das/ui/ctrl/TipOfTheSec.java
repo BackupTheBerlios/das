@@ -2,6 +2,11 @@ package das.ui.ctrl;
 
 import java.util.Random;
 
+/**
+ * Sekundentips zum hungern
+ *
+ * @author k
+ */
 public class TipOfTheSec {
 	
 	private static Random random = new Random();
