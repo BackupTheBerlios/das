@@ -52,11 +52,11 @@
 				</tr><tr>
 					<td>E-Mail</td>
 					<td><input name="email" value="${ctrl.fields.email}" maxlength="50"/></td>
-				</tr><tr>
+				</tr><%--<tr>
 					<td>Gruppe</td>
 					<td><das:selectname name="gruId" options="${ctrl.gruppen}" 
 						selected="${ctrl.fields.gruId}"/></td>					
-				</tr><tr>
+				</tr>--%><tr>
 					<td>Allergien:</td>                                 
 					<c:forEach items="${ctrl.allergien}" var="item">			
 						<td>${item.name}</td>
@@ -68,7 +68,7 @@
 				</tr>	
 				<hr/>
 				
-				<tr>
+				<tr><%-- dirty h4x --%><input name="gruId" type="hidden" value="33"><%-- /dirty h4x --%>
 					<td><input type="submit" value="Anlegen"/></td>
 				</form>
 					<td><form action="index.jsp" method="POST">
