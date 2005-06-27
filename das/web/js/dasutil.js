@@ -1,5 +1,5 @@
 /* @author k */
-
+/* @author arash zargamy */
 function submitForm(url, msg){
    var doSubmit = true;
    if (msg)
