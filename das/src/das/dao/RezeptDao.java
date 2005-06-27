@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 /**
+ * @author: Kirill
  * Data Access Object zur verarbeitung der datenbankzugriffe im zusammenhang mit Rezepten.
  */
 public class RezeptDao {

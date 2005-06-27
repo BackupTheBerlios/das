@@ -1,8 +1,5 @@
 package das.ui.ctrl;
-/*
- * date: 14.06.2005
- * autor: Kirill
- */
+
 import com.sun.java_cup.internal.runtime.Symbol;
 import das.DasException;
 import das.bl.model.*;
@@ -16,6 +13,9 @@ import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 
+/*
+ * @autor: Kirill
+ */
 /**
  * Die Controller klasse zur aenderung und neu erzeugung von Rezepten.
  */
@@ -75,12 +75,16 @@ public class EditRezeptCtrl extends ControllerBase {
             rezept.setBenutzer(getUserName());
             convert(TO_UI);
         } else if ((command.equals("edit")) || (command.equals("view"))){
+            try{
             rezept = service.loadRezept(getLongParam("id", true));
-            convert(TO_UI);
+            if (rezept != null) convert(TO_UI);
+            }catch(DasException de){
+                forward("find_rezept.jsp");
+            }
         } else if (command.equals("save")){
             rezept.setBenutzer(getUserName());
             try{
-            service.saveRezept(rezept);
+                service.saveRezept(rezept);
             }catch(DasException de){
                 errors.put("rezeptExists", "Rezept mit Name '"+rezept.getName()+"' existiert bereits");
                 valid = false;

@@ -13,8 +13,7 @@ import javax.servlet.jsp.PageContext;
 
 /**
  * autor: Kirill 
- * date: 14.06.2005
- * 
+ *
  * Die controller klasse zum suchen und auswaehlen von rezepten.
  */
 public class FindRezeptCtrl extends ControllerBase {
@@ -35,7 +34,6 @@ public class FindRezeptCtrl extends ControllerBase {
         /* liefert TRUE wenn der current user tatsachlich den autor des rezepts ist */
         public boolean isAutor(Long rID){
             RezepteService service = new RezepteService(getUserName());
-            System.out.println(service.loadRezept(rID).getBenutzer());
             return getUserName().equals(service.loadRezept(rID).getBenutzer());
 	}
         

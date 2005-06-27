@@ -18,6 +18,7 @@ import java.util.List;
 
 
 /**
+ *@author: Kirill
  * Backend service zur verwaltung von rezepten.
  */
 public class RezepteService {
@@ -35,7 +36,7 @@ public class RezepteService {
      * Laedt das durch id identifizierte Rezept aus der datenbank.
      * Wenn kein Rezept mit dieser id gefunden wurde, wird eine DasException ausgeloest.
      */
-    public Rezept loadRezept(Long id){
+    public Rezept loadRezept(Long id) throws DasException{
         Rezept r;
         Connection con = null;
         try {

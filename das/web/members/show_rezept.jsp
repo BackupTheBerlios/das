@@ -5,7 +5,9 @@
 <%@ page import='das.bl.model.Zutat' %>
 <%@ page import='das.bl.service.ZutatenService' %>
 
-<%-- Controller instantiieren und pageContext setzen --%>
+
+<%-- @autor: Kirill --%>
+
 <jsp:useBean id="ctrl" class="das.ui.ctrl.ShowRezeptCtrl">
     <jsp:setProperty name="ctrl" property="pageContext" value="${pageContext}"/>
 </jsp:useBean>
@@ -43,7 +45,7 @@
                         <%-- Fehlerliste anzeigen falls fehler aufgetreten sind --%>
                         <das:errorlist controller="${ctrl}"/>
                       
-                        <table width="600" border="0">
+                        <table width="400" border="0">
                             <tr valign="top"> 
                                 <td>Zutaten:</td>
                                 <td></td>   
@@ -106,20 +108,19 @@
                       
                             
                     </td>
-                    <td align="center">
+                    <td align="left">
                         <%
                         if(ctrl.isAllergic()){
                         %>
-                        <img src="../img/achtung.gif" alt="Allergisch!"><p />
-                        <h3>Rezept enthaelt Zutaten zu den Sie allergisch sind.</h3>
-                          
-                          
-                          
+                        <div align="center">
+                            <img src="../img/achtung.gif" alt="Allergisch!"><p />
+                            <h3>Rezept enth&auml;lt Zutaten,<br> zu dennen Sie allergisch sind.</h3>
+                        </div>
                         <% }  %>
                     </td>
                 </tr>
-            </table>
-                        
+            </table><p />
+                    <a href="find_rezept.jsp">Zur&uuml;ck zur Auswahl</a>
         </div>
     </body>
 </html>    

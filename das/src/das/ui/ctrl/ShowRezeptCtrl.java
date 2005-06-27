@@ -4,6 +4,7 @@ import das.bl.model.*;
 import das.bl.service.*;
 import static das.ui.ctrl.CtrlConstants.*;
 import das.util.ObjName;
+import das.DasException;
 import das.util.Query;
 import das.util.ResultType;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.*;
 import javax.servlet.ServletException;
 
 /**
+ * @author: Kirill
  * Die Controllerklasse zum Anzeigen von Rezepten.
  */
 public class ShowRezeptCtrl extends ControllerBase {
@@ -28,9 +30,6 @@ public class ShowRezeptCtrl extends ControllerBase {
         u = us.loadUser(getUserName());
         myAllergies = u.getAllergien();
         rezeptAllergies = rezept.getAllergies();
-        System.out.println("myALL: "+myAllergies);
-        
-        System.out.println("rezALL: "+rezeptAllergies);
         
         Iterator i = myAllergies.iterator();
         while(i.hasNext()){
@@ -130,7 +129,11 @@ public class ShowRezeptCtrl extends ControllerBase {
     protected void action(String command) throws ServletException, IOException {
         
         RezepteService service = new RezepteService(getUserName());
-        rezept = service.loadRezept(getLongParam("id", true));
+        try{
+            rezept = service.loadRezept(getLongParam("id", true));
+        }catch(DasException de){
+            forward("find_rezept.jsp");
+        }
         
         if (command != null){ //equals bewerten
             int bew = Convert.toInteger( (String)fields.get("bew"), "Bewertung", true, 1, 5, errors);

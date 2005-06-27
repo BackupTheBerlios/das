@@ -7,7 +7,8 @@
 <%@ page import='java.util.List' %>
 <%@ page import='java.util.Iterator' %>
 
-<%-- Controller instantiieren und pageContext setzen --%>
+<%-- @autor: Kirill --%>
+
 <jsp:useBean id="ctrl" class="das.ui.ctrl.FindRezeptCtrl">
     <jsp:setProperty name="ctrl" property="pageContext" value="${pageContext}"/>
 </jsp:useBean>

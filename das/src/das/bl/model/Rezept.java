@@ -24,6 +24,7 @@ import java.util.List;
 
 
 /**
+ * @author: Kirill
  * Domain klasse Rezept.
  */
 public class Rezept {
@@ -90,7 +91,6 @@ public class Rezept {
             }
             
             if (z != null) {
-                System.out.println("Zutat: "+z.getAllergien());
                 allergies.addAll(z.getAllergien());
             }
         }
