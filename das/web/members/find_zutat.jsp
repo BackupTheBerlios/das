@@ -64,7 +64,7 @@
 
 			<hr width="50%" align="left"/>
 			<button id="deleteButton" type="button" disabled
-				onClick="submitForm('find_zutat.jsp?cmd=delete', 'Sicher?')">
+				onClick="submitForm('find_zutat.jsp?cmd=delete', 'Wollen Sie wirklich L&ouml;schen?')">
 				L&ouml;schen</button>
 			<button type="button" onClick="submitForm('edit_zutat.jsp?cmd=new')">Neu</button>
 		</form>
