@@ -193,6 +193,21 @@ public class ZutatenService {
 		}
 	}
 	
+	public boolean kategorieExists(Kategorie kategorie){
+		Query q = new Query(ResultType.NAMES);
+		q.addExpression(new QueryExpr("name", kategorie.getName()));
+		List found = findKategorien(q);
+		
+		if (!found.isEmpty()){
+			Long foundId = (Long)((ObjName)found.get(0)).getId();
+			if (!foundId.equals(kategorie.getId())){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+        
 	/**
 	 * Speichert die Kategorie k in der datenbank.
 	 */
@@ -225,6 +240,12 @@ public class ZutatenService {
 			con = DbUtil.getConnection();
 			KategorieDao.deleteKategorie(id, con);
 		}
+		catch(SQLException ex){
+			String sqlState = ex.getSQLState();
+			if (sqlState != null && sqlState.startsWith("23"))
+				throw new IntegrityConstraintException("Kategorie " + id 
+					+ " kann nicht geloescht werden");
+		}                
 		catch(Exception ex){
 			throw new DasException("Kategorie " + id + " konnte nicht geloescht werden", ex);
 		}
@@ -278,6 +299,22 @@ public class ZutatenService {
 			DbUtil.close(con);
 		}
 	}
+        
+	public boolean allergieExists(Allergie allergie){
+		Query q = new Query(ResultType.NAMES);
+		q.addExpression(new QueryExpr("name", allergie.getName()));
+		List found = findAllergien(q);
+		
+		if (!found.isEmpty()){
+			Long foundId = (Long)((ObjName)found.get(0)).getId();
+			if (!foundId.equals(allergie.getId())){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+        
 	
 	/**
 	 * Speichert die Allergie a in die datenbank.
@@ -311,6 +348,12 @@ public class ZutatenService {
 			con = DbUtil.getConnection();
 			AllergieDao.deleteAllergie(id, con);
 		}
+		catch(SQLException ex){
+			String sqlState = ex.getSQLState();
+			if (sqlState != null && sqlState.startsWith("23"))
+				throw new IntegrityConstraintException("Allergie" + id 
+					+ " kann nicht geloescht werden");
+		}                
 		catch(Exception ex){
 			throw new DasException("Allergie " + id + " konnte nicht geloescht werden", ex);
 		}

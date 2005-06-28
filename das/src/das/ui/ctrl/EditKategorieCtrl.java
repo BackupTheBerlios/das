@@ -9,6 +9,7 @@ import das.util.ResultType;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
+import das.IntegrityConstraintException;
 
 /**
  * Die Controllerklasse zur Aenderung und Neu erzeugen von Kategorien.
@@ -50,12 +51,24 @@ public class EditKategorieCtrl extends ControllerBase {
 			convert(TO_UI);
 		}
 		else if (command.equals("save")){
-			service.saveKategorie(kategorie);
-			convert(TO_UI);
+			if (service.kategorieExists(kategorie)){
+				error("Eine Kategorie mit diesem Namen existiert bereits");
+			}
+			else {
+                                service.saveKategorie(kategorie);
+                                convert(TO_UI);
+			}                    
+
 		}
 		else if (command.equals("delete")){
-			service.deleteKategorie(getLongParam("id", true));
-			forward(DELETED_PAGE + "?msg=Kategorie");
+			try {
+                                service.deleteKategorie(getLongParam("id", true));
+                                forward(DELETED_PAGE + "?msg=Kategorie");
+                        }
+                        catch (IntegrityConstraintException ex){
+				error("Die Kategorie kann nicht gel&ouml;scht werden, "
+                                    + "wenn sie noch Nahrungsmittel enthält.");
+			}
 		}
 	}	
 	

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import javax.servlet.ServletException;
+import das.IntegrityConstraintException;
 
 
 /**
@@ -98,12 +99,22 @@ public class FindAllergieCtrl extends ControllerBase {
 			fields.put("nameExpr", htmlEscape(nameExpr));
 		}
 		else if (command.equals("delete")){
+                        boolean constraintViolation = false;
 			int count = 0;
 			for (Object value : getFieldAsList("selected")){
-				Long id = Long.valueOf((String)value);
-				service.deleteAllergie(id);
-				count++;
+                                try {
+                                        Long id = Long.valueOf((String)value);
+                                        service.deleteAllergie(id);
+                                        count++;
+                                }
+                                catch(IntegrityConstraintException ex){
+					constraintViolation = true;
+				}
 			}
+			if (constraintViolation){
+				error("Mindestens eine der ausgew&auml;hlten Allergien konnte nicht " +
+						"gel&ouml;escht werden, weil noch User und/oder Nahrungsmittel darauf verweisen.");				
+			}                        
 			if (count == 1)
 				message = "1 Datensatz gel&ouml;scht";
 			else

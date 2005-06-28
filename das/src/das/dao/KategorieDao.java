@@ -99,7 +99,7 @@ public class KategorieDao {
 		
 		List result = new ArrayList();
 		while (rs.next()){
-			result.add(new ObjName(rs.getString("id"), rs.getString("name")));
+                        result.add(new ObjName(Long.valueOf(rs.getString("id")), rs.getString("name")));
 		}
 		
 		return result;

@@ -9,6 +9,7 @@ import das.util.ResultType;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
+import das.IntegrityConstraintException;
 
 /**
  * Die Controllerklasse zur Aenderung und zum Neu erzeugen von Allergien.
@@ -50,14 +51,26 @@ public class EditAllergieCtrl extends ControllerBase {
 			convert(TO_UI);
 		}
 		else if (command.equals("save")){
-			service.saveAllergie(allergie);
-			convert(TO_UI);
+			if (service.allergieExists(allergie)){
+				error("Eine Allergie mit diesem Namen existiert bereits.");
+			}
+			else {
+                                service.saveAllergie(allergie);
+                                convert(TO_UI);
+			}                    
+
 		}
 		else if (command.equals("delete")){
-			service.deleteAllergie(getLongParam("id", true));
-			forward(DELETED_PAGE + "?msg=Allergie");
+                        try {
+                                service.deleteAllergie(getLongParam("id", true));
+                                forward(DELETED_PAGE + "?msg=Allergie");
+                        }
+                        catch(IntegrityConstraintException ex){
+                                error("Die Allergie kann nicht gel&ouml;scht werden, "
+                                    + "wenn User und/oder Zutaten darauf verweisen.");
+                        }                    
 		}
-	}	
+	}           
 	
 	/**
 	 * Konvertiert die Werte aus den Formularfeldern von Strings in die interne Repraesentation
