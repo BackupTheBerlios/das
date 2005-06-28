@@ -18,10 +18,12 @@ public class MenuCtrl {
 		this.pageContext = pageContext;
 	}
 	
+	/*
 	public boolean isEditor(){				
 		HttpServletRequest httpRequest = (HttpServletRequest)pageContext.getRequest();
 		return httpRequest.isUserInRole("editors") || httpRequest.isUserInRole("admins");
 	}
+	 */
 	
 	public boolean isShowVerwaltungMenu(){
 		HttpServletRequest httpRequest = (HttpServletRequest)pageContext.getRequest();
