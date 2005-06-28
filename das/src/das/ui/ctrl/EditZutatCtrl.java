@@ -95,6 +95,7 @@ public class EditZutatCtrl extends ControllerBase {
 				convert(TO_UI);
 			}
 		}
+		/*
 		else if (command.equals("delete")){
 			try {
 				service.deleteZutat(getLongParam("id", true));
@@ -105,6 +106,7 @@ public class EditZutatCtrl extends ControllerBase {
 						+ "solange es in einem Rezept verwendet wird");
 			}
 		}
+		 */
 	}	
 	
 	/**
