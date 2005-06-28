@@ -52,10 +52,10 @@
 					<td><input name="kalorien" value="${ctrl.fields.kalorien}" maxlength="10"/>*</td>
 				</tr><tr>
 					<td>Fettgehalt (g/100g)</td>
-					<td><input name="fett" value="${ctrl.fields.fett}" maxlength="3"/></td>
+					<td><input name="fett" value="${ctrl.fields.fett}" maxlength="8"/></td>
 				</tr><tr>
 					<td>Zuckergehalt (g/100g)</td>
-					<td><input name="zucker" value="${ctrl.fields.zucker}" maxlength="3"/></td>
+					<td><input name="zucker" value="${ctrl.fields.zucker}" maxlength="8"/></td>
 				</tr>
 				</tr><tr>
 					<td>Kategorie</td>

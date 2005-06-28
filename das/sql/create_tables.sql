@@ -61,8 +61,8 @@ create table zutat (
    name varchar(100) not null unique,
    einheit varchar(20) not null,
    kalorien real not null,
-   fett smallint,
-   zucker smallint,
+   fett real,
+   zucker real,
    kat_id int not null references kategorie
 );
 

@@ -16,8 +16,8 @@ public class Zutat {
 	private String name;
 	private String einheit;
 	private Float kalorien;
-	private Integer fett;
-	private Integer zucker;
+	private Float fett;
+	private Float zucker;
 	private Long katId;
 	private Set<ObjName> allergien = new TreeSet<ObjName>();
 
@@ -53,19 +53,19 @@ public class Zutat {
 		this.kalorien = kalorien;
 	}
 
-	public Integer getFett() {
+	public Float getFett() {
 		return fett;
 	}
 
-	public void setFett(Integer fett) {
+	public void setFett(Float fett) {
 		this.fett = fett;
 	}
 
-	public Integer getZucker() {
+	public Float getZucker() {
 		return zucker;
 	}
 
-	public void setZucker(Integer zucker) {
+	public void setZucker(Float zucker) {
 		this.zucker = zucker;
 	}
 	
