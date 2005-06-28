@@ -6,7 +6,7 @@
 <%@ page import='das.bl.service.ZutatenService' %>
 
 
-<%-- @autor: Kirill --%>
+<%-- @autor: Kirill --%><%-- @autor: Arash Zargamy --%>
 
 <jsp:useBean id="ctrl" class="das.ui.ctrl.ShowRezeptCtrl">
     <jsp:setProperty name="ctrl" property="pageContext" value="${pageContext}"/>
@@ -72,7 +72,7 @@
                             <tr height="20"></tr>
                             <tr valign="top"> 
                                 <td>Anleitung:</td>
-                                <td>${ctrl.fields.anleitung}</td>   
+                                <td><textarea name="" cols="" rows="25" readonly="readonly" >${ctrl.fields.anleitung}</textarea></td>   
                             </tr>
                             <tr height="20"></tr>
                             <tr> 
@@ -114,7 +114,8 @@
                         %>
                         <div align="center">
                             <img src="../img/achtung.gif" alt="Allergisch!"><p />
-                            <h3>Rezept enth&auml;lt Zutaten,<br> zu dennen Sie allergisch sind.</h3>
+                          <h3>Rezept enth&auml;lt Zutaten,<br>
+                            auf die Sie m&ouml;gichlerweise allergisch sind.</h3>
                         </div>
                         <% }  %>
                     </td>
