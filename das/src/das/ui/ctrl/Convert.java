@@ -162,8 +162,8 @@ public class Convert {
 	}
 
 	/**
-	 * Normalisiert einen string wert, sodass er einen leerzeichen hinten oder vorne
-	 * enthaelt und in einen null wert umgewandelt wird, falls der string leer ist.
+	 * Normalisiert einen string wert, sodass er leerzeichen hinten und vorne
+	 * entfernt und in einen null wert umgewandelt wird, falls der string danach leer ist.
 	 */
 	public static String normalize(String s){
 		if (s == null)
